@@ -1,0 +1,20 @@
+@import "/src/shared-styles/variaveis";
+
+.titulo-grupo-campos-form {
+  color: $cor-principal-font;
+  font-weight: 600;
+  margin-top: 40px;
+
+  border-bottom: 1px solid $cor-border-bottom-cinza;
+  padding-bottom: $padding-border-padrao;
+}
+.cn-input-cva {
+  margin-top: 10px;
+}
+.titulo-modal {
+  font-size: 32px;
+  border-bottom: none;
+}
+.tamanho-modal {
+  max-width: 600px;
+}

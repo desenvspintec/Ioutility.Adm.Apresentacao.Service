@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="barra-rolagem">
+    <app-cn-tabela class="td-tabela-principal">
+      <tr>
+        <th class="td-btn-esquerdo" *ngIf="model.componenteSubListagemCrud" >
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+        </th>
+        <th *ngFor="let itemLabel of model.itens">
+          {{ itemLabel.label }}
+        </th>
+        <th class="td-fixa" *ngIf="model.btnsOpcao.length">
+          <div class="td-fixa-hidden">
+            <div class="tdfixa-content-shadow">
+              <div class="shadow-content"></div>
+            </div>
+          </div>
+        </th>
+      </tr>
+      <ng-container *ngFor="let item of itens; let posicao = index">
+        <tr>
+          <td class="td-btn-esquerdo" *ngIf="model.componenteSubListagemCrud">
+            <div (click)="abrirTabela(posicao)">
+              <mat-icon class="icon" *ngIf="exibirIconeBotaoTabela(posicao)">{{
+                iconeBotaoTabelaAberta
+              }}</mat-icon>
+              <mat-icon class="icon" *ngIf="!exibirIconeBotaoTabela(posicao)">{{
+                iconeBotaoTabelaFechada
+              }}</mat-icon>
+            </div>
+          </td>
+          <td *ngFor="let itemLabel of model.itens">
+            <span [class]="obterCssClass(item, itemLabel)">
+              {{ item[itemLabel.propriedade] }}</span
+            >
+          </td>
+          <td class="td-fixa" *ngIf="model.btnsOpcao.length">
+            <div
+              class="td-fixa-hidden"
+              [id]="prefixoIdBtnAbrirItemOpcao + posicao"
+              (click)="abrirMenu(posicao)"
+            >
+              <div
+                [class]="'tdfixa-content-shadow ' + classBtnAbrirMenu + posicao"
+              >
+                <div [class]="'shadow-content ' + classBtnAbrirMenu + posicao">
+                  ...
+                </div>
+              </div>
+            </div>
+            <div
+              class="opcao-listagem"
+              [@animarSubindo]
+              [id]="prefixoIdItemOpcao + posicao"
+              *ngIf="podeExibirMenu(posicao)"
+            >
+              <ul>
+                <ng-container *ngFor="let opcao of model.btnsOpcao">
+                  <li (click)="executarAcaoBtnOpcao(item.id, opcao)">
+                    <div class="opcao-listagem-item opcao-listagem-icon">
+                      <span *ngIf="opcao.icone">
+                        <mat-icon>{{ opcao.icone }} </mat-icon></span
+                      >
+                    </div>
+                    <div class="opcao-listagem-item opcao-listagem-texto">
+                      {{ opcao.label }}
+                    </div>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="podeExibirTabela(posicao)">
+          <td colspan="100%">
+            <app-cn-sublistagem-crud
+              [entityId]="item.id"
+              [componenteExibir]="model.componenteSubListagemCrud"
+            ></app-cn-sublistagem-crud>
+          </td>
+        </tr>
+      </ng-container>
+    </app-cn-tabela>
+    <br />
+    <br />
+    <br />
+  </div>
+</div>

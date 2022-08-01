@@ -1,0 +1,4 @@
+<div class="col-12">
+    <app-cn-listagem-crud *ngIf="haEntitys()" [model]="modelDetalhesExibicao" [itens]="obterEntitys()"></app-cn-listagem-crud>
+    <h3 class="texto-campo-sem-faltas" *ngIf="!haEntitys()">{{mensagemDeAvisoSemResultados}}</h3>
+</div>

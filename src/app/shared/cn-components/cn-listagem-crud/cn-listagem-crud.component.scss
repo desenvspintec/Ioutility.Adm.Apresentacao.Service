@@ -1,0 +1,127 @@
+@import "/src/shared-styles/variaveis";
+
+.td-fixa {
+  display: block;
+  background-color: none;
+  width: 0px;
+  position: sticky;
+  right: 0px;
+  height: 45px;
+  padding: 0;
+  float: right;
+}
+.td-fixa-hidden {
+  display: block;
+  position: absolute;
+  width: 55px;
+  height: 45px;
+  right: 0;
+  overflow: hidden;
+}
+.tdfixa-content-shadow {
+  position: absolute;
+  display: block;
+  float: right;
+  background: $cor-tabela;
+  height: 100%;
+  width: 39px;
+  font-size: 25px;
+  font-weight: bold;
+  box-shadow: #99a 0px 0px 9px 3px;
+  border: none !important;
+  cursor: pointer;
+  right: 0;
+  transition: $transition-padrao;
+  &:hover {
+    background-color: $cor-principal-claro;
+  }
+}
+
+.shadow-content {
+  position: relative;
+  display: block;
+  width: 100%;
+  top: 10%;
+  text-align: center;
+}
+
+.opcao-listagem {
+  position: absolute;
+  background-color: $cor-tabela;
+  min-width: 177px;
+  right: 65px;
+  transition: 0.3s;
+  box-shadow: #888 0px 0px 7px 4px;
+  border-radius: 10px;
+  z-index: 999;
+  & ul {
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    & li {
+      list-style: none;
+      display: block;
+      float: left;
+      width: 100%;
+      padding: 10px 10px 0px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: $transition-padrao;
+      &:hover {
+        background-color: $cor-principal-claro;
+      }
+    }
+  }
+}
+.opcao-listagem-item {
+  display: block;
+  float: left;
+}
+.opcao-listagem-icon {
+  width: 25%;
+  text-align: center;
+}
+.opcao-listagem-texto {
+  width: 65%;
+  text-align: left;
+  margin: 0 auto;
+}
+.barra-rolagem {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+.barra-rolagem::-webkit-scrollbar-track {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+.barra-rolagem::-webkit-scrollbar {
+  width: 4px;
+  height: 13px;
+  background: #f4f4f4;
+  border-radius: 5px;
+}
+.barra-rolagem::-webkit-scrollbar-thumb {
+  background: $cor-principal;
+  border-radius: 5px;
+}
+
+.barra-rolagem::-webkit-scrollbar-thumb:hover {
+  background: $cor-principal-v2;
+}
+
+.td-btn-esquerdo {
+  cursor: pointer;
+  width: 1%;
+}
+
+.icon{
+  color: $cor-border-bottom-cinza;
+}
+
+.centralizar-texto{
+  text-align: center;
+}

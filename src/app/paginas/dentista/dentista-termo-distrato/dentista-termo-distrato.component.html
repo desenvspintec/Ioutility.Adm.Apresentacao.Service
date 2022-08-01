@@ -1,0 +1,31 @@
+<div class="row" [@animarSubindo] class="position-relative">
+    <div class="col-12">
+      <app-cn-painel-titulo [titulo]="'Cadastro de Dentista'">
+        <ng-container opcoes>
+          <app-configuracoes></app-configuracoes>
+        </ng-container>
+        <ng-container submenu>
+          <app-cn-submenu [submenus]="itensSubmenu()"></app-cn-submenu>
+        </ng-container>
+      </app-cn-painel-titulo>
+    </div>
+      <div class="col-md-11">
+        <button class="botao btn-editar" (click)="editarDocumento()">
+          <mat-icon class="icone">edit</mat-icon>
+          <span class="texto-com-icone">Editar</span>
+        </button>
+        <button class="botao btn-salvar" [class.esconder-botao]="!mostrarBotaoDeSalvar" (click)="salvarDocumentoEditado()">
+          <span class="texto-sem-icone">Salvar</span>
+        </button>
+        <button class="botao btn-enviar-por-email" (click)="abrirModal()">
+          <mat-icon class="icone">email</mat-icon>
+          <span class="texto-com-icone">Enviar por e-mail</span> 
+        </button>
+      </div>
+      <form [formGroup]="form">
+        <div class="form-contrato col-10 offset-1">
+          <app-cn-input-cva formControlName="textoDistrato" [model]="campoDistrato"></app-cn-input-cva>
+        </div>
+      </form>
+  </div>
+  

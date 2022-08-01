@@ -1,0 +1,11 @@
+<div class="indicadores" *ngIf="this.indicadores" [@animarSubindo]>
+  <div class="indicadores-item">
+    <div class="indicador-label">Total de pacientes ativos</div>
+    <div class="indicador-numero indicador-ativo">
+      <span class="indicadores-icon-span"
+        ><mat-icon>check_circle_outline</mat-icon></span
+      >
+      <span class="indicadores-numero-span">{{ indicadores.ativos }} </span>
+    </div>
+  </div>
+</div>

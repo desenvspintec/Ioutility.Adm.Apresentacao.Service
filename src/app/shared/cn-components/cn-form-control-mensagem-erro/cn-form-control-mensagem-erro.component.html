@@ -1,0 +1,17 @@
+<div
+  class="form-group padding-control"
+  [id]="'form-control-label-' + formControlNameUtilizado"
+  [class.form-control-error]="!valido()"
+  [class.form-control-success]="valido()"
+>
+  <ng-content></ng-content>
+  <div class="area-mensagem" [class]="cssClassMensagemErro" *ngIf="podeExibirMensagem()">
+    <span id="mensagem-erro" [@animarCaindo] class="posicao-relativa"*ngIf="!valido()">
+      <span   class="material-icons form-contro-msg-icon">cancel</span>
+      {{ mensagemErroValidacao() }}
+    </span>
+    <span id="mensagem-sucesso" [@animarCaindo] class="posicao-relativa" *ngIf="valido()">
+      <span class="material-icons form-contro-msg-icon">check_circle</span>
+    </span>
+  </div>
+</div>

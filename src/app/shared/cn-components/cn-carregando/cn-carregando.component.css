@@ -1,0 +1,5 @@
+.carregando {
+  display: block;
+  background-color: white;
+  z-index: 99;
+}

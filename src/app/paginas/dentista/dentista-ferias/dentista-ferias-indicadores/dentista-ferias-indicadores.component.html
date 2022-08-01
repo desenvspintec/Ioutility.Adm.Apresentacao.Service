@@ -1,0 +1,11 @@
+<div class="indicadores" *ngIf="indicadores" [@animarSubindo]>
+    <div class="indicadores-item">
+      <div class="indicador-label"> Total de dentistas em férias</div>
+      <div class="indicador-numero indicador-ativo">
+        <span class="indicadores-icon-span">
+          <mat-icon>check_circle_outline</mat-icon>
+        </span>
+        <span class="indicadores-numero-span">{{indicadores.emFerias}} </span>
+      </div>
+    </div>
+  </div>

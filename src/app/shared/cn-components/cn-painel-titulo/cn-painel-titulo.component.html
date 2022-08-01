@@ -1,0 +1,21 @@
+<div class="moldura padding-padrao">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-10" id="titulo-painel">
+        <div class="row">
+          <div class="col-12">
+            <h3><span *ngIf="icone">{{icone}} </span>{{titulo}}</h3>
+          </div>
+          <div class="col-10 itens-submenu">
+            <ng-content select="[submenu]"></ng-content>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <ng-content select="[opcoes]"></ng-content>
+      </div>
+
+    </div>
+  </div>
+
+</div>

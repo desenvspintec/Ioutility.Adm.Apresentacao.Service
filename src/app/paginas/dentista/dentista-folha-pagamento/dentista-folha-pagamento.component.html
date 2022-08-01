@@ -1,0 +1,39 @@
+<div
+class="row"
+[@animarSubindo]
+class="position-relative"
+>
+  <div class="col-12">
+    <app-cn-painel-titulo [titulo]="'Cadastro de Dentista'">
+      <ng-container opcoes>
+        <app-configuracoes></app-configuracoes>
+      </ng-container>
+      <ng-container submenu>
+        <app-cn-submenu [submenus]="itensSubmenu()"></app-cn-submenu>
+      </ng-container>
+    </app-cn-painel-titulo>
+  </div>
+  <div class="col-md-11">
+    <button class="botao btn-exportar">
+      <span class="texto-com-icone">Exportar</span>
+      <mat-icon class="icone">upload</mat-icon>
+    </button>
+  </div>
+  <div>
+    <ng-container espacoAntesPesquisa>
+      <app-folha-pagamento-indicadores></app-folha-pagamento-indicadores>
+    </ng-container>
+  </div>
+  <div> 
+    <app-cn-pesquisa
+      [model]="formModelPesquisa"
+      (carregado)="acionarPesquisa()"
+      (resultado)="setarEntitysPesquisadas($event)"
+      (ocorreuErro)="setarErroAoPesquisa()"
+    ></app-cn-pesquisa>
+  </div>
+
+  <div>
+    <app-cn-listagem-crud *ngIf="haEntitys()" [model]="modelListagemExibicao" [itens]="obterEntitys()"></app-cn-listagem-crud>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+@import "/src/shared-styles/variaveis";
+
+.area-de-texto {
+  margin-top: 25px;
+  box-shadow: 0;
+  border: 0 none;
+  outline: 0;
+  resize: none;
+  padding: 35px;
+  min-height: 1000px;
+}
+
+.botao {
+  text-align: center;
+  padding: $padding-btn;
+  color: #333;
+  border-radius: $border-radios-btn;
+  float: right;
+  border: 1px solid $cor-principal-v2;
+  transition: $transition-padrao;
+  margin: 30px 0px 0px 10px;
+  &:hover {
+    box-shadow: $cor-principal-v1 0px 0px 4px 2px;
+  }
+}
+
+.btn-editar {
+  color: #fff;
+  background-color: $cor-principal-v1;
+}
+.icone {
+  float: left;
+}
+.texto-com-icone {
+  margin-left: 10px;
+  margin-top: 3px;
+  display: inline-block;
+}
+
+.esconder-botao{
+  display: none;  
+}
+
+.texto-sem-icone {
+  margin-top: 3px;
+  display: inline-block;
+}
+
+.form-contrato{
+  margin-top: 80px;
+}
+

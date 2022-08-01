@@ -1,0 +1,173 @@
+@import "/src/shared-styles/variaveis";
+
+#logo {
+  display: block;
+  text-align: center;
+  padding-top: 5px;
+  line-height: 160px;
+}
+td,
+th {
+  vertical-align: middle !important;
+}
+
+.menu {
+  position: fixed;
+  float: left;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+.menu {
+  background: $cor-principal;
+  display: block;
+  white-space: nowrap;
+  width: 90px;
+}
+
+#conteudo-menu.enabled {
+  width: 350px;
+  min-height: 100vh;
+}
+
+.label-menu {
+  margin: 0px 0px 20px 25px;
+}
+
+.item {
+  display: block;
+  line-height: 50px;
+  padding: 5px 0;
+  overflow: hidden;
+  color: #fff;
+}
+.item:hover {
+  background-color: $cor-principal-hover-escuro;
+  border-radius: 10px;
+}
+
+.menu .item a .icon {
+  display: block;
+  float: left;
+  margin: 10px;
+  width: 60px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.title {
+  background-color: #eee;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px;
+  box-sizing: border-box;
+}
+.search:hover {
+  border-color: #4aa9fb;
+  border-width: 1px;
+}
+.search {
+  padding: 3px 8px 3px !important;
+}
+input[type="search"] {
+  padding: 10px 0px 10px;
+  border: 0px solid #fff;
+  background: #eee;
+  -webkit-appearance: none;
+  width: 90%;
+  float: none;
+}
+input[type="search"]:focus {
+  outline: none;
+}
+.type {
+  height: 47px;
+}
+.date {
+  background-color: #f7f7f7;
+}
+.docdate {
+  vertical-align: bottom !important;
+}
+.distr {
+  margin: 0 0 12px;
+  font-size: 12px;
+}
+.ndoc {
+  margin: 0 0 5px;
+}
+.storage {
+  margin: 0;
+  color: rgb(170, 170, 170) !important;
+  font-size: 12px;
+}
+.submenu {
+  visibility: hidden;
+  display: block;
+  float: left;
+  width: 100%;
+  margin-left: 130px;
+  height: 0;
+  transition: height 200ms;
+  overflow: hidden;
+}
+.item:hover .submenu {
+  visibility: visible;
+  height: 40px;
+}
+.item a {
+  display: block;
+  float: left;
+  width: 100%;
+  text-decoration: none;
+  color: #eee;
+}
+.conteudo {
+  overflow: auto;
+}
+.conteudo:webkit-scrollbar {
+  width: 8px;
+}
+.conteudo:webkit-scrollbar-track {
+  background-color: #e7e7e7;
+}
+.conteudo:webkit-scrollbar-thumb {
+  background-color: rgba(0, 112, 163, 0.69);
+  border: 1px solid rgba(92, 92, 92, 0.5);
+  border-radius: 10px;
+}
+.conteudo:webkit-scrollbar-thumb:hover {
+  background-color: #000;
+}
+
+.button {
+  color: #f7f7f7;
+  border: transparent;
+  border-radius: 5px;
+  background-color: $cor-principal-hover-escuro;
+  height: 27px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-superior {
+  float: right;
+  height: auto;
+  display: flex;
+  margin: 60px 15px 0px 0px;
+  position: relative;
+}
+
+.button-inferior {
+  display: flex;
+  margin-left: 29px;
+  margin-top: 33vh;
+}
+
+.itens-menu {
+  min-height: 26vh;
+  max-height: 30vh;
+}

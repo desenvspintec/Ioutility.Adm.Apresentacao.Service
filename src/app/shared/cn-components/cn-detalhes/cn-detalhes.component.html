@@ -1,0 +1,89 @@
+<div class="container-fluid" *ngIf="entity">
+  <div class="row cabecalho">
+    <div class="col-12 moldura">
+      <ul class="ul-detalhes">
+        <li>
+          <h4>Detalhes</h4>
+        </li>
+        <li *ngFor="let campo of model.camposCabecalho">
+          <span class="li-label" *ngIf="campo.label"> {{campo.label}}</span>
+          <span class="li-valor"> {{exibirValorCampo(entity, campo)}}</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ng-container *ngIf="possuiApenasUmaSessao()">
+        <div class="row position-relative" [@animarSubindo]
+          *ngFor="let grupoCampo of model.sessoesGrupoCamposDetalhe[0].grupoCamposCorpo; let posicao in index">
+          <ng-container *ngIf="!grupoCampo.ehLista">
+            <div class="col-12 ">
+              <h4 class="titulo-grupo">{{grupoCampo.titulo}}</h4>
+            </div>
+            <div class="col-6 valor-campo" *ngFor="let campo of grupoCampo.campos">
+              <span class="li-label" *ngIf="campo.label"> {{campo.label}}</span><br />
+              <span class="li-valor"> {{exibirValorCampo(entity, campo)}}</span>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="grupoCampo.ehLista">
+            <ng-container *ngFor="let entityRepetir of obterEntitysRepetir(entity, grupoCampo.nomePropriedadeRepetir!)">
+              <div class="col-12 ">
+                <h4 class="titulo-grupo">{{grupoCampo.titulo}}</h4>
+              </div>
+              <div class="col-6 valor-campo" *ngFor="let campo of grupoCampo.campos">
+                <span class="li-label" *ngIf="campo.label"> {{campo.label}}</span><br />
+                <span class="li-valor"> {{exibirValorCampo(entityRepetir, campo)}}</span>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!possuiApenasUmaSessao()">
+        <div class="row" *ngFor="let sessaoGrupoCampo of model.sessoesGrupoCamposDetalhe">
+          <div class="col-12">
+            <div class="row sessao-grupo-campo" (click)="sessaoToggle(sessaoGrupoCampo)">
+              <div class="col-1">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+              <div class="col-11"> {{sessaoGrupoCampo.nome }} </div>
+            </div>
+            <ng-container *ngIf="sessaoEstaAberta(sessaoGrupoCampo)">
+              <div class="row position-relative" [@animarSubindo]
+                *ngFor="let grupoCampo of sessaoGrupoCampo.grupoCamposCorpo; let posicao in index">
+                <ng-container *ngIf="!grupoCampo.ehLista">
+                  <div class="col-12 ">
+                    <h4 class="titulo-grupo">{{grupoCampo.titulo}}</h4>
+                  </div>
+                  <div class="col-6 valor-campo" *ngFor="let campo of grupoCampo.campos">
+                    <span class="li-label" *ngIf="campo.label"> {{campo.label}}</span><br />
+                    <span class="li-valor"> {{exibirValorCampo(entity, campo)}}</span>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="grupoCampo.ehLista">
+                  <ng-container
+                    *ngFor="let entityRepetir of obterEntitysRepetir(entity, grupoCampo.nomePropriedadeRepetir!)">
+                    <div class="col-12 ">
+                      <h4 class="titulo-grupo">{{grupoCampo.titulo}}</h4>
+                    </div>
+                    <div class="col-6 valor-campo" *ngFor="let campo of grupoCampo.campos">
+                      <span class="li-label" *ngIf="campo.label"> {{campo.label}}</span><br />
+                      <span class="li-valor"> {{exibirValorCampo(entityRepetir, campo)}}</span>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div>
+                <br />
+                <br />
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

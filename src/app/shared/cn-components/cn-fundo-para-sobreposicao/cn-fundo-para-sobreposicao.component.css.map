@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,KAAK;EACd,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;EACZ,OAAO,EAAE,GAAG;EACZ,gBAAgB,EAAE,IAAI;EACtB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "cn-fundo-para-sobreposicao.component.scss"
+    ],
+    "names": [],
+    "file": "cn-fundo-para-sobreposicao.component.css"
+}

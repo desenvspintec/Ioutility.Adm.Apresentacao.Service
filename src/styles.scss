@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url("ngx-toastr/toastr.css");
+@import "/src/shared-styles/variaveis";
+
+tml,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: $cor-fundo-body;
+  font-family: "Open Sans", sans-serif !important;
+}
+.mat-stepper-horizontal, .mat-stepper-vertical  {
+  background: none ;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 300 !important;
+  color: $cor-principal-v2;
+}
+h2 {
+  display: block;
+  padding: 19px 0 9px 0 !important;
+  height: auto !important;
+  line-height: 60px !important;
+  font-size: 60px !important;
+}
+h3 {
+  display: block;
+  padding: 9px 0 4px 0 !important;
+  height: auto !important;
+  line-height: 30px !important;
+  font-size: 30px !important;
+}
+
+.espaco-cima {
+  margin-top: 10px;
+}
+.espaco-baixo {
+  display: block;
+  margin-bottom: 10px;
+}
+.material-icons {
+  color: fff;
+}
+button {
+  cursor: pointer;
+}
+.pointer {
+  cursor: pointer;
+}
+.subformulario {
+  display: block;
+  border-radius: 3px;
+  border: 1px solid #777;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.moldura {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  width: 100%;
+  box-shadow: 0 2px 5px #999;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.espacamento-padrao {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.espacamento-cima{
+  display: block;
+  margin-top: 15px;
+}
+
+.moldura:hover {
+  box-shadow: $cor-principal-hover-claro 0px 2px 5px;
+}
+.posicao-relativa {
+  position: relative;
+}
+
+.cn-btn {
+  display: block;
+  background-color: $cor-principal !important ;
+  margin: 0 5px !important;
+  box-shadow: 0 0 5px $cor-principal-shadow !important;
+}
+.margin-left-padrao {
+  display: block;
+  margin-left: 12px;
+}
+.cn-btn-success {
+  display: block;
+  background-color: green !important ;
+  margin: 0 5px !important;
+  box-shadow: 0 0 5px rgb(0, 195, 255) !important;
+}
+.cn-btn:hover {
+  box-shadow: $cor-principal-shadow !important;
+  background-color: $cor-principal-hover-claro !important;
+}
+.conteudo-para-direita {
+  text-align: right;
+}
+.padding-padrao {
+  padding: 10px;
+}
+.cn-tabela {
+  background-color: $cor-tabela;
+  border-radius: 3px;
+  width: auto;
+  min-width: 100%;
+  table-layout: fixed;
+  overflow-x: scroll;
+  border-collapse: collapse;
+}
+.cn-tabela thead {
+  background: none;
+}
+.cn-tabela tr {
+  transition: 0.5s;
+}
+.cn-tabela tr:hover {
+  padding: 10px;
+  background: $cor-principal-claro;
+}
+
+.cn-tabela tr th {
+  padding: 10px ;
+  border-bottom: 1px solid rgb(225, 225, 225);
+  color: #333;
+}
+.cn-tabela tr td {
+  padding: 10px 10px;
+  border-bottom: 1px solid rgb(225, 225, 225);
+  white-space: nowrap;
+}
+.position-relative {
+  position: relative;
+}
+@mixin listagem-item-base {
+  padding: 4px;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.listagem-pre-cadastro-item {
+  background-color: $indicador-pre-cadastro;
+  @include listagem-item-base();
+}
+.listagem-ativo-item {
+  background-color: $indicador-ativo;
+  @include listagem-item-base();
+}
+.listagem-inativo-item {
+  background-color: $indicador-inativo;
+  @include listagem-item-base();
+}
+.listagem-em-ferias-item {
+  background-color: $indicador-em-ferias;
+  @include listagem-item-base();
+}
+.listagem-programada-item {
+  background-color: $indicador-programada;
+  @include listagem-item-base();
+}
+.sessao-configuracoes {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.cn-btn-submit {
+  text-align: center;
+  padding: $padding-btn;
+  color: #fff;
+  border-radius: $border-radios-btn;
+  background-color: $cor-principal;
+  float: right;
+  border: 1px solid $cor-principal-v2;
+  transition: $transition-padrao;
+  &:hover {
+    background-color: $cor-principal-v1;
+    box-shadow: $cor-principal-claro-v2 0px 0px 4px 2px;
+  }
+}
+
+$tamanho-icons: 40px;
+$padding-top-icons: 8px;
+.config-icon {
+  display: block;
+  width: $tamanho-icons;
+  height: $tamanho-icons;
+  float: right;
+  color: $cor-principal;
+  cursor: pointer;
+  text-align: center;
+  padding-top: $padding-top-icons;
+  transition: 0.3s;
+  border-radius: 5px;
+  &:hover {
+    background: $cor-principal-hover-btn;
+  }
+
+}
+.indicadores {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.indicadores-item {
+  display: inline-block;
+  margin-left: 20px;
+
+}
+.indicador-numero {
+  display: block;
+  font-size: 40px;
+  height: 50px;
+  padding-top: 13px;
+  font-weight: 600;
+}
+.indicador-label {
+  font-weight: 700;
+  color: #555;
+  font-size: 12px;
+}
+
+.indicador-ativo { color:$indicador-ativo}
+.indicador-pre-cadastro { color:$indicador-pre-cadastro}
+.indicador-inativo { color:$indicador-inativo}
+.indicadores-icon-span {
+  display: block;
+  float: left;
+  margin-top: -3px;
+  margin-right: 13px;
+}
+.indicadores-numero-span {
+  display: block;
+  float: left;
+}
+.listagem-pendente-item {
+  background-color: $indicador-pendente;
+  @include listagem-item-base();
+}
+.listagem-contratado-item {
+  background-color: $indicador-contratado;
+  @include listagem-item-base();
+}
+.listagem-cancelado-item {
+  background-color: $indicador-cancelado;
+  @include listagem-item-base();
+}
+.indicador-contratado { color:$indicador-contratado}
+.indicador-pendente { color:$indicador-pendente}
+.indicador-cancelado { color:$indicador-cancelado}
+.indicadores-icon-span {
+  display: block;
+  float: left;
+  margin-top: -3px;
+  margin-right: 13px;
+}

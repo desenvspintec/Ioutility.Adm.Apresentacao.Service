@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+    <div class="row">
+      <app-cn-input-cva [class]="cnControls.cep.obterClassCss()" [model]="cnControls.cep"
+        [formControlName]="cnControls.cep.name"></app-cn-input-cva>
+      <div class="position-relative col-12" [@animarSubindo] *ngIf="podeExibirFormulario()">
+        <div class="row">
+          <app-cn-input-cva [class]="cnControls.logradouro.obterClassCss()" [model]="cnControls.logradouro" [formControlName]="cnControls.logradouro.name"></app-cn-input-cva>
+          <app-cn-input-cva [class]="cnControls.numero.obterClassCss()" [model]="cnControls.numero" [formControlName]="cnControls.numero.name"></app-cn-input-cva>
+          <app-cn-input-cva [class]="cnControls.complemento.obterClassCss()" [model]="cnControls.complemento" [formControlName]="cnControls.complemento.name"></app-cn-input-cva>
+          <app-cn-input-cva [class]="cnControls.bairro.obterClassCss()" [model]="cnControls.bairro" [formControlName]="cnControls.bairro.name"></app-cn-input-cva>
+          <app-cn-input-cva [class]="cnControls.uf.obterClassCss()" [model]="cnControls.uf" [formControlName]="cnControls.uf.name"></app-cn-input-cva>
+          <app-cn-input-cva [class]="cnControls.cidade.obterClassCss()" [model]="cnControls.cidade" [formControlName]="cnControls.cidade.name"></app-cn-input-cva>
+          <app-cn-input-cva *ngIf="model?.possuiCampoComprovante" [class]="cnControls.arquivos" [model]="cnControls.arquivos" [formControlName]="cnControls.arquivos.name"></app-cn-input-cva>
+        </div>
+      </div>
+    </div>
+</form>

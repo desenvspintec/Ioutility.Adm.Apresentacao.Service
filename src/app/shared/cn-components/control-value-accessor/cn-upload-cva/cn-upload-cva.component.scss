@@ -1,0 +1,88 @@
+@import "/src/shared-styles/variaveis";
+form {
+  display: flex;
+  flex-direction: column;
+  .dropzone {
+    display: flex;
+    height: 100px;
+    border-color: #5520b0;
+    background-color: #e6e6e6;
+    width: 100%;
+
+    img {
+      float: left;
+    }
+  }
+
+  :host ::ng-deep .fundo-nome-arquivo {
+    padding: 0px !important;
+    margin: 0px !important;
+    margin-top: 10px !important;
+    min-height: 30px !important;
+    background: transparent !important;
+    min-width: 230px !important;
+    max-height: 100px !important;
+    width: 100% !important;
+    height: 30px !important;
+    justify-content: flex-start !important;
+    display: flex;
+    flex-direction: row !important;
+
+    img {
+      margin-right: 15px;
+    }
+
+
+  }
+}
+
+.arquivo {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  color: #5520b0;
+  float: left;
+  margin: 0px 5px;
+  padding: 10px 9px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid $cor-principal;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: $box-shadow-para-branco-sombra-roxa;
+
+  }
+}
+.sessao-upload {
+  position: relative;
+  margin-top: -18px;
+
+}
+.botao-upload {
+  cursor: pointer;
+  position: relative;
+  z-index: 99999;
+  width: 40px;
+  height: 40px;
+  float: left;
+  padding: 8px 0 0 0px;
+}
+.btn-upload-desabilitado {
+  background: #aaa;
+  cursor: auto;
+}
+.btn-remover-arquivo {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  float: left;
+  padding: 7px 8px 3px 8px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid $cor-principal;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: $box-shadow-para-branco-sombra-roxa;
+
+  }
+}

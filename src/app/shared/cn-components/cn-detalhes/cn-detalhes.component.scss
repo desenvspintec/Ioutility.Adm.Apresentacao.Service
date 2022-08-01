@@ -1,0 +1,57 @@
+@import "/src/shared-styles/variaveis";
+.ul-detalhes {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  display: block;
+  float: left;
+  width: 100%;
+  & li {
+    display: block;
+    float: left;
+    padding-top: 5px;
+    padding-right: 10px;
+    & h4 {
+      font-size: 25px;
+      margin: 0;
+    }
+    & span {
+      font-size: 18px;
+      padding: 5px 10px 0 0;
+      display: block;
+      float: left;
+    }
+  }
+}
+.li-label {
+  font-weight: 400;
+
+}
+.li-valor {
+  font-weight: 600;
+}
+.titulo-grupo {
+  color: $cor-principal-v2;
+  font-weight: 700 !important;
+  padding-top: 30px;
+  margin: 0;
+}
+.valor-campo {
+  padding-top: 15px;
+}
+.cabecalho {
+  border-bottom: 1px solid $cor-border-bottom-cinza;
+
+}
+.sessao-grupo-campo {
+  background-color: $cor-fundo-body;
+  border-bottom: 1px solid $cor-border-bottom-cinza;
+  vertical-align: middle;
+  padding: 10px 0;
+  color: $cor-font-escura;
+  line-height: 25px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+
+}

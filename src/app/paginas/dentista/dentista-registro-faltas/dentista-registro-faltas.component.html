@@ -1,0 +1,37 @@
+<div
+  class="row"
+  [@animarSubindo]
+  class="position-relative"
+  *ngIf="anosCarregados"
+>
+  <div class="col-12">
+    <app-cn-painel-titulo [titulo]="'Cadastro de Dentista'">
+      <ng-container opcoes>
+        <app-configuracoes></app-configuracoes>
+      </ng-container>
+      <ng-container submenu>
+        <app-cn-submenu [submenus]="itensSubmenu()"></app-cn-submenu>
+      </ng-container>
+    </app-cn-painel-titulo>
+  </div>
+  <div class="col-md-11">
+    <button class="botao btn-editar" (click)="abrirModal()">
+      <mat-icon class="icone">add</mat-icon>
+      <span class="texto-com-icone">Adicionar falta</span>
+    </button>
+  </div>
+  <div> 
+    <app-cn-pesquisa
+      [model]="formModelPesquisa"
+      (carregado)="acionarPesquisa()"
+      (resultado)="setarEntitysPesquisadas($event)"
+      (ocorreuErro)="setarErroAoPesquisa()"
+    ></app-cn-pesquisa>
+  </div>
+  
+  <div>
+    <app-cn-listagem-crud *ngIf="haEntitys()"  [model]="modelListagemExibicao" [itens]="obterEntitys()" >  
+    </app-cn-listagem-crud>
+  </div>
+
+</div>

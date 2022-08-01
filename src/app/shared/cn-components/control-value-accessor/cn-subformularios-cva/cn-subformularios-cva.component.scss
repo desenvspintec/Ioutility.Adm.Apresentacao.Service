@@ -1,0 +1,19 @@
+@import "/src/shared-styles/variaveis";
+.btn-cancelar {
+  margin: 0px 10px 0 0px; float: right;
+}
+.linha-divisoria-form-btns {
+  border-top: 1px solid $cor-border-bottom-cinza;
+  padding-top: 20px
+}
+.formulario {
+  transition: 0.3s;
+  border:1px solid $cor-fundo-body;
+  border-radius: 5px;
+  padding: 2px 2px 36px 2px;
+  margin-bottom: 30px;
+
+  &:hover {
+    border:1px solid $cor-principal-v2;
+  }
+}

@@ -1,0 +1,25 @@
+@import "/src/shared-styles/variaveis";
+
+.submenu {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  a {
+    text-decoration: none;
+    color: $cor-font-escura;
+    font-weight: bold;
+    transition: 0.5s;
+    &:hover {
+      color: $cor-principal-font;
+    }
+
+  }
+  .router-link-active {
+    color: $cor-principal-font ;
+    border-bottom: 2px solid $cor-principal-font;
+    padding-bottom: 2px;
+  }
+}
+
+

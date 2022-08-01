@@ -1,0 +1,88 @@
+<form [formGroup]="form" *ngIf="!controlIndefinido()">
+  <ng-container [ngSwitch]="true">
+    <div *ngSwitchCase="ehHidden()">
+      <input [type]="obterInputType()" [formControlName]="controlTexto" />
+    </div>
+    <div *ngSwitchCase="ehCheckbox()">
+      <br />
+      <mat-checkbox color="primary" [formControlName]="controlTexto">{{
+        model?.label
+        }}</mat-checkbox>
+    </div>
+    <div *ngSwitchCase="ehEndereco()">
+      <br />
+      <app-cn-endereco-cva
+        (exportarControlsUtilizadosAoInicializar)="model?.setarControlsDoValueObjectPersonalizado($event)"
+        [formControlName]="controlTexto" [model]="model?.endereco">{{ model?.label }}</app-cn-endereco-cva>
+    </div>
+    <div *ngSwitchCase="ehCombobox()">
+      <app-cn-form-control-mensagem-erro [formControlNameUtilizado]="model?.nameId">
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>{{ model?.label }}</mat-label>
+          <mat-select class="{{model?.name}}" [id]="model!.nameId" [formControlName]="controlTexto" matNativeControl>
+            <mat-option id="{{'opc-'+ model!.nameId}}-{{opcao.nome}}" *ngFor="let opcao of model?.opcoesCombobox" [value]="opcao.id">{{ opcao.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchCase="ehComboBoxPesquisavel()">
+      <app-cn-form-control-mensagem-erro [formControlNameUtilizado]="model?.nameId">
+        <app-cn-combobox-pesquisavel-cva [formControlName]="controlTexto"
+          [model]="model!.obterComboBoxPesquisavelModel()">
+        </app-cn-combobox-pesquisavel-cva>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchCase="ehComboBoxMultiSelect()">
+      <app-cn-form-control-mensagem-erro [formControlNameUtilizado]="model?.nameId">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label> {{model?.label}} </mat-label>
+          <mat-select id="{{model?.name}}" [formControlName]="controlTexto" multiple>
+            <mat-option *ngFor="let opcao of model?.opcoesCombobox" [value]="opcao.id">{{opcao.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchCase="ehComboBoxPesquisavelDependente()">
+      <app-cn-form-control-mensagem-erro [formControlNameUtilizado]="model?.nameId">
+        <app-cn-combobox-pesquisavel-cva [formControlName]="controlTexto"
+          [model]="model!.obterComboBoxPesquisavelDependenteModel()">
+        </app-cn-combobox-pesquisavel-cva>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchCase="ehSubformulario()">
+      <app-cn-subformulario-cva [formControlName]="controlTexto" [model]="model!!.subformulario">
+      </app-cn-subformulario-cva>
+    </div>
+    <div *ngSwitchCase="ehSubformularios()">
+      <app-cn-subformularios-cva [formControlName]="controlTexto" [model]="model!!.subformularios">
+      </app-cn-subformularios-cva>
+    </div>
+    <div *ngSwitchCase="ehTexto()">
+      <app-cn-form-control-mensagem-erro [minLength]="model?.minLength" [maxLength]="model?.maxLength"
+        [formControlNameUtilizado]="model?.nameId">
+        <mat-form-field appearance="fill" style="width: 100%" *ngIf="form">
+          <mat-label>{{ model?.label }}</mat-label>
+          <input *ngIf="!ehTextoLongo()" matInput [type]="obterInputType()" [formControlName]="controlTexto"
+            [placeholder]="model!.placeholder" mask="{{ model?.mask }}" [id]="model!.nameId" />
+          <textarea *ngIf="ehTextoLongo()" matInput [placeholder]="model!!.placeholder" [formControlName]="controlTexto"
+            [id]="model!.cssId"></textarea>
+        </mat-form-field>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchCase="ehUploadArquivo()">
+      <app-cn-form-control-mensagem-erro [formControlNameUtilizado]="model?.nameId">
+        <app-cn-upload-cva [formControlName]="controlTexto" [label]="model!!.label" [model]="model?.obterUploadModel()">
+        </app-cn-upload-cva>
+      </app-cn-form-control-mensagem-erro>
+    </div>
+    <div *ngSwitchDefault>
+      <div>
+        Input não definido, name: {{ model?.name }}, label: {{ model?.label }},
+        tipo: {{ model?.tipo }}
+      </div>
+    </div>
+    <span class="form-control-server-error">{{
+      model?.mensagemErroValidacao
+      }}</span>
+  </ng-container>
+</form>

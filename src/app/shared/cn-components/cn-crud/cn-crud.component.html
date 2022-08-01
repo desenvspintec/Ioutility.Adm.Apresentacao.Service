@@ -1,0 +1,23 @@
+<div class="row" [@animarSubindo] class="position-relative" *ngIf="model">
+  <div class="col-12">
+    <app-cn-painel-titulo [titulo]="'Cadastro de ' + model!!.titulo">
+      <ng-container opcoes>
+        <app-configuracoes></app-configuracoes>
+        <div class="sessao-btn-registrar">
+          <app-cn-btn-registrar (modalFechou)="acionarPesquisa()" [model]="btnRegistrar"></app-cn-btn-registrar>
+        </div>
+      </ng-container>
+      <ng-container submenu>
+        <app-cn-submenu [submenus]="model!!.itensSubmenu" ></app-cn-submenu>
+      </ng-container>
+    </app-cn-painel-titulo>
+  </div>
+  <div class="col-12 espacamento-cima">
+    <ng-content select="[espacoAntesPesquisa]"></ng-content>
+    <app-cn-pesquisa [model]="model!!.pesquisa" (carregado)="acionarPesquisa()"
+      (resultado)="setarEntitysPesquisadas($event)" (ocorreuErro)="setarErroAoPesquisa()"></app-cn-pesquisa>
+  </div>
+  <div class="col-12" [id]="cssIdTabelaResultadoPesquisa">
+    <app-cn-listagem-crud  *ngIf="haEntitys()" [model]="model.modelListagemExibicao" [itens]="obterEntitys()"></app-cn-listagem-crud>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div style="width: 100%;">
+  <div [class.subformulario]="model?.exibeContorno" [class.container-fluid]="model?.exibeContorno" class="">
+    <div class="row">
+      <div class="col-12">
+        <h3 *ngIf="model?.exibeTitulo"> {{model!.label}}</h3>
+      </div>
+      <form [formGroup]="form">
+
+        <div *ngFor="let formId of formIds; let posicao = index" [id]="'subformulario-' + model?.name + '-' + posicao" class="formulario">
+
+          <div class="col-12">
+            <app-cn-subformulario-cva [formControlName]='formControlNameBase + formId'
+              [model]='obterSubformulario(formId)'>
+            </app-cn-subformulario-cva>
+          </div>
+          <div class="col-12 linha-divisoria-form-btns ">
+            <app-cn-btn-submit (click)="addForm()" [cssClasses]="cssClassesBtnAdd()" [icone]="'add'" [texto]="'Mais ' + model?.label">
+            </app-cn-btn-submit>
+            <app-cn-btn-cancelar class="btn-cancelar" [texto]="'Remover'" [icone]="'remove'" (click)="remover(formId)">
+            </app-cn-btn-cancelar>
+          </div>
+        </div>
+        <ng-container *ngIf="formIds.length === 0">
+          <div class="col-12">
+            <div class="row">
+              <div class="offset-8 col-4">
+                <app-cn-btn-submit (click)="addForm()" [cssClasses]="cssClassesBtnAdd()" [icone]="'add'" [texto]="'Mais ' + model?.label">
+                </app-cn-btn-submit>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </form>
+    </div>
+  </div>
+  <br />
+</div>

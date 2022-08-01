@@ -1,0 +1,9 @@
+<div class="drawer">
+  <div class="drawer-zona-fechar" *ngIf="service.exibir" (click)="service.fechar()"></div>
+  <div class="drawer-content" [@animarVindoDaDireita] *ngIf="service.exibir">
+    <div class="fechar" (click)="service.fechar()">
+      <mat-icon>close</mat-icon>
+    </div>
+    <ng-template cnDrawer></ng-template>
+  </div>
+</div>

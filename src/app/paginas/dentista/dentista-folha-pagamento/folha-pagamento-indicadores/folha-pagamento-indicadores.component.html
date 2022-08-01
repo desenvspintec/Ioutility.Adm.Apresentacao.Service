@@ -1,0 +1,24 @@
+<div class="indicadores" style="margin-top: 15px;" *ngIf="indicadores" [@animarSubindo]>
+  <div class="indicadores-item">
+    <div class="indicador-label">Valor a pagar</div>
+    <div class="indicador-numero indicador-ativo">
+      <span class="indicadores-icon-span">
+        <mat-icon>attach_money</mat-icon>
+      </span>
+      <span class="indicadores-numero-span"
+        >{{ indicadores!.valorPagar }}
+      </span>
+    </div>
+  </div>
+  <div class="indicadores-item">
+    <div class="indicador-label">Comparativo mês passado</div>
+    <div class="indicador-numero indicador-ativo">
+      <span class="indicadores-icon-span">
+        <mat-icon>attach_money</mat-icon>
+      </span>
+      <span class="indicadores-numero-span"
+        >{{ indicadores!.comparativoMesPassado }}
+      </span>
+    </div>
+  </div>
+</div>

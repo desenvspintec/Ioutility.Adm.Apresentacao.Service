@@ -1,0 +1,44 @@
+<div class="row" [@animarSubindo] class="position-relative" *ngIf="model">
+  <div class="col-12">
+    <app-cn-painel-titulo [titulo]="prefixoTitulo + ' ' + model!.titulo">
+      <ng-container opcoes>
+        <app-configuracoes></app-configuracoes>
+        <div class="row">
+          <div class="col-6">
+            <app-cn-btn-cancelar (click)="voltar()" [texto]="textoCancelar()"></app-cn-btn-cancelar>
+          </div>
+          <div class="col-6">
+            <app-cn-btn-submit (aoClicar)="proximaEtapa()" [texto]="textoSubsmit()"
+              [submetendo]="this.formHelperService.submetendo"></app-cn-btn-submit>
+          </div>
+        </div>
+      </ng-container>
+    </app-cn-painel-titulo>
+  </div>
+  <div class="col-12">
+    <div class="conteudo-forms">
+      <ng-container *ngIf="formsModel.length > 1">
+        <mat-stepper labelPosition="bottom" linear #stepper (selectionChange)="setarEtapa($event)">
+          <ng-container *ngFor="let form of formsModel; let posicao = index">
+            <mat-step [stepControl]="form.formGroup!">
+              <ng-template matStepLabel>{{form.titulo }} <span *ngIf="jaHouveSubmit && form.obterQuantidadeErros() > 0"
+                  class="quantidade-erro-validacao"> {{form.obterQuantidadeErros()}}</span></ng-template>
+              <app-cn-form [model]="form"></app-cn-form>
+            </mat-step>
+          </ng-container>
+        </mat-stepper>
+      </ng-container>
+      <ng-container *ngIf="formsModel.length === 1">
+        <app-cn-form [model]="formsModel[0]"></app-cn-form>
+      </ng-container>
+      </div>
+
+  </div>
+
+  <!-- <div class="col-12">
+    <ng-container *ngFor="let form of formsModel">
+      <app-cn-form (obterFormularioAoCarregarComponent)="setarForm($event, form)" [model]="form"></app-cn-form>
+    </ng-container>
+  </div> -->
+
+</div>

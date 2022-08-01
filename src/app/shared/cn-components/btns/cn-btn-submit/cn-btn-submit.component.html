@@ -1,0 +1,3 @@
+<button  [disabled]="!formHabilitado()"(click)="submit()"  id="btn-submit" [class]="cssClassBtn + ' ' + cssClasses">
+  <mat-icon class="icone-submit" *ngIf="icone" >{{icone}}</mat-icon> <span [class.texto-com-icone]="icone">{{texto}}</span>
+</button>

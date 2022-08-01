@@ -1,0 +1,42 @@
+
+.form-control-error {
+  color:red;
+}
+.form-control-error input{
+  border-color: red;
+  color:red;
+
+}
+
+.form-control-error input:focus {
+  border-color: red;
+  color:red;
+  box-shadow: 0px 0px 5px 1px red  ;
+}
+
+.form-control-success {
+  color:green;
+}
+.form-control-success input{
+  border-color: green;
+  color:green;
+
+}
+
+.form-control-success input:focus {
+  border-color: green;
+  color:green;
+  box-shadow: 0px 0px 5px 1px green  ;
+}
+.form-contro-msg-icon {
+  display: block;
+  float: left;
+  font-size: 20px;
+  margin: 5px 10px 10px 0px;
+  padding: 0;
+  line-height: 15px;
+}
+.area-mensagem {
+  display: block;
+  margin: -15px 0 0 0;
+}

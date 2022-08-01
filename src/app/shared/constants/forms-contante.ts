@@ -1,0 +1,10 @@
+export const CONTROL_NAME_ID = 'id';
+export const CONTROL_NAME_NOME = 'nome';
+export const FORM_TITULO_GENERICO = 'Informações gerais';
+export const CPF_MASK = '000.000.000-00';
+export const CNPJ_MASK = '00.000.000/0000-00';
+export const TELEFONE_CELULAR_MASK = '(00) 0 0000-0000';
+export const TELEFONE_RESIDENCIAL_MASK = '(00) 0000-0000';
+export const NAME_STEPPER_UNICO = '';
+export const CARACTER_SEPARADOR_ERRO_CAMPO_MSG_ERRO = '||';
+export const SEPARADOR_ARQUIVO = ',,,';

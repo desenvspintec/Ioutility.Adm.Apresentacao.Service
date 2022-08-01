@@ -1,0 +1,83 @@
+<div
+  class="container-fluid"
+  *ngIf="model"
+  [ngClass]="{ 'tamanho-modal col-12': model.possuiModal }"
+>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-12" *ngIf="model!.titulo.length > 0" [id]="cssIdTitulo">
+        <h3 *ngIf="ehSubformulario()">{{ model!!.titulo }}</h3>
+      </div>
+      <ng-container *ngIf="erroAoCarregarDadosEdicao">
+        <div
+          class="col-12 espaco-baixo"
+          [class]="cssClassErroAoCarregarEntityEdicao"
+        >
+          <div class="alert-danger">
+            <h3>
+              {{ mensagemErroAoCarregarEntityEditar }}
+            </h3>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          this.formHelperService.errosValidacao &&
+          this.formHelperService.errosValidacao!!.length > 0
+        "
+      >
+        <div class="col-12 espaco-baixo" [class]="cssClassErroValidacao">
+          <div class="alert-danger">
+            <h3>Não foi possivel realizar a operação.</h3>
+            <div class="row">
+              <div class="col-12">
+                <div *ngFor="let erro of this.formHelperService.errosValidacao">
+                  {{ erro }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="podeExibirForm()">
+        <ng-container *ngFor="let grupo of model.gruposCampos">
+          <div class="col-12" *ngIf="grupo.titulo">
+            <div
+              [class.titulo-modal]="model.possuiModal"
+              class="titulo-grupo-campos-form"
+            >
+              {{ grupo.titulo }}
+            </div>
+          </div>
+          <ng-container *ngFor="let campo of grupo.campos">
+            <div *ngIf="campo.visivel" [class]="campo.obterClassCss()">
+              <app-cn-input-cva
+                [formControlName]="obterName(campo)"
+                [model]="campo"
+              ></app-cn-input-cva>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div class="offset-7 col-5" *ngIf="model!.possuiSubmit">
+          <div class="row">
+            <div class="col-6">
+              <app-cn-btn-cancelar
+                (click)="voltarIndex()"
+                [texto]="'Cancelar'"
+              ></app-cn-btn-cancelar>
+            </div>
+            <div class="col-6">
+              <app-cn-btn-submit
+                (click)="submeter()"
+                [texto]="'Confirmar'"
+                [formValido]="formValido()"
+              >
+              </app-cn-btn-submit>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</div>

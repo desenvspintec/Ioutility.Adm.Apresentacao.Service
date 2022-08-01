@@ -1,0 +1,23 @@
+<div class="indicadores" *ngIf="indicadores" [@animarSubindo]>
+  <div class="indicadores-item">
+    <div class="indicador-label"> Total de pacientes contratados</div>
+    <div class="indicador-numero indicador-contratado">
+      <span class="indicadores-icon-span"><mat-icon>check_circle_outline</mat-icon> </span>
+      <span class="indicadores-numero-span">{{indicadores.contratados}} </span>
+    </div>
+  </div>
+  <div class="indicadores-item">
+    <div class="indicador-label">Total de pacientes pendentes</div>
+    <div class="indicador-numero indicador-pendente">
+      <span class="indicadores-icon-span"><mat-icon>warning_amber</mat-icon> </span>
+      <span class="indicadores-numero-span">{{indicadores.pendentes}} </span>
+    </div>
+  </div>
+  <div class="indicadores-item">
+    <div class="indicador-label">Total de pacientes cancelados</div>
+    <div class="indicador-numero indicador-cancelado">
+      <span class="indicadores-icon-span"><mat-icon>highlight_off</mat-icon> </span>
+      <span class="indicadores-numero-span">{{indicadores.cancelados }} </span>
+    </div>
+  </div>
+</div>

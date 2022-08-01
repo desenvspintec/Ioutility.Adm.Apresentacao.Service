@@ -1,0 +1,31 @@
+@import "/src/shared-styles/variaveis";
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+::-webkit-scrollbar {
+  display: none;
+
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+::ng-deep {
+  .mat-form-field .mat-form-field-flex {
+    background-color: white;
+  }
+}
+
+.form-control-server-error {
+  color: red;
+}
+
+.form-contrato{
+  resize: none;
+  min-height: 1000px;
+  width: 90%;
+  margin: 15px 35px;
+}
+
+

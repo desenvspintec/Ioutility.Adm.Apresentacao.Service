@@ -1,0 +1,5 @@
+<div *ngFor="let submenu of submenus">
+  <div class="submenu">
+    <a [routerLink]="[submenu.url]" routerLinkActive="router-link-active">{{submenu.label}}</a>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,SAAS,EAAE,eAAe;EAC1B,WAAW,EAAE,cAAc;EAC3B,OAAO,EAAE,YAAY;CACtB;;AACD,AAAA,eAAe,CAAC;EACd,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "cn-modal-header.component.scss"
+    ],
+    "names": [],
+    "file": "cn-modal-header.component.css"
+}

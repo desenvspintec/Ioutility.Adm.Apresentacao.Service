@@ -1,0 +1,23 @@
+@import "/src/shared-styles/variaveis";
+
+.btn-cancelar{
+  text-align: center;
+  padding: $padding-btn;
+  color: #333;
+  border-radius: $border-radios-btn;
+  background-color: #fff;
+  float: right;
+  border: 1px solid $cor-principal-v2;
+  transition: $transition-padrao;
+  &:hover {
+    box-shadow: $cor-principal-v1 0px 0px 4px 2px;
+  }
+}
+.icone-cancelar {
+  float: left;
+}
+.texto-com-icone {
+  margin-top: 3px;
+  display: inline-block;
+  margin-left: 5px;
+}

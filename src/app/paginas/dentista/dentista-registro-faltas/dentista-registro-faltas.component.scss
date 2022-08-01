@@ -1,0 +1,29 @@
+@import "/src/shared-styles/variaveis";
+
+.botao {
+  text-align: center;
+  padding: $padding-btn;
+  color: #333;
+  border-radius: $border-radios-btn;
+  float: right;
+  border: 1px solid $cor-principal-v2;
+  transition: $transition-padrao;
+  margin: 50px 0px 0px 10px;
+  &:hover {
+    box-shadow: $cor-principal-v1 0px 0px 4px 2px;
+  }
+}
+
+.btn-editar {
+  color: #fff;
+  background-color: $cor-principal-v1;
+}
+.icone {
+  float: left;
+}
+.texto-com-icone {
+  margin-left: 10px;
+  margin-top: 3px;
+  display: inline-block;
+}
+

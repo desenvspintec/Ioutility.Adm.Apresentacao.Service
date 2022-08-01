@@ -1,0 +1,29 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-12" [class]="cssClassTitulo" >
+        <h2>{{ titulo() }}</h2>
+        <br />
+      </div>
+      <ng-container *ngIf="errosValidacao">
+        <div class="col-12 espaco-baixo" [class]="cssClassErroValidacao">
+          <div class="alert-danger">
+            <h3>Não foi possivel realizar a operação.</h3>
+            <div class="row">
+              <div class="col-12">
+                <div *ngFor="let erro of errosValidacao">
+                  {{ erro }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <p class="col-12" [class]="cssClassMensagem">
+        Você tem certeza que deseja <span class="alert-danger"> inativar</span> <span class="nome-entity-inativar"> {{model.entityBasica.nome}}?</span>
+      </p>
+      <div class="offset-9 col-3 offset-md-11 col-md-1">
+        <app-cn-btn-submit (click)="submeter()" [formValido]="true" [submetendo]="submetendo"></app-cn-btn-submit>
+      </div>
+    </div>
+  </div>
+<app-cn-carregando *ngIf="submetendo"></app-cn-carregando>
