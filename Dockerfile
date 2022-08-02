@@ -10,5 +10,5 @@ VOLUME /var/cache/nginx
 COPY --from=angular app/dist/loutility-cadastro-web-client /usr/share/nginx/html
 COPY ./config/nginx.config /etc/ngix/conf.d/default.conf
 
-#docker build -t ioutility-cadastro-client .
-#docker run -p 8089:80 ioutility-cadastro-client
+#docker build -t ioutility-adm-apresentacao-service .
+#docker run -p 8089:80 ioutility-adm-apresentacao-service
