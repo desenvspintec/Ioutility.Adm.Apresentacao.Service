@@ -1,16 +1,13 @@
-// export interface IEnderecoApiServiceModel {
-//   upload: string
-// }
-
-export interface EnderecoApiService {
-  upload: string;
+import { EnderecoApi } from './api.constant';
+export interface IEnderecoApiServiceModel {
+  upload: string
 }
 
 export class ApiServicesUrl {
-  static get(incluirCaminhoApi = true): EnderecoApiService {
+  static get(incluirCaminhoApi = true): IEnderecoApiServiceModel {
     const caminhoComplementaParaApi = incluirCaminhoApi ? 'api/' : '';
     return {
-      upload: 'https://localhost:7041/' + caminhoComplementaParaApi
+      upload: EnderecoApi.obterApiGeteway() + 'storage/' + caminhoComplementaParaApi
     };
   }
 }

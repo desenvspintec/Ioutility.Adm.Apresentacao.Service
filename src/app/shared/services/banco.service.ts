@@ -14,7 +14,7 @@ export class BancoService {
   protected readonly url: string;
 
   constructor(private _httpClient: HttpClient) {
-    this.url = EnderecoApi.obterApiGeteway() + 'banco/'
+    this.url = EnderecoApi.obterApp() + 'banco/'
   }
   buscarPorNome = (nome: string): Observable<IEntityBasica[]> => {
     return this._httpClient.get<IBancoApi[]>(this.url, {params: {nome}}).pipe(
