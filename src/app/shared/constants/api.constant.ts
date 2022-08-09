@@ -5,7 +5,7 @@ export class EnderecoApi {
     if (environment.production)
       apiGeteway = 'http://localhost:5022/';
     else {
-      apiGeteway = 'https://localhost:7232/';
+      apiGeteway = 'http://localhost:5022/';
     }
     return apiGeteway;
   }
