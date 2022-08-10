@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: utilityadmapresentacaoservice 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: utilityadmapresentacaoservice
+  template:
+    metadata:
+      labels:
+        app: utilityadmapresentacaoservice 
+    spec:
+      containers:
+        - name: utilityadmapresentacaoservice 
+          image: ioutilityimages.azurecr.io/utilityadmapresentacaoservice
+          ports:
+          - containerPort: 80
