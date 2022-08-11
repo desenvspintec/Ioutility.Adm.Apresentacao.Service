@@ -3,7 +3,7 @@ export class EnderecoApi {
   static obterApiGeteway(): string {
     let apiGeteway = '';
     if (environment.production)
-      apiGeteway = 'http://localhost:5022/';
+      apiGeteway = 'http://52.189.17.169/';
     else {
       apiGeteway = 'http://localhost:5022/';
     }
