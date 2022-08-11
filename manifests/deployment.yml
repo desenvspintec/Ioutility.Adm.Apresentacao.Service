@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: utilityadmapresentacaoservice 
+  name: ioutility-adm-apresentacao-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: utilityadmapresentacaoservice
+      app: ioutility-adm-apresentacao-service
   template:
     metadata:
       labels:
-        app: utilityadmapresentacaoservice 
+        app: ioutility-adm-apresentacao-service
     spec:
       containers:
-        - name: utilityadmapresentacaoservice 
-          image: ioutilityimages.azurecr.io/utilityadmapresentacaoservice
+        - name: utilityadmapresentacaoservice
+          image: ioutilityimages.azurecr.io/ioutilityadmapresentacaoservice
           ports:
           - containerPort: 80
