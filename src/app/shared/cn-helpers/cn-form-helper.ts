@@ -72,7 +72,7 @@ export class CnFormHelper {
   }
   static obterCampoCpf(displayName: IDisplayNameItem): CnInputCvaModel {
     return CnInputCvaModel.obterTextoSimplesComMask(
-      displayName.cpf.nomePropriedade,
+      'cpf',
       displayName.cpf.valorDisplay,
       true,
       CPF_MASK
