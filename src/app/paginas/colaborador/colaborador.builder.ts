@@ -142,7 +142,7 @@ export class ColaboradorBuilder {
             ]),
             new CnGrupoCamposFormulario('Informações de contato', [
                 CnInputCvaModel.obterEmail(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true),
-                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_RESIDENCIAL_MASK),
+                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_CELULAR_MASK),
             ]),
         ])
     }
