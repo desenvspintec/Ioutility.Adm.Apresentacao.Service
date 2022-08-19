@@ -21,7 +21,7 @@ export class DentistaDetalhesFaltaComponent implements OnInit, ISublistagemCompo
   ocorreuErroAoPesquisar = false;
   inputEntitys: EntityBasica[] = [];
   entityId: string = '';
-  mensagemDeAvisoSemResultados: string = "Esse dentista não possui faltas registradas!";
+  mensagemDeAvisoSemResultados: string = "Esse dentista não possui faltas registradas";
 
   constructor( private _displayNameService: DisplayNameService
     , private _registroFaltaService: DentistaRegistroFaltaService) {
