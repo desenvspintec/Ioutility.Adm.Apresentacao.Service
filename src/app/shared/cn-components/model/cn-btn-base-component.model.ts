@@ -1,6 +1,7 @@
 import { Directive, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { VALOR_PADRAO_CONFIGURACAO_MODAL } from '../../constants/valores-padroes';
 import { CnFormModalComponent } from '../modais/cn-form-modal/cn-form-modal.component';
 import { CnBtnModel } from './cn-btn-model';
 
@@ -24,9 +25,9 @@ export class CnBtnBaseComponent implements OnInit {
   abrirModal() {
 
     const modalAberto = this.modal.open(CnFormModalComponent, {
-      maxHeight: '600px',
-      minWidth: '150px',
-      maxWidth: '1024px',
+      maxHeight: VALOR_PADRAO_CONFIGURACAO_MODAL.maxHeight,
+      minWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.minWidth,
+      maxWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.maxWidth,
       data: this.model?.formModel
     });
     modalAberto.afterClosed().subscribe(finalizou => {

@@ -64,7 +64,7 @@ export class ColaboradorBuilder {
         );
         model.addBtnVerDetalhes();
         model.addBtnAtualizar();
-        model.addBtnInativar();
+        model.addBtnInativar(this._matDialog);
         this._addBtnAlterarStatus(model);
         return model;
     }
@@ -137,7 +137,7 @@ export class ColaboradorBuilder {
                 CnInputCvaModel.obterUploadArquivoPorBotao(this._displayName.anexoCpf.nomePropriedade, this._displayName.anexoCpf.valorDisplay, true).setarClassTamanho(TAMANHO_UNICO_6),
                 CnInputCvaModel.obterUploadArquivoPorBotao(this._displayName.anexoRg.nomePropriedade, this._displayName.anexoRg.valorDisplay, true).setarClassTamanho(TAMANHO_UNICO_6),
 
-                CnFormHelper.obterCampoNomeCompleto(),               
+                CnFormHelper.obterCampoNomeCompleto(),
                 CnInputCvaModel.obterData(this._displayName.nascimento.nomePropriedade, this._displayName.nascimento.valorDisplay, true),
             ]),
             new CnGrupoCamposFormulario('Informações de contato', [

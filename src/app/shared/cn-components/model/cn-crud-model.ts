@@ -1,3 +1,6 @@
+import { EntityBasica } from 'src/app/shared/models/entity-basica';
+import { VALOR_PADRAO_CONFIGURACAO_MODAL } from './../../constants/valores-padroes';
+import { CnBtnInativarComponent } from './../btns/cn-btn-inativar/cn-btn-inativar.component';
 import { CnBtnModel } from './cn-btn-model';
 import { CnFormModalComponent } from './../modais/cn-form-modal/cn-form-modal.component';
 import { ComponentType } from '@angular/cdk/portal';
@@ -22,6 +25,8 @@ import { CnListagemExibicaoBtnOpcao } from './cn-listagem-exibicao-btn-opcao';
 import { CnListagemExibicaoModel } from './cn-listagem-exibicao-model';
 import { CnStepperFormModel } from './cn-stepper-form.model';
 import { CnSubmenu } from './cn-submenu';
+import { CnFormInativarComponent } from '../foms/cn-form-inativar/cn-form-inativar.component';
+import { CnFormInativarModel } from './cn-form-inativar-model';
 
 export class CnCrudModel {
 
@@ -59,13 +64,14 @@ export class CnCrudModel {
     , titulo: string
     , pesquisa: CnPesquisaModel
     , service: ICrudService
+    , matDialog: MatDialog
     , maxLength = MAX_LENGTH_PADRAO
     , minLength = MIN_LENGTH_PADRAO): CnCrudModel {
     const campos = CnFormHelper.obterStpperFormularioComIdENome(maxLength, minLength);
     const model = new CnCrudModel(rotaIndex, titulo, pesquisa, service, [new CnItemListagemExibicao("nome", "Nome")], campos, CnFormHelper.obterDetalhesModelIdENome(service));
     model.addBtnVerDetalhes();
     model.addBtnAtualizar();
-    model.addBtnInativar();
+    model.addBtnInativar(matDialog);
     return model;
   }
 
@@ -129,9 +135,20 @@ export class CnCrudModel {
       this.abrirModalDeFormularioPorBotao(matDialog, CnFormModalComponent,{ data: btnAtualizarModel.formModel});
     }, 'edit');
   }
-  addBtnInativar(): void {
-    this.addBtnNaListagemExibicao('Excluir', (entityId: string, params: { rota: Router }) => params.rota.navigateByUrl(entityId + '/excluir'), 'delete')
+  addBtnInativar(matDialog: MatDialog): void {
+    this.addBtnNaListagemExibicao('Excluir', (entityId: string, params: { rota: Router }) => this._carregarFormInativarComponent(matDialog, entityId), 'delete')
   }
+  private _carregarFormInativarComponent(matDialog: MatDialog, entityId: string): void {
+    this.service.buscarPorId(entityId).subscribe( entity => {
+      matDialog.open(CnFormModalComponent, {
+        maxHeight: VALOR_PADRAO_CONFIGURACAO_MODAL.maxHeight,
+        minWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.minWidth,
+        maxWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.maxWidth,
+        data: new CnFormInativarModel(this.titulo, entity as EntityBasica, this.service.inativar)
+      });
+    })
+  }
+
   addBtnVerDetalhes(): void {
     this.addBtnNaListagemExibicao('Ver detalhes', (entityId: string, params: { drawerService: CnDrawerService, service: ICrudService }) =>
       params.drawerService.abrir(CnDetalhesComponent, new CnDetalheModel(entityId, this.detalhesModel.buscarPorIdDelegate, this.detalhesModel.camposCabecalho, this.detalhesModel.sessoesGrupoCamposDetalhe)), 'visibility');

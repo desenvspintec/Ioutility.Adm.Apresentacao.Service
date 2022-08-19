@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { CnGrupoCampoDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
 import { CONTROL_NAME_ID } from 'src/app/shared/constants/forms-contante';
 import { CnBaseDetalheModel } from 'src/app/shared/cn-components/cn-detalhes/models/cn-detalhe-model';
@@ -23,9 +24,10 @@ export class ProdutoBuilder {
   _displayName!: IDisplayNameItem;
   constructor(
     private _service: ProdutoService,
-    private _displayNameService: DisplayNameService,
+    private _matDialog: MatDialog,
+    displayNameService: DisplayNameService,
   ) {
-    this._displayName = _displayNameService.itens!;
+    this._displayName = displayNameService.itens!;
   }
 
   gerarModelComponent = (): CnCrudModel => {
@@ -40,7 +42,7 @@ export class ProdutoBuilder {
     )
     model.addBtnVerDetalhes();
     model.addBtnAtualizar();
-    model.addBtnInativar();
+    model.addBtnInativar(this._matDialog);
 
     return model;
   }

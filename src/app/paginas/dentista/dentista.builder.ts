@@ -71,7 +71,7 @@ export class DentistaBuilder {
     );
     model.addBtnVerDetalhes();
     model.addBtnAtualizar();
-    model.addBtnInativar();
+    model.addBtnInativar(this._matDialog);
     this._addBtnAlterarStatus(model);
 
     this._definirSubmenu(model);
@@ -325,7 +325,7 @@ export class DentistaBuilder {
       new OpcaoCombobox(ETipoStatusDentista.Inativo, 'Inativo'),
     ];
   }
-  static obterOpcoesCampoStatusDentistaFerias(): OpcaoCombobox[] { 
+  static obterOpcoesCampoStatusDentistaFerias(): OpcaoCombobox[] {
     return [
       new OpcaoCombobox(ETipoStatusDentistaFerias.Programada, 'Programada'),
       new OpcaoCombobox(ETipoStatusDentistaFerias.EmFerias, 'Em férias'),

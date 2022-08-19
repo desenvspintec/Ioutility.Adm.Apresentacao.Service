@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { DisplayNameService } from 'src/app/shared/services/display-name.service';
 import { ProdutoBuilder } from './produto.builder';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +16,7 @@ export class ProdutoService  extends EntityService
   constructor(
     httpClient: HttpClient,
     private _displayNameService: DisplayNameService,
+    private _matDialog: MatDialog
     ) {
     super(httpClient, 'produto')
 
@@ -22,6 +24,6 @@ export class ProdutoService  extends EntityService
 
 
   gerarModelComponent(): CnCrudModel {
-    return new ProdutoBuilder(this, this._displayNameService).gerarModelComponent();
+    return new ProdutoBuilder(this, this._matDialog, this._displayNameService).gerarModelComponent();
   }
 }

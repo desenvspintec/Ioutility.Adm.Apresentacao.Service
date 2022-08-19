@@ -54,7 +54,7 @@ export class DentistaFeriasBuilder {
         model.setTipoFormularioParaModal();
         model.addBtnAtualizarModal(this._matDialog);
         this._addBtnAlterarStatus(model);
-        model.addBtnInativar();
+        model.addBtnInativar(this._matDialog);
         model.setarTitulosPersonalizados('Programar ', 'Editar ');
 
         this._definirSubmenu(model);

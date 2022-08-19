@@ -19,6 +19,7 @@ export class CnCrudComponent implements OnInit {
   readonly cssIdTabelaResultadoPesquisa = 'tabela-resultado-pesquisa';
   private _entitysPesquisadas: EntityBasica[] = [];
   ocorreuErroAoPesquisar = false;
+  pesquisaExecutada = false;
   @Input() model?: CnCrudModel;
   btnRegistrar: CnBtnModel;
   btnAtualizar: CnBtnModel;
@@ -41,6 +42,7 @@ export class CnCrudComponent implements OnInit {
   setarEntitysPesquisadas(resultado: EntityBasica[]): void {
     this.ocorreuErroAoPesquisar = false;
     this._entitysPesquisadas = resultado;
+    this.pesquisaExecutada = true;
   }
 
   acionarPesquisa(): void {
@@ -65,7 +67,7 @@ export class CnCrudComponent implements OnInit {
     }
     return CnBtnModel.obterBtnAtualizarModal(model.titulo, entityId
       , model.service.buscarPorId, model.service.atualizar, [], model.tituloAtualizar);
-    
+
   }
 
   obterBtnInativar(entityBasica: EntityBasica): CnBtnModel {

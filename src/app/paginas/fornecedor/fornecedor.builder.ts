@@ -67,7 +67,7 @@ export class FornecedorBuilder {
         this._addBtnAlterarStatus(model);
         model.addBtnVerDetalhes();
         model.addBtnAtualizar();
-        model.addBtnInativar();
+        model.addBtnInativar(this._matDialog);
         return model;
     }
 
@@ -80,7 +80,7 @@ export class FornecedorBuilder {
     }
 
     private _gerarCampoFormularioCadastroFornecedor() {
-        
+
         const stepperForm = new CnStepperFormModel([
             this._gerarDadosInformacoesGeraisEtapa1(),
             this._gerarDadosBancariosEtapa2(),

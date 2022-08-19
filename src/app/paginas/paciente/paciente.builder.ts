@@ -51,7 +51,7 @@ export class PacienteBuilder {
     ]);
     model.addBtnVerDetalhes();
     model.addBtnAtualizar();
-    model.addBtnInativar();
+    model.addBtnInativar(this._matDialog);
     return model;
   }
   private _definirModel(): CnCrudModel {
