@@ -23,6 +23,6 @@ export class CnCarregandoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.modal)
-      this.referenciaModalAberto!!.close();
+      this.referenciaModalAberto!.close();
   }
 }

@@ -1,3 +1,4 @@
+import { RESPOSTA_PARA_ATUALIZAR_PESQUISA_AO_FECHAR_MODAL } from './../../constants/constantes';
 import { Router } from '@angular/router';
 import { IHttpErrorResponse } from './../../interfaces/i-http-error-response';
 import { ToastrService } from 'ngx-toastr';
@@ -79,7 +80,7 @@ export abstract class CnFormComSubmitBaseComponent extends CnFormBaseComponent {
   protected onSuccess(): void {
     this.model!.onSubmitSuccess(this.toastrService);
     if (this.model?.possuiModal) {
-      this.model.referenciaModal?.close({executouAtualizacao: true});
+      this.model.referenciaModal?.close(RESPOSTA_PARA_ATUALIZAR_PESQUISA_AO_FECHAR_MODAL);
       return;
     }
     this.model?.navegarParaIndex(this.rota)

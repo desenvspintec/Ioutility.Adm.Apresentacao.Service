@@ -22,7 +22,7 @@
         Você tem certeza que deseja <span class="alert-danger"> inativar</span> <span class="nome-entity-inativar"> {{model.entityBasica.nome}}?</span>
       </p>
       <div class="offset-9 col-3 offset-md-11 col-md-1">
-        <app-cn-btn-submit (click)="submeter()" [formValido]="true" [submetendo]="submetendo"></app-cn-btn-submit>
+        <app-cn-btn-submit (click)="submeter()" [texto]="'Inativar'" [formValido]="true" [submetendo]="submetendo"></app-cn-btn-submit>
       </div>
     </div>
   </div>

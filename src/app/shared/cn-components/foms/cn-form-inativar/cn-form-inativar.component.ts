@@ -16,13 +16,13 @@ export class CnFormInativarComponent {
   cssClassTitulo = CSS_CLASS_TITULO_INATIVAR;
   cssClassMensagem = CSS_CLASS_MENSAGEM_INATIVAR;
   cssClassErroValidacao = CSS_CLASS_ERRO_VALIDACAO_SUBMIT;
-  errosValidacao: string[] = [];
+  errosValidacao?: string[];
   @Input() model: CnFormInativarModel;
   submetendo = false;
+
   constructor(public toastrService: ToastrService) {
     this.model = new CnFormInativarModel('', new EntityBasica('', ''), () => of());
    }
-
 
   titulo(): string {
     return 'Inativar ' + this.model.titulo;
@@ -30,7 +30,10 @@ export class CnFormInativarComponent {
 
   submeter(): void {
     this.submetendo = true;
-    this.model.observableSubmeter().subscribe(() => this._onSuccess(), error => this._onError(error));
+    this.model.observableSubmeter().subscribe({
+      next: () => this._onSuccess(),
+      error: error => this._onError(error)
+    });
   }
   private _onSuccess(): void {
     this.submetendo = false;

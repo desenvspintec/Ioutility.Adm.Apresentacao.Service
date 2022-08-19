@@ -16,17 +16,19 @@ export class CnCarregandoService {
 
   abrir(descricao: string): void {
     this._carregamentos.push(descricao);
-    this._carregamentosSubject.next(this._exibir());
+    this._carregamentosSubject.next(this._podeExibir());
   }
 
   fechar(): void {
     if (this._carregamentos.length > 0 )
       this._carregamentos.splice(this._carregamentos.length - 1, 1);
 
-    this._carregamentosSubject.next(this._exibir());
+      console.log('pode exibir');
+      console.log(this._podeExibir());
+    this._carregamentosSubject.next(this._podeExibir());
 
   }
-  private _exibir(): boolean {
+  private _podeExibir(): boolean {
     return this._carregamentos.length > 0;
   }
 }

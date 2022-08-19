@@ -1,3 +1,4 @@
+import { TEMPO_PARA_ABRIR_DIALOG_APOS_COMPONENTE_LOADER } from './../../constants/constantes';
 import { EntityBasica } from 'src/app/shared/models/entity-basica';
 import { VALOR_PADRAO_CONFIGURACAO_MODAL } from './../../constants/valores-padroes';
 import { CnBtnInativarComponent } from './../btns/cn-btn-inativar/cn-btn-inativar.component';
@@ -140,12 +141,9 @@ export class CnCrudModel {
   }
   private _carregarFormInativarComponent(matDialog: MatDialog, entityId: string): void {
     this.service.buscarPorId(entityId).subscribe( entity => {
-      matDialog.open(CnFormModalComponent, {
-        maxHeight: VALOR_PADRAO_CONFIGURACAO_MODAL.maxHeight,
-        minWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.minWidth,
-        maxWidth: VALOR_PADRAO_CONFIGURACAO_MODAL.maxWidth,
-        data: new CnFormInativarModel(this.titulo, entity as EntityBasica, this.service.inativar)
-      });
+      setTimeout(() => {
+        this.abrirModalDeFormularioPorBotao(matDialog, CnFormModalComponent, { data: new CnFormInativarModel(this.titulo, entity as EntityBasica, this.service.inativar)})
+      },  TEMPO_PARA_ABRIR_DIALOG_APOS_COMPONENTE_LOADER);
     })
   }
 

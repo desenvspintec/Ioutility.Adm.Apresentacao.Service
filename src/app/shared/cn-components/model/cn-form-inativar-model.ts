@@ -1,3 +1,4 @@
+import { RESPOSTA_PARA_ATUALIZAR_PESQUISA_AO_FECHAR_MODAL } from './../../constants/constantes';
 import { IHttpErrorResponse } from './../../interfaces/i-http-error-response';
 import { IFormCrudModel } from './../../interfaces/i-form-crud-model';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -32,7 +33,7 @@ export class CnFormInativarModel implements IFormCrudModalBase<CnFormInativarMod
   }
   onSubmitSuccess(toastrService: ToastrService, result?: any): void {
     CnFormHelper.notificarSucessoToastr(toastrService);
-    this.referenciaModal?.close(true);
+    this.referenciaModal?.close(RESPOSTA_PARA_ATUALIZAR_PESQUISA_AO_FECHAR_MODAL);
   }
   onSubmitError(error: IHttpErrorResponse, toastrService: ToastrService): string[] {
     CnFormHelper.notificarErroToastr(toastrService);
