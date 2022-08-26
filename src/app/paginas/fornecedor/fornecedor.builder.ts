@@ -14,6 +14,7 @@ import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-g
 import { CnItemListagemExibicao } from 'src/app/shared/cn-components/model/cn-item-listagem-exibicao';
 import { CnStepperFormItemModel } from 'src/app/shared/cn-components/model/cn-stepper-form-item.model';
 import { CnStepperFormModel } from 'src/app/shared/cn-components/model/cn-stepper-form.model';
+import { CnFormHelper } from 'src/app/shared/cn-helpers/cn-form-helper';
 import { RouterHelper } from 'src/app/shared/cn-helpers/cn-router-helper';
 import { TAMANHO_RESPONSIVO_3 } from 'src/app/shared/constants/css-class-tamanhos';
 import {
@@ -22,10 +23,10 @@ import {
     CONTROL_NAME_NOME,
     CPF_MASK,
     TELEFONE_CELULAR_MASK,
+    TELEFONE_RESIDENCIAL_MASK,
 } from 'src/app/shared/constants/forms-contante';
 import { ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 
-import { CnFormHelper } from './../../shared/cn-helpers/cn-form-helper';
 import { FORM_TITULO_GENERICO } from './../../shared/constants/forms-contante';
 import { IDisplayNameItem } from './../../shared/models/display-name-item';
 import { BancoService } from './../../shared/services/banco.service';
@@ -113,6 +114,12 @@ export class FornecedorBuilder {
                     this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true
                 ),
                 CnFormHelper.gerarCampoTelefone(),
+                CnInputCvaModel.obterTextoSimplesComMask(
+                    this._displayName.telefone.nomePropriedade,
+                    this._displayName.telefone.valorDisplay,
+                    true,
+                    TELEFONE_RESIDENCIAL_MASK
+                ),
                 CnInputCvaModel.obterTextoSimplesComMask(
                     this._displayName.celularWhatsApp.nomePropriedade,
                     this._displayName.celularWhatsApp.valorDisplay,
