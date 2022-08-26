@@ -32,14 +32,14 @@ export class AdicionarFaltaFormComponent implements OnInit {
     this.formModel = CnFormBaseModel.obterRegistrar('', 'Falta', this._service.registrar, [
       new CnGrupoCamposFormulario('', [
         CnInputCvaModel.obterComboBoxPesquisavel('dentistaId', 'Dentista', true, this._dentistaService.buscarAvancado, this._dentistaService.buscarPorId as ((palavraChave: string) => Observable<IEntityBasica>)),
-        CnInputCvaModel.obterData(this.displayName.dataFalta.nomePropriedade, this.displayName.dataFalta.valorDisplay, true),
-        CnInputCvaModel.obterHora(this.displayName.horarioInicio.nomePropriedade, this.displayName.horarioInicio.valorDisplay, true),
-        CnInputCvaModel.obterHora(this.displayName.horarioFim.nomePropriedade, this.displayName.horarioFim.valorDisplay, true),
+        CnInputCvaModel.obterData(this.displayName.dataFalta.nomePropriedade, this.displayName.dataFalta.valorDisplay, false),
+        CnInputCvaModel.obterHora(this.displayName.horarioInicio.nomePropriedade, this.displayName.horarioInicio.valorDisplay, false),
+        CnInputCvaModel.obterHora(this.displayName.horarioFim.nomePropriedade, this.displayName.horarioFim.valorDisplay, false),
         CnInputCvaModel.obterCheckbox(this.displayName.ausenteDiaTodo.nomePropriedade, this.displayName.ausenteDiaTodo.valorDisplay),
       ])
     ], '', '');
     this.formModel.definirModal(dialogRef);
-  }
+   }
 
   ngOnInit(): void {
   }
