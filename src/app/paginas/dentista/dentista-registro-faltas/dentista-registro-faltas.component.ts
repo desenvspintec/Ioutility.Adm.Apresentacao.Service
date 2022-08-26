@@ -51,7 +51,6 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   ) {
     this.displayName = _displayNameService.itens!;
     this.btnEnviar = CnBtnModel.obterBtnRegistrarPorLink();
-    // this.obterOpcoesCampoAnoDoRegistroFalta();
     this.formModelPesquisa = this._camposDePesquisa();
     this.modelListagemExibicao = new CnListagemExibicaoModel(this._dentistaService, [], "", this._gerarItensListagem(), DentistaDetalhesFaltaComponent);
   }
@@ -103,7 +102,6 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   }
 
   private _camposDePesquisa(): CnPesquisaModel {
-    console.log([...this.obterOpcoesCampoAnoDoRegistroFalta()])
     return CnPesquisaModel.ObterPesquisaModel(this._dentistaService.buscarFalta, [
       CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID),
       CnInputCvaModel.obterTextoSimples(this.displayName.nome.nomePropriedade, 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),

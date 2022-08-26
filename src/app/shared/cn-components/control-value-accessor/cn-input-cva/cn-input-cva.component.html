@@ -5,7 +5,7 @@
     </div>
     <div *ngSwitchCase="ehCheckbox()">
       <br />
-      <mat-checkbox color="primary" [formControlName]="controlTexto">{{
+      <mat-checkbox color="primary" [id]="model!.nameId" [formControlName]="controlTexto">{{
         model?.label
         }}</mat-checkbox>
     </div>

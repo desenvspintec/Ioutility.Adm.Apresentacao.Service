@@ -29,7 +29,7 @@
     ></app-cn-pesquisa>
   </div>
   
-  <div>
+  <div id="tabela-resultado-pesquisa" >
     <app-cn-listagem-crud *ngIf="haEntitys()"  [model]="modelListagemExibicao" [itens]="obterEntitys()" >  
     </app-cn-listagem-crud>
   </div>
