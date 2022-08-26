@@ -22,10 +22,10 @@ import {
     CONTROL_NAME_NOME,
     CPF_MASK,
     TELEFONE_CELULAR_MASK,
+    TELEFONE_RESIDENCIAL_MASK,
 } from 'src/app/shared/constants/forms-contante';
 import { ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 
-import { CnFormHelper } from './../../shared/cn-helpers/cn-form-helper';
 import { FORM_TITULO_GENERICO } from './../../shared/constants/forms-contante';
 import { IDisplayNameItem } from './../../shared/models/display-name-item';
 import { BancoService } from './../../shared/services/banco.service';
