@@ -112,7 +112,7 @@ export class FornecedorBuilder {
                 CnInputCvaModel.obterTextoSimples(
                     this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true
                 ),
-                this._gerarCampoTelefone(),
+                CnFormHelper.gerarCampoTelefone(),
                 CnInputCvaModel.obterTextoSimplesComMask(
                     this._displayName.celularWhatsApp.nomePropriedade,
                     this._displayName.celularWhatsApp.valorDisplay,
@@ -263,21 +263,4 @@ export class FornecedorBuilder {
             new OpcaoCombobox(ECentroDeCustoFornecedor.AreaE, 'Área E'),
         ]
     }
-
-    private _gerarCampoTelefone(): CnInputCvaModel {
-        const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
-          this._displayName.telefone.nomePropriedade,
-          this._displayName.telefone.valorDisplay,
-          true,
-          TELEFONE_CELULAR_MASK
-        );
-        campoTelefone.addEventoAoCarregarFormulario(
-          CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
-        );
-    
-        return campoTelefone;
-    }
-
-    
-
 }

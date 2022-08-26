@@ -33,7 +33,6 @@ import {
     CPF_MASK,
     FORM_TITULO_GENERICO,
     TELEFONE_CELULAR_MASK,
-    TELEFONE_RESIDENCIAL_MASK,
 } from './../../shared/constants/forms-contante';
 import { ROTA_COMPLEMENTO, ROTA_MODULO } from './../../shared/constants/routes-constant';
 import { ColaboradorAlterarStatusComponent } from './colaborador-alterar-status/colaborador-alterar-status.component';
@@ -142,7 +141,7 @@ export class ColaboradorBuilder {
             ]),
             new CnGrupoCamposFormulario('Informações de contato', [
                 CnInputCvaModel.obterEmail(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true),
-                this._gerarCampoTelefone(),
+                CnFormHelper.gerarCampoTelefone(),
             ]),
         ])
     }
@@ -286,19 +285,4 @@ export class ColaboradorBuilder {
             return { valorImbutir: StringHelper.converterStringEmLista(valorControl, '-') };
         };
     }
-
-    private _gerarCampoTelefone(): CnInputCvaModel {
-        const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
-          this._displayName.telefone.nomePropriedade,
-          this._displayName.telefone.valorDisplay,
-          true,
-          TELEFONE_CELULAR_MASK
-        );
-        campoTelefone.addEventoAoCarregarFormulario(
-          CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
-        );
-    
-        return campoTelefone;
-      }
-
 }

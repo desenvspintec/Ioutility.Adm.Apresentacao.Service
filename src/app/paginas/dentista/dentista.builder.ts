@@ -182,7 +182,7 @@ export class DentistaBuilder {
       ]),
       new CnGrupoCamposFormulario('Informações de contato', [
         CnFormHelper.obterCampoEmail(this._displayName),
-        this._gerarCampoTelefone(),
+        CnFormHelper.gerarCampoTelefone(),
       ])
     ]);
   }
@@ -356,19 +356,5 @@ export class DentistaBuilder {
 
   private _gerarRotaIndex(): string {
     return RouterHelper.formarRota([ROTA_MODULO.dentista, ROTA_COMPLEMENTO.indexModulo]);
-  }
-
-  private _gerarCampoTelefone(): CnInputCvaModel {
-    const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
-      this._displayName.telefone.nomePropriedade,
-      this._displayName.telefone.valorDisplay,
-      true,
-      TELEFONE_CELULAR_MASK
-    );
-    campoTelefone.addEventoAoCarregarFormulario(
-      CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
-    );
-
-    return campoTelefone;
   }
 }
