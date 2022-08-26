@@ -141,11 +141,7 @@ export class ColaboradorBuilder {
             ]),
             new CnGrupoCamposFormulario('Informações de contato', [
                 CnInputCvaModel.obterEmail(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true),
-<<<<<<< HEAD
                 CnFormHelper.gerarCampoTelefone(),
-=======
-                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_CELULAR_MASK),
->>>>>>> 06c46fac283d3cbe4a556d36765dd1d5979b5a81
             ]),
         ])
     }
@@ -289,8 +285,4 @@ export class ColaboradorBuilder {
             return { valorImbutir: StringHelper.converterStringEmLista(valorControl, '-') };
         };
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 06c46fac283d3cbe4a556d36765dd1d5979b5a81
 }

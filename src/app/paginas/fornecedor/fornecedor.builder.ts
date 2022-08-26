@@ -114,18 +114,7 @@ export class FornecedorBuilder {
                     this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true
                 ),
                 CnFormHelper.gerarCampoTelefone(),
-                CnInputCvaModel.obterTextoSimplesComMask(
-                    this._displayName.telefone.nomePropriedade,
-                    this._displayName.telefone.valorDisplay,
-                    true,
-                    TELEFONE_RESIDENCIAL_MASK
-                ),
-                CnInputCvaModel.obterTextoSimplesComMask(
-                    this._displayName.celularWhatsApp.nomePropriedade,
-                    this._displayName.celularWhatsApp.valorDisplay,
-                    false,
-                    TELEFONE_CELULAR_MASK
-                )
+                CnFormHelper.gerarCampoTelefone(),
             ])
         ]);
     }
