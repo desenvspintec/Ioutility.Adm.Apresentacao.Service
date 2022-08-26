@@ -142,7 +142,7 @@ export class ColaboradorBuilder {
             ]),
             new CnGrupoCamposFormulario('Informações de contato', [
                 CnInputCvaModel.obterEmail(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay, true),
-                this._gerarCampoTelefone(),
+                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_CELULAR_MASK),
             ]),
         ])
     }
@@ -286,19 +286,5 @@ export class ColaboradorBuilder {
             return { valorImbutir: StringHelper.converterStringEmLista(valorControl, '-') };
         };
     }
-
-    private _gerarCampoTelefone(): CnInputCvaModel {
-        const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
-          this._displayName.telefone.nomePropriedade,
-          this._displayName.telefone.valorDisplay,
-          true,
-          TELEFONE_CELULAR_MASK
-        );
-        campoTelefone.addEventoAoCarregarFormulario(
-          CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
-        );
-    
-        return campoTelefone;
-      }
 
 }
