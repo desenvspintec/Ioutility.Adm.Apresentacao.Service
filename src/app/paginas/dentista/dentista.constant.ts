@@ -2,6 +2,8 @@ import { CnSubmenu } from 'src/app/shared/cn-components/model/cn-submenu';
 import { RouterHelper } from 'src/app/shared/cn-helpers/cn-router-helper';
 import { ROTA_COMPLEMENTO, ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 
+export const IDENTIFICADOR_DE_PESQUISA_DENTISTA = 'dentista';
+
 export const MODO_CADASTRO_DENTISTA = {
     folhaDePagamento: 'folha-de-pagamento',
 }

@@ -1,3 +1,4 @@
+import { IDENTIFICADOR_DE_PESQUISA_DENTISTA } from './../dentista.constant';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CnPesquisaModel } from 'src/app/shared/cn-components/cn-pesquisa/cn-pesquisa.model';
@@ -109,7 +110,7 @@ export class DentistaRegistroFaltasComponent implements OnInit {
       CnInputCvaModel.obterTextoSimples(this.displayName.nome.nomePropriedade, 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox('dataEmMeses', 'Mês', false, [{ id: '', nome: 'Todos' }, ...this.obterOpcoesCampoMesesDoAnoRegistroFalta()]).setarClassTamanho(TAMANHO_RESPONSIVO_2),
       CnInputCvaModel.obterCombobox('dataEmAnos', 'Ano', false, this.obterOpcoesCampoAnoDoRegistroFalta()).setarClassTamanho(TAMANHO_RESPONSIVO_2),
-    ]);
+    ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
   }
 
   obterOpcoesCampoAnoDoRegistroFalta(): OpcaoCombobox[] {

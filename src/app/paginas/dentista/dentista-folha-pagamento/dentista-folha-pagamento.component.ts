@@ -1,3 +1,4 @@
+import { IDENTIFICADOR_DE_PESQUISA_DENTISTA } from './../dentista.constant';
 import { CnListagemExibicaoModel } from 'src/app/shared/cn-components/model/cn-listagem-exibicao-model';
 import { CnItemListagemExibicao } from 'src/app/shared/cn-components/model/cn-item-listagem-exibicao';
 import { ANIMAR_ENTRADA } from 'src/app/shared/constants/animacoes.constant';
@@ -94,7 +95,7 @@ export class DentistaFolhaPagamentoComponent implements OnInit {
       CnInputCvaModel.obterTextoSimples(this._displayName.nome.nomePropriedade, 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox('dataEmMeses', 'Mês', false, [{ id: '', nome: 'Todos' }, ...this.obterOpcoesCampoMesesDoAnoFolhaPagamento()]).setarClassTamanho(TAMANHO_RESPONSIVO_2),
       CnInputCvaModel.obterCombobox('dataEmAnos', 'Ano', false, this.comboboxAnos!).setarClassTamanho(TAMANHO_RESPONSIVO_2),
-    ]);
+    ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
   }
 
   obterOpcoesCampoMesesDoAnoFolhaPagamento(): OpcaoCombobox[] {

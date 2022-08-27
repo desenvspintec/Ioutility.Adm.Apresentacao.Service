@@ -1,3 +1,4 @@
+import { CnPesquisaService } from './../../shared/cn-components/cn-pesquisa/cn-pesquisa.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,6 +13,7 @@ import { ROTA_COMPLEMENTO } from './../../shared/constants/routes-constant';
 import { BancoService } from './../../shared/services/banco.service';
 import { DentistaBuilder } from './dentista.builder';
 import { DentistaIEmailDTO, DentistaIIndicadoresDTO, DentistaStatus } from './dentista.model';
+import { PesquisaCache } from 'src/app/shared/cn-components/cn-pesquisa/pesquisa-cache';
 
 @Injectable({
   providedIn: 'root',
@@ -20,28 +22,30 @@ export class DentistaService
   extends EntityService
   implements IComponentService
 {
+  private _cachePalavraChaveBusca: string = '';
   constructor(
     httpClient: HttpClient,
     private _displayNameService: DisplayNameService,
     private _bancoService: BancoService,
-    private _matDialog: MatDialog
+    private _matDialog: MatDialog,
   ) {
     super(httpClient, 'dentista');
   }
   telaDentista = ROTA_COMPLEMENTO.indexModulo;
+  get cachePalavraChaveBusca(): string { return this._cachePalavraChaveBusca}
+
+  setarCachePalavraChaveBusca(cachePalavraChaveBusca: string): void { this._cachePalavraChaveBusca = cachePalavraChaveBusca;}
 
   gerarModelComponent(): CnCrudModel {
-
     return new DentistaBuilder(this,this._bancoService, this._matDialog, this._displayNameService).gerarModelComponent();
-
   }
+
   setarTela(tela: string): void {
     this.telaDentista = tela;
   }
   buscarAvancado = (params: any): Observable<EntityBasica[]> => {
     return this.httpClient.get<EntityBasica[]>(this.url + 'avancado', {params});
   }
-
   buscarStatusPorId = (id: string):  Observable<DentistaStatus> => {
     return this.httpClient.get<DentistaStatus>(this.url + id + '/status');
   }
@@ -63,5 +67,5 @@ export class DentistaService
 
   get modoDentista(): string { return this.modoDentista; }
 
- 
+
 }

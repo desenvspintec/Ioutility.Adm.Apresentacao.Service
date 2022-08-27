@@ -36,7 +36,7 @@ import { GUID_VAZIO } from './../../shared/constants/valores-padroes';
 import { IDisplayNameItem } from './../../shared/models/display-name-item';
 import { BancoService } from './../../shared/services/banco.service';
 import { DentistaAlterarStatusComponent } from './dentista-alterar-status/dentista-alterar-status.component';
-import { ITENS_DENTISTA_SUBMENU } from './dentista.constant';
+import { ITENS_DENTISTA_SUBMENU, IDENTIFICADOR_DE_PESQUISA_DENTISTA } from './dentista.constant';
 import {
   DentistaEspecialidade,
   EChavePix,
@@ -315,7 +315,7 @@ export class DentistaBuilder {
       CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox(this._displayName.dentistaStatus.nomePropriedade, this._displayName.dentistaStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesCampoStatusDentista()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox(this._displayName.especialidades.nomePropriedade, this._displayName.especialidades.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesEspecialidades()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
-    ]);
+    ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
   }
 
   static obterOpcoesCampoStatusDentista(): OpcaoCombobox[] {

@@ -1,3 +1,4 @@
+import { IDENTIFICADOR_DE_PESQUISA_DENTISTA } from './../dentista.constant';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { CnBaseDetalheModel } from 'src/app/shared/cn-components/cn-detalhes/models/cn-detalhe-model';
@@ -130,7 +131,7 @@ export class DentistaFeriasBuilder {
         return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
             CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
             CnInputCvaModel.obterCombobox('feriasStatus', 'Status', false, [{ id: '', nome: 'Todos' }, ...DentistaFeriasBuilder.obterOpcoesCampoStatusDentistaFerias()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
-        ]);
+        ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
     }
 
     private _gerarRotaFerias(): string {
