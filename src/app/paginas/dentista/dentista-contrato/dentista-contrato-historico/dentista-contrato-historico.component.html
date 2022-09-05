@@ -12,7 +12,7 @@
       </div>
     </ng-container>
     <ng-container *ngFor="let contrato of contratos">
-      <div class="col-12 sessao-grupo-campo">
+      <div class="col-12 sessao-grupo-campo" (click)="abrirContrato(contrato)">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
