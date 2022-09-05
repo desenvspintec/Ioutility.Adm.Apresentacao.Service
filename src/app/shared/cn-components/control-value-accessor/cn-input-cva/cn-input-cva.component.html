@@ -64,7 +64,7 @@
           <mat-label>{{ model?.label }}</mat-label>
           <input *ngIf="!ehTextoLongo()" matInput [type]="obterInputType()" [formControlName]="controlTexto"
             [placeholder]="model!.placeholder" mask="{{ model?.mask }}" [id]="model!.nameId" />
-          <textarea *ngIf="ehTextoLongo()" matInput [placeholder]="model!!.placeholder" [formControlName]="controlTexto"
+          <textarea *ngIf="ehTextoLongo()" matInput [placeholder]="model!!.placeholder" [formControlName]="controlTexto" [rows]="model?.dadosTextoLongo?.row"
             [id]="model!.cssId"></textarea>
         </mat-form-field>
       </app-cn-form-control-mensagem-erro>

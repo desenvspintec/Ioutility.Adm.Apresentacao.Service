@@ -1,3 +1,4 @@
+import { CnDrawerService } from './../../shared/cn-components/cn-drawer/cn-drawer.service';
 import { CnPesquisaService } from './../../shared/cn-components/cn-pesquisa/cn-pesquisa.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -28,7 +29,8 @@ export class DentistaService
     private _displayNameService: DisplayNameService,
     private _bancoService: BancoService,
     private _matDialog: MatDialog,
-  ) {
+    private _drawerService: CnDrawerService,
+    ) {
     super(httpClient, 'dentista');
   }
   telaDentista = ROTA_COMPLEMENTO.indexModulo;
@@ -37,7 +39,7 @@ export class DentistaService
   setarCachePalavraChaveBusca(cachePalavraChaveBusca: string): void { this._cachePalavraChaveBusca = cachePalavraChaveBusca;}
 
   gerarModelComponent(): CnCrudModel {
-    return new DentistaBuilder(this,this._bancoService, this._matDialog, this._displayNameService).gerarModelComponent();
+    return new DentistaBuilder(this,this._bancoService, this._matDialog, this._drawerService ,this._displayNameService).gerarModelComponent();
   }
 
   setarTela(tela: string): void {

@@ -268,3 +268,16 @@ $padding-top-icons: 8px;
   margin-top: -3px;
   margin-right: 13px;
 }
+
+.sessao-grupo-campo {
+  background-color: $cor-fundo-body;
+  border-bottom: 1px solid $cor-border-bottom-cinza;
+  vertical-align: middle;
+  padding: 10px 0;
+  color: $cor-font-escura;
+  line-height: 25px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+
+}

@@ -35,7 +35,7 @@ export class DentistaContratoComponent extends CnFormBaseComponent {
     super(formBuilder);
     this.displayName = _displayNameService.itens!;
     this.campoId = CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID);
-    this.campoContrato = CnInputCvaModel.obterTextoLongo(this.displayName.contrato.nomePropriedade, '', false, 5, true);
+    this.campoContrato = CnInputCvaModel.obterTextoLongo(this.displayName.contrato.nomePropriedade, '', false, 100);
     this.btnEnviar = CnBtnModel.obterBtnRegistrarPorLink();
   }
 

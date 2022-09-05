@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngIf="contratos && contratos.length === 0">
+      <div class="col-12 sessao-grupo-campo">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              Ainda não há contrato a ser exibido
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngFor="let contrato of contratos">
+      <div class="col-12 sessao-grupo-campo">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              {{contrato.nome}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

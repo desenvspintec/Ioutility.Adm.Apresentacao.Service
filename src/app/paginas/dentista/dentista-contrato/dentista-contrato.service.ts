@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ROTA_COMPLEMENTO } from 'src/app/shared/constants/routes-constant';
-import { EntityBasica } from 'src/app/shared/models/entity-basica';
+import { EntityBasica, IEntityBasica } from 'src/app/shared/models/entity-basica';
 import { EntityService } from 'src/app/shared/services/entity.service';
 
 @Injectable({
@@ -23,7 +23,11 @@ export class DentistaContratoService extends EntityService {
 
   buscarAvancado = (params: any): Observable<EntityBasica[]> => {
     return this.httpClient.get<EntityBasica[]>(this.url + 'avancado', {params});
-  } 
+  }
 
   get modoDentista(): string { return this.modoDentista; }
+
+  buscarPorDentista = (dentistaId: string): Observable<IEntityBasica[]> => {
+    return this.httpClient.get<IEntityBasica[]>(this.url + 'buscarPorDentista/' + dentistaId);
+  }
 }

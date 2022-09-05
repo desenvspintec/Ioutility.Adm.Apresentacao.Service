@@ -31,6 +31,8 @@ import {
   TermoDistratoEmailFormComponent,
 } from './dentista-termo-distrato/termo-distrato-email-form/termo-distrato-email-form.component';
 import { DentistaComponent } from './dentista.component';
+import { DentistaContratoHistoricoComponent } from './dentista-contrato/dentista-contrato-historico/dentista-contrato-historico.component';
+import { DentistaTermoDistratoHistoricoComponent } from './dentista-termo-distrato/dentista-termo-distrato-historico/dentista-termo-distrato-historico.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +53,10 @@ import { DentistaComponent } from './dentista.component';
     AdicionarFaltaFormComponent,
     DentistaDetalhesFaltaComponent,
     FolhaPagamentoPacientesComponent,
-    FolhaPagamentoIndicadoresComponent
-    
+    FolhaPagamentoIndicadoresComponent,
+    DentistaContratoHistoricoComponent,
+    DentistaTermoDistratoHistoricoComponent,
+
   ],
   imports: [
     SharedModule,

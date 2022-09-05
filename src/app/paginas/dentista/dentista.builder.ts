@@ -1,3 +1,4 @@
+import { DentistaTermoDistratoHistoricoComponent } from './dentista-termo-distrato/dentista-termo-distrato-historico/dentista-termo-distrato-historico.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CnGrupoCampoDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
@@ -11,6 +12,7 @@ import { CnFormHelper } from 'src/app/shared/cn-helpers/cn-form-helper';
 import { DisplayNameService } from 'src/app/shared/services/display-name.service';
 
 import { CnBaseDetalheModel } from './../../shared/cn-components/cn-detalhes/models/cn-detalhe-model';
+import { CnDrawerService } from './../../shared/cn-components/cn-drawer/cn-drawer.service';
 import { CnPesquisaModel } from './../../shared/cn-components/cn-pesquisa/cn-pesquisa.model';
 import { OpcaoCombobox } from './../../shared/cn-components/control-value-accessor/models/cn-input-cva.model';
 import {
@@ -36,7 +38,10 @@ import { GUID_VAZIO } from './../../shared/constants/valores-padroes';
 import { IDisplayNameItem } from './../../shared/models/display-name-item';
 import { BancoService } from './../../shared/services/banco.service';
 import { DentistaAlterarStatusComponent } from './dentista-alterar-status/dentista-alterar-status.component';
-import { ITENS_DENTISTA_SUBMENU, IDENTIFICADOR_DE_PESQUISA_DENTISTA } from './dentista.constant';
+import {
+  DentistaContratoHistoricoComponent,
+} from './dentista-contrato/dentista-contrato-historico/dentista-contrato-historico.component';
+import { IDENTIFICADOR_DE_PESQUISA_DENTISTA, ITENS_DENTISTA_SUBMENU } from './dentista.constant';
 import {
   DentistaEspecialidade,
   EChavePix,
@@ -53,7 +58,8 @@ export class DentistaBuilder {
     private _service: DentistaService,
     private _bancoService: BancoService,
     private _matDialog: MatDialog,
-    private _displayNameService: DisplayNameService,
+    private _drawerService: CnDrawerService,
+    _displayNameService: DisplayNameService,
   ) {
     this._displayName = _displayNameService.itens!;
   }
@@ -69,10 +75,12 @@ export class DentistaBuilder {
       this._gerarFormulario(),
       this._gerarDetalhes(),
     );
+    this._addBtnAlterarStatus(model);
+    this._addBtnExibirContratos(model);
+    this._addBtnExibirDistratos(model);
     model.addBtnVerDetalhes();
     model.addBtnAtualizar();
     model.addBtnInativar(this._matDialog);
-    this._addBtnAlterarStatus(model);
 
     this._definirSubmenu(model);
 
@@ -96,6 +104,29 @@ export class DentistaBuilder {
       'autorenew'
     );
   }
+
+  private _addBtnExibirDistratos(model: CnCrudModel) {
+    model.addBtnNaListagemExibicao(
+      'Distratos',
+      (entityId, params) => {
+        this._drawerService.abrir( DentistaTermoDistratoHistoricoComponent, {dentistaId: entityId}
+        );
+      },
+      'lock_reset'
+    );
+  }
+
+  private _addBtnExibirContratos(model: CnCrudModel) {
+    model.addBtnNaListagemExibicao(
+      'Contratos',
+      (entityId, params) => {
+        this._drawerService.abrir( DentistaContratoHistoricoComponent, {dentistaId: entityId}
+        );
+      },
+      'lock_reset'
+    );
+  }
+
 
   private _gerarDetalhes(): CnBaseDetalheModel {
     return new CnBaseDetalheModel(
@@ -314,7 +345,7 @@ export class DentistaBuilder {
     return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
       CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox(this._displayName.dentistaStatus.nomePropriedade, this._displayName.dentistaStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesCampoStatusDentista()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-      CnInputCvaModel.obterCombobox(this._displayName.especialidades.nomePropriedade, this._displayName.especialidades.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesEspecialidades()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
+      CnInputCvaModel.obterCombobox(this._displayName.especialidade.nomePropriedade, this._displayName.especialidade.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesEspecialidades()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
     ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
   }
 

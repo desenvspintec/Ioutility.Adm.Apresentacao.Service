@@ -54,12 +54,11 @@ export class CnInputCvaModel extends CnControlValueAccessorModelBase {
   get possuiValidacoesPersonalizadas(): boolean { return this._validacoesPersonalizadas.length > 0;}
 
   eventoAoCarregarFormulario?: (form: FormGroup) => void;
-  private constructor(name: string, label: string, required: boolean, tipo: ETipoInput, contrato?: boolean) {
+  private constructor(name: string, label: string, required: boolean, tipo: ETipoInput) {
     super(name, label, required);
     this.tipo = tipo;
     this.cssClassTamanho = TAMANHO_RESPONSIVO_6;
-    this.setarClassTamanho,
-    this.contrato = contrato
+    this.setarClassTamanho
   }
 
   override obterValidadoresDoControlPrincipal(): any[] {
@@ -213,8 +212,8 @@ export class CnInputCvaModel extends CnControlValueAccessorModelBase {
     input.mask = mask;
     return input;
   }
-  static obterTextoLongo(name: string, label: string, required: boolean, row = 5, contrato?: boolean): CnInputCvaModel {
-    const input = new CnInputCvaModel(name, label, required, ETipoInput.textoLongo, contrato);
+  static obterTextoLongo(name: string, label: string, required: boolean, row = 5): CnInputCvaModel {
+    const input = new CnInputCvaModel(name, label, required, ETipoInput.textoLongo);
     input.dadosTextoLongo = new DadosTextoLongo(row);
     input.setarClassTamanho(TAMANHO_UNICO_12);
     return input;

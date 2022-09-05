@@ -8,6 +8,7 @@ export interface IDisplayNameItem {
   salarioBrutoMensal: DisplayName;
   diasQueAtende: DisplayName;
   especialidades: DisplayName;
+  especialidade: DisplayName;
   endereco: DisplayName;
   cro: DisplayName;
   cnpj: DisplayName;
