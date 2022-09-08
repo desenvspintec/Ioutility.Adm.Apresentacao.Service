@@ -213,7 +213,8 @@ export class DentistaBuilder {
       ]),
       new CnGrupoCamposFormulario('Informações de contato', [
         CnFormHelper.obterCampoEmail(this._displayName),
-        CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_CELULAR_MASK)
+        CnFormHelper.gerarCampoTelefone(),
+
       ])
     ]);
   }

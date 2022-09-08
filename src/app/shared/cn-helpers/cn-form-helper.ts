@@ -15,7 +15,7 @@ import { CnStepperFormModel } from '../cn-components/model/cn-stepper-form.model
 import { TAMANHO_UNICO_12 } from '../constants/css-class-tamanhos';
 import { MAX_LENGTH_PADRAO } from '../constants/string-length-padrao.constant';
 import { CnBaseDetalheModel } from '../cn-components/cn-detalhes/models/cn-detalhe-model';
-import { CONTROL_NAME_ID, FORM_TITULO_GENERICO, CONTROL_NAME_NOME, TELEFONE_CELULAR_MASK, TELEFONE_RESIDENCIAL_MASK, NAME_STEPPER_UNICO, CPF_MASK, CNPJ_MASK } from './../constants/forms-contante';
+import { CONTROL_NAME_ID, FORM_TITULO_GENERICO, CONTROL_NAME_NOME, TELEFONE_CELULAR_MASK, TELEFONE_RESIDENCIAL_MASK, NAME_STEPPER_UNICO, CPF_MASK, CNPJ_MASK, DISPLAY_NAME_TELEFONE } from './../constants/forms-contante';
 import { ICrudService } from './../interfaces/i-crud-service';
 import { CnGrupoCampoDetalhe } from '../cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
 
@@ -122,5 +122,18 @@ export class CnFormHelper {
         }
       })
     };
+  }
+
+  static gerarCampoTelefone(): CnInputCvaModel {
+    const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
+      DISPLAY_NAME_TELEFONE,
+      DISPLAY_NAME_TELEFONE,
+      true,
+      TELEFONE_CELULAR_MASK
+    );
+    campoTelefone.addEventoAoCarregarFormulario(
+      CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
+    );
+    return campoTelefone;
   }
 }
