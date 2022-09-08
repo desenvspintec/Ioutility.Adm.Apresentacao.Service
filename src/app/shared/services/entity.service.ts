@@ -12,7 +12,7 @@ protected readonly url: string;
     this.url = EnderecoApi.obterApp() + controllerUrl + '/';
   }
   buscarPorNome = (params: any): Observable<EntityBasica[]> => {
-    return this.httpClient.get<EntityBasica[]>(this.url, {params});
+    return this.httpClient.get<EntityBasica[]>(this.url, {params: {nome: params}});
   }
   buscarPorId = (entityId: string): Observable<Entity> => {
     return this.httpClient.get<EntityBasica>(this.url + entityId);

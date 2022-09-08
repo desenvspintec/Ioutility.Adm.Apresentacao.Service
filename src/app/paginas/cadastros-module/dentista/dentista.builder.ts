@@ -50,6 +50,7 @@ import {
   ETipoStatusDentistaFerias,
 } from './dentista.model';
 import { DentistaService } from './dentista.service';
+import { LINK_ROUTES } from 'src/app/shared/constants/link-routes-constant';
 
 export class DentistaBuilder {
 
@@ -185,7 +186,6 @@ export class DentistaBuilder {
   }
 
   private _gerarAcessoEtapa4(): CnStepperFormItemModel {
-    console.log(this._displayName.dentistaStatus);
     return new CnStepperFormItemModel('acesso', 'Informações de acesso', [
       new CnGrupoCamposFormulario('', [
         CnFormHelper.obterCampoSenha(),
@@ -213,7 +213,8 @@ export class DentistaBuilder {
       ]),
       new CnGrupoCamposFormulario('Informações de contato', [
         CnFormHelper.obterCampoEmail(this._displayName),
-        CnInputCvaModel.obterTextoSimplesComMask(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay, true, TELEFONE_CELULAR_MASK)
+        CnFormHelper.gerarCampoTelefone(),
+
       ])
     ]);
   }
@@ -386,6 +387,6 @@ export class DentistaBuilder {
   }
 
   private _gerarRotaIndex(): string {
-    return RouterHelper.formarRota([ROTA_MODULO.dentista, ROTA_COMPLEMENTO.indexModulo]);
+    return LINK_ROUTES.dentista.inicio;
   }
 }

@@ -27,27 +27,22 @@
           </p>
         </a>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/paciente']">
+          <a [routerLink]="[linkRotas.paciente.preCadastro]">
             Pacientes
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/produto']">
-            Produtos
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/colaborador']">
+          <a [routerLink]="[linkRotas.colaborador.inicio]">
             Colaborador
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/dentista']">
+          <a [routerLink]="[linkRotas.dentista.inicio]">
             Dentistas
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/fornecedor']">
+          <a [routerLink]="[linkRotas.fornecedor.inicio]">
             Fornecedores
           </a>
         </div>

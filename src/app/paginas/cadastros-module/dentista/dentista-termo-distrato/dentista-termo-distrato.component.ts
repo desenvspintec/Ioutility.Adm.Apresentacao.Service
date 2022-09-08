@@ -35,11 +35,11 @@ export class DentistaTermoDistratoComponent extends CnFormBaseComponent {
     , private _matDialog: MatDialog
     , private _toastrService: ToastrService
     , private _distratoService: DistratoService
-    , private _displayNameService: DisplayNameService) {
+    , displayNameService: DisplayNameService) {
     super(formBuilder);
-    this.displayName = _displayNameService.itens!;
+    this.displayName = displayNameService.itens!;
     this.campoId = CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID);
-    this.campoDistrato = CnInputCvaModel.obterTextoLongo(this.displayName.distrato.nomePropriedade, '', false, 5);
+    this.campoDistrato = CnInputCvaModel.obterTextoLongo(this.displayName.distrato.nomePropriedade, '', false, 50);
     this.btnEnviar = CnBtnModel.obterBtnRegistrarPorLink();
   }
 

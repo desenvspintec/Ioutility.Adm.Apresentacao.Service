@@ -1,25 +1,26 @@
 import { MatDialog } from '@angular/material/dialog';
-import { CnGrupoCampoDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
-import { CONTROL_NAME_ID } from 'src/app/shared/constants/forms-contante';
 import { CnBaseDetalheModel } from 'src/app/shared/cn-components/cn-detalhes/models/cn-detalhe-model';
+import { CnGrupoCampoDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
+import { CnSessaoGrupoCamposDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-sessao-grupo-campos-detalhe';
+import { CnPesquisaModel } from 'src/app/shared/cn-components/cn-pesquisa/cn-pesquisa.model';
 import { CnInputCvaModel } from 'src/app/shared/cn-components/control-value-accessor/models/cn-input-cva.model';
+import { CnCampoDetalhe } from 'src/app/shared/cn-components/model/cn-campo-detalhe';
+import { CnCrudModel } from 'src/app/shared/cn-components/model/cn-crud-model';
+import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-grupo-campos-formulario';
+import { CnItemListagemExibicao } from 'src/app/shared/cn-components/model/cn-item-listagem-exibicao';
+import { CnStepperFormItemModel } from 'src/app/shared/cn-components/model/cn-stepper-form-item.model';
 import { CnStepperFormModel } from 'src/app/shared/cn-components/model/cn-stepper-form.model';
 import { CnFormHelper } from 'src/app/shared/cn-helpers/cn-form-helper';
-import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-grupo-campos-formulario';
-import { FORM_TITULO_GENERICO } from './../../../shared/constants/forms-contante';
-import { CnStepperFormItemModel } from 'src/app/shared/cn-components/model/cn-stepper-form-item.model';
-import { ProdutoService } from './produto.service';
-import { ROTA_COMPLEMENTO } from './../../../shared/constants/routes-constant';
-import { ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 import { RouterHelper } from 'src/app/shared/cn-helpers/cn-router-helper';
-import { CnCrudModel } from 'src/app/shared/cn-components/model/cn-crud-model';
+import { CONTROL_NAME_ID } from 'src/app/shared/constants/forms-contante';
+import { ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 import { DisplayNameService } from 'src/app/shared/services/display-name.service';
+
+import { FORM_TITULO_GENERICO } from './../../../shared/constants/forms-contante';
+import { ROTA_COMPLEMENTO } from './../../../shared/constants/routes-constant';
 import { IDisplayNameItem } from './../../../shared/models/display-name-item';
-import { CnPesquisaModel } from 'src/app/shared/cn-components/cn-pesquisa/cn-pesquisa.model';
-import { CnItemListagemExibicao } from 'src/app/shared/cn-components/model/cn-item-listagem-exibicao';
-import { FormHelperService } from 'src/app/shared/services/form-helper.service';
-import { CnSessaoGrupoCamposDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-sessao-grupo-campos-detalhe';
-import { CnCampoDetalhe } from 'src/app/shared/cn-components/model/cn-campo-detalhe';
+import { ProdutoService } from './produto.service';
+
 export class ProdutoBuilder {
   _displayName!: IDisplayNameItem;
   constructor(

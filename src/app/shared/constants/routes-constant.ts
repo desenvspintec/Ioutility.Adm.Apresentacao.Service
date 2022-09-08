@@ -10,7 +10,7 @@ export const ROTA_MODULO = {
   , produto: 'produto'
 }
 export const ROTA_COMPLEMENTO = {
-  indexModulo: '',
+  indexModulo: 'index',
   registrar: 'registrar',
   atualizar: 'atualizar',
   preCadastro: 'pre-cadastro',

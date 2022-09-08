@@ -8,3 +8,4 @@ export const TELEFONE_RESIDENCIAL_MASK = '(00) 0000-0000';
 export const NAME_STEPPER_UNICO = '';
 export const CARACTER_SEPARADOR_ERRO_CAMPO_MSG_ERRO = '||';
 export const SEPARADOR_ARQUIVO = ',,,';
+export const DISPLAY_NAME_TELEFONE = 'telefone';

@@ -11,11 +11,12 @@ import { DentistaTermoDistratoComponent } from './dentista-termo-distrato/dentis
 import { DentistaComponent } from './dentista.component';
 import { DentistaFolhaPagamentoComponent } from './dentista-folha-pagamento/dentista-folha-pagamento.component';
 
-const ROTAS = {
+export const ROTAS_DENTISTA = {
+  redirecionamentoIndex: RouterHelper.obterPathRedirecionado({ em: [''], irPara: [ROTA_COMPLEMENTO.indexModulo] }),
   index: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.indexModulo], component: DentistaComponent}),
   registrar: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.registrar], component: DentistaFormComponent}),
   atualizar: RouterHelper.obterPathSimples({em: [ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: DentistaFormComponent}),
-  
+
   contrato: {
     index: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.contrato], component: DentistaContratoComponent}),
   },
@@ -37,14 +38,15 @@ const ROTAS = {
   },
 }
 const routes: Routes = [
-  ROTAS.index,
-  ROTAS.registrar,
-  ROTAS.atualizar,
-  ROTAS.ferias.index,
-  ROTAS.contrato.index,
-  ROTAS.faltas.index,
-  ROTAS.distrato.index,
-  ROTAS.folhaPagamento.index,
+  ROTAS_DENTISTA.redirecionamentoIndex,
+  ROTAS_DENTISTA.index,
+  ROTAS_DENTISTA.registrar,
+  ROTAS_DENTISTA.atualizar,
+  ROTAS_DENTISTA.ferias.index,
+  ROTAS_DENTISTA.contrato.index,
+  ROTAS_DENTISTA.faltas.index,
+  ROTAS_DENTISTA.distrato.index,
+  ROTAS_DENTISTA.folhaPagamento.index,
 ];
 
 @NgModule({
@@ -52,6 +54,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class DentistaRoutingModule {
+
   constructor() {
   }
  }

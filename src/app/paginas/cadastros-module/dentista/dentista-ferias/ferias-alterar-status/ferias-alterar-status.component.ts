@@ -19,7 +19,7 @@ export class FeriasAlterarStatusComponent implements OnInit {
       this.formModel = CnFormBaseModel.obterAtualizar('', 'Atualizar Status', data.entityId, feriasService.buscarStatusPorId, feriasService.atualizarStatus, [
         new CnGrupoCamposFormulario('', [
           CnInputCvaModel.obterHiddenGuid('id'),
-          CnInputCvaModel.obterCombobox('feriasStatus', 'Selecione um novo status', true, DentistaFeriasBuilder.obterOpcoesCampoStatusDentistaFerias()).setarClassTamanho(TAMANHO_UNICO_12)
+          CnInputCvaModel.obterCombobox('feriasStatus', 'Selecione um novo status', false, DentistaFeriasBuilder.obterOpcoesCampoStatusDentistaFerias()).setarClassTamanho(TAMANHO_UNICO_12)
         ])
       ]);
       this.formModel.definirModal(dialogRef);

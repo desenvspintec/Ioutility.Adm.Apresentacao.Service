@@ -7,11 +7,13 @@ import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-co
 import { ColaboradorComponent } from './colaborador.component';
 
 export const ROTAS = {
+  redirecionamentoIndex: RouterHelper.obterPathRedirecionado({ em: [''], irPara: [ROTA_COMPLEMENTO.indexModulo] }),
   index: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.indexModulo], component: ColaboradorComponent}),
   registrar: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.registrar], component: CadastroColaboradorComponent}),
   atualizar: RouterHelper.obterPathSimples({em: [ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: CadastroColaboradorComponent})
 }
 const routes: Routes = [
+  ROTAS.redirecionamentoIndex,
   ROTAS.index,
   ROTAS.registrar,
   ROTAS.atualizar
