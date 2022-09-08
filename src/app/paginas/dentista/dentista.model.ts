@@ -57,11 +57,6 @@ export interface DentistaFeriasStatus extends IEntity {
 export interface DentistaIIndicadoresDTO {
   ativos: number,
 }
-
-export interface DentistaIEmailDTO {
-  email: string,
-}
-
 export interface DentistaIContratoDTO extends IEntity {
   textoContrato: string,
 }

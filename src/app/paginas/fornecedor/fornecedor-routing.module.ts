@@ -7,12 +7,14 @@ import { CadastroFornecedorComponent } from './cadastro-fornecedor/cadastro-forn
 import { FornecedorComponent } from './fornecedor.component';
 
 const ROTAS = {
+  redirecionamentoIndex: RouterHelper.obterPathRedirecionado({ em: [''], irPara: [ROTA_COMPLEMENTO.indexModulo] }),
   index: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.indexModulo], component: FornecedorComponent}),
   registrar: RouterHelper.obterPathSimples({em: [ROTA_COMPLEMENTO.registrar], component: CadastroFornecedorComponent}),
   atualizar: RouterHelper.obterPathSimples({em: [ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: CadastroFornecedorComponent}),
 }
 
 const routes: Routes = [
+  ROTAS.redirecionamentoIndex,
   ROTAS.index,
   ROTAS.registrar,
   ROTAS.atualizar

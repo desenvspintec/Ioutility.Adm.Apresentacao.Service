@@ -1,11 +1,13 @@
 <form [formGroup]="form">
-  <mat-form-field style="width: 100%;">
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>{{ model?.label }}</mat-label>
     <input
       type="text"
-      placeholder="{{model!.label}}"
+      placeholder="{{model!.placeholder}}"
       [id]="model!.name"
       matInput
-      (click)="pesquisar()"
+      (click)="realizarPrimeiraPesquisa()"
+      (focus)="realizarPrimeiraPesquisa()"
       [formControl]="pesquisaControl"
       [matAutocomplete]="auto"
     />

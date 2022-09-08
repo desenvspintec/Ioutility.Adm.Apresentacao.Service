@@ -1,5 +1,3 @@
-import { CnDrawerService } from './../../shared/cn-components/cn-drawer/cn-drawer.service';
-import { CnPesquisaService } from './../../shared/cn-components/cn-pesquisa/cn-pesquisa.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,11 +8,11 @@ import { EntityBasica } from 'src/app/shared/models/entity-basica';
 import { DisplayNameService } from 'src/app/shared/services/display-name.service';
 import { EntityService } from 'src/app/shared/services/entity.service';
 
+import { CnDrawerService } from './../../shared/cn-components/cn-drawer/cn-drawer.service';
 import { ROTA_COMPLEMENTO } from './../../shared/constants/routes-constant';
 import { BancoService } from './../../shared/services/banco.service';
 import { DentistaBuilder } from './dentista.builder';
-import { DentistaIEmailDTO, DentistaIIndicadoresDTO, DentistaStatus } from './dentista.model';
-import { PesquisaCache } from 'src/app/shared/cn-components/cn-pesquisa/pesquisa-cache';
+import { DentistaIIndicadoresDTO, DentistaStatus } from './dentista.model';
 
 @Injectable({
   providedIn: 'root',
@@ -56,9 +54,6 @@ export class DentistaService
   }
   buscarIndicadores(): Observable<DentistaIIndicadoresDTO> {
     return this.httpClient.get<DentistaIIndicadoresDTO>(this.url + 'indicadores');
-  }
-  buscarEmail(id: string): Observable<DentistaIEmailDTO> {
-    return this.httpClient.get<DentistaIEmailDTO>(this.url + id + '/email');
   }
   buscarFalta = (params: any): Observable<EntityBasica[]> => {
     return this.httpClient.get<EntityBasica[]>(this.url + 'faltas', {params});

@@ -1,3 +1,4 @@
+import { ApiServicesUrl } from './../../../../shared/constants/api-services';
 import { Component } from '@angular/core';
 import { IEntityBasica } from 'src/app/shared/models/entity-basica';
 
@@ -22,4 +23,7 @@ export class DentistaTermoDistratoHistoricoComponent implements IDrawerComponent
     });
   }
 
+  abrirDistrato(distrato: any): void {
+    window.open(ApiServicesUrl.get(false).upload + distrato.caminhoDistrato);
+  }
 }

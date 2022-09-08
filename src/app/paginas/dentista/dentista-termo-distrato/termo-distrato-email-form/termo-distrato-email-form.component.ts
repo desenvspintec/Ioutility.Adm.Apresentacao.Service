@@ -8,7 +8,6 @@ import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-g
 import { ANIMAR_ENTRADA } from 'src/app/shared/constants/animacoes.constant';
 import { IEntityBasica } from 'src/app/shared/models/entity-basica';
 
-import { DentistaIEmailDTO } from '../../dentista.model';
 import { DentistaService } from '../../dentista.service';
 import { DentistaTermoDistratoService } from '../dentista-termo-distrato.service';
 
@@ -24,11 +23,11 @@ export class TermoDistratoEmailFormComponent implements OnInit {
     private _dentistaService: DentistaService,
     private _service: DentistaTermoDistratoService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+
     const campoEmailDentista = CnInputCvaModel.obterTextoSimples('dentistaEmail', 'E-mail', true);
     this.formModel = CnFormBaseModel.obterRegistrar('', 'Enviar contrato por e-mail', this._service.registrar, [
       new CnGrupoCamposFormulario('', [
-        CnInputCvaModel.obterComboBoxPesquisavel('dentistaId', 'Dentista', true, this._dentistaService.buscarAvancado, this._dentistaService.buscarPorId as ((palavraChave: string) => Observable<IEntityBasica>))
-          .addEventoAoCarregarFormulario(this._setarEmailDoDentista(campoEmailDentista)),
+        this.gerarCampoDentistaId(campoEmailDentista),
         campoEmailDentista,
         CnInputCvaModel.obterTextoLongo('observacoes', 'Observações', false),
       ])
@@ -36,13 +35,19 @@ export class TermoDistratoEmailFormComponent implements OnInit {
     this.formModel.definirModal(dialogRef);
   }
 
+  private gerarCampoDentistaId(campoEmailDentista: CnInputCvaModel): CnInputCvaModel {
+    return CnInputCvaModel.obterComboBoxPesquisavel('dentistaId', 'Dentista', true, this._dentistaService.buscarAvancado, this._dentistaService.buscarPorId as ((palavraChave: string) => Observable<IEntityBasica>))
+      .addEventoAoCarregarFormulario(this._setarEmailDoDentista(campoEmailDentista));
+  }
+
   private _setarEmailDoDentista(campoDentista: CnInputCvaModel): (form: FormGroup) => void {
     return (form) => {
       const control = form.get('dentistaId');
       control!.valueChanges.subscribe({
         next: (valor: any) => {
-          this._dentistaService.buscarEmail(valor).subscribe({
-            next: (email: DentistaIEmailDTO) => {
+          if (!valor) return;
+          this._dentistaService.buscarPorId(valor).subscribe({
+            next: (email: any) => {
               return campoDentista.setarValor(email.email);
             }
           });

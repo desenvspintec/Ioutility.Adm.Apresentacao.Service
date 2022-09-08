@@ -1,3 +1,4 @@
+import { LINK_ROUTES } from './../../shared/constants/link-routes-constant';
 import { MenuService } from './menu.service';
 import { Component, OnInit } from '@angular/core';
 import { ANIMAR_MENU, ESTADO_MENU } from 'src/app/shared/constants/animacoes.constant';
@@ -10,12 +11,13 @@ import { ANIMAR_MENU, ESTADO_MENU } from 'src/app/shared/constants/animacoes.con
 })
 export class MenuLateralComponent implements OnInit {
 
+  linkRotas = LINK_ROUTES;
   get estadoMenu(): string {
     if (this.service.estaAberto)
       return ESTADO_MENU.aberto;
     return ESTADO_MENU.fechado;
-
   }
+
 
   constructor(public service: MenuService) { }
 

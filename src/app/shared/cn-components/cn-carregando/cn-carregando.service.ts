@@ -23,8 +23,6 @@ export class CnCarregandoService {
     if (this._carregamentos.length > 0 )
       this._carregamentos.splice(this._carregamentos.length - 1, 1);
 
-      console.log('pode exibir');
-      console.log(this._podeExibir());
     this._carregamentosSubject.next(this._podeExibir());
 
   }
