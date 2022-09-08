@@ -54,12 +54,38 @@
       </div>
 
       <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']">
+        <a [routerLink]="['#']" >
           <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu">
-            <mat-icon class="icon">home</mat-icon>Exemplo
+          <p class="label-menu" >
+            <mat-icon class="icon">assignment</mat-icon>Franquias
+
           </p>
         </a>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/franquia']">
+            Franquias
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/produto']">
+            Produtos
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/colaborador']">
+            Colaborador
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/dentista']">
+            Dentistas
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/fornecedor']">
+            Fornecedores
+          </a>
+        </div>
       </div>
 
       <div class="item active" routerLinkActive="active">
