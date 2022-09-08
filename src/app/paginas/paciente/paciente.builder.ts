@@ -211,7 +211,7 @@ export class PacienteBuilder {
         this._displayName.email.valorDisplay,
         true
       ),
-      this._gerarCampoTelefone(),
+      CnFormHelper.gerarCampoTelefone(),
     ];
     const camposVinculados = [
       CnFormHelper.obterCampoNomeCompleto(),
@@ -233,7 +233,7 @@ export class PacienteBuilder {
         'Número do documento',
         true
       ),
-      this._gerarCampoTelefone(),
+      CnFormHelper.gerarCampoTelefone(),
       CnFormHelper.obterCampoSenha(),
       CnInputCvaModel.obterCombobox('status', 'Status', true, [
         new OpcaoCombobox(ETipoStatusCadastroPaciente.Contratado, 'Contratado'),
@@ -319,20 +319,6 @@ export class PacienteBuilder {
     );
   }
 
-  private _gerarCampoTelefone(): CnInputCvaModel {
-    const campoTelefone = CnInputCvaModel.obterTextoSimplesComMask(
-      this._displayName.telefone.nomePropriedade,
-      this._displayName.telefone.valorDisplay,
-      true,
-      TELEFONE_CELULAR_MASK
-    );
-    campoTelefone.addEventoAoCarregarFormulario(
-      CnFormHelper.validacaoTelefoneDelegate(campoTelefone)
-    );
-
-    return campoTelefone;
-  }
-
   private _definirModelPreCadastro(): CnCrudModel {
     const gruposCamposFormulario: CnGrupoCamposFormulario[] = this._gerarFormularioPreCadastro();
     const modelListagemExibicao = this._obterListagemExibicao();
@@ -363,7 +349,7 @@ export class PacienteBuilder {
     ];
     const camposContato: CnInputCvaModel[] = [
       this._gerarCampoEmail(),
-      this._gerarCampoTelefone(),
+      CnFormHelper.gerarCampoTelefone(),
     ];
     const gruposCamposFormulario: CnGrupoCamposFormulario[] = [
       new CnGrupoCamposFormulario(
