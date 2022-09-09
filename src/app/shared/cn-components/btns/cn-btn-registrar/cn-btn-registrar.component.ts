@@ -19,21 +19,11 @@ export class CnBtnRegistrarComponent  extends CnBtnBaseComponent {
   }
 
   override redirecionar(): void {
-    const rotaRaiz = this.obterRotaRaiz();
+    const rotaRaiz = RouterHelper.obterRotaRaizDoCrud(this.router.url);
     console.log(rotaRaiz)
     this.router.navigateByUrl(RouterHelper.formarRota([rotaRaiz, ROTA_COMPLEMENTO.registrar]))
   }
-  private obterRotaRaiz() {
-    let rotaFinal = '';
-    const urlLista =  this.router.url.split('/');
 
-    for (let index = 0; index < urlLista.length - 1; index++) {
-      const urlItem = urlLista[index];
-      rotaFinal += urlItem+'/';
-    }
-
-    return StringHelper.removerUltimosCaracter(rotaFinal, 1);
-  }
 }
 export const CSS_CLASS_BTN_REGISTRAR = 'btn-registrar';
 

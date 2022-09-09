@@ -40,6 +40,7 @@ export class CnCrudModel {
   detalhesModel: CnBaseDetalheModel;
   formaFormularioRegistro: EFormaFormularioRegistro;
   rotaIndex: string;
+  get rotaRaizDoCrud(): string { return RouterHelper.obterRotaRaizDoCrud(this.rotaIndex)};
   tituloRegistrar: string;
   tituloAtualizar: string;
   registrarPersonalizadoDelegate?: (entity: IEntity) => Observable<any>;
@@ -125,7 +126,7 @@ export class CnCrudModel {
 
   addBtnAtualizar(): void {
     this.addBtnNaListagemExibicao('Editar', (entityId: string, params: { rota: Router }) => {
-      params.rota.navigateByUrl(RouterHelper.formarRota([this.rotaIndex, entityId, ROTA_COMPLEMENTO.atualizar]))
+      params.rota.navigateByUrl(RouterHelper.formarRota([this.rotaRaizDoCrud, entityId, ROTA_COMPLEMENTO.atualizar]))
     }, 'edit');
   }
   addBtnAtualizarModal(matDialog: MatDialog): void {

@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { LoadChildrenCallback, Route } from '@angular/router';
+import { LoadChildrenCallback, Route, Router } from '@angular/router';
 
 import { SEPARADOR_URL, ROTA_COMPLEMENTO } from './../constants/routes-constant';
 import { StringHelper } from './cn-string-helper';
@@ -29,5 +29,17 @@ export class RouterHelper {
 
   static obterPathRedirecionado(caminhos: {em: string[], irPara: string[]}): Route {
     return { path: this.formarRota(caminhos.em), redirectTo: this.formarRota(caminhos.irPara), pathMatch: 'full'};
+  }
+
+  static obterRotaRaizDoCrud(rotaCorrigir: string) {
+    let rotaFinal = '';
+    const urlLista = rotaCorrigir.split('/');
+
+    for (let index = 0; index < urlLista.length - 1; index++) {
+      const urlItem = urlLista[index];
+      rotaFinal += urlItem+'/';
+    }
+
+    return StringHelper.removerUltimosCaracter(rotaFinal, 1);
   }
 }

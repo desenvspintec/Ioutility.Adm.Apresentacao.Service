@@ -1,4 +1,3 @@
-import { DentistaTermoDistratoHistoricoComponent } from './dentista-termo-distrato/dentista-termo-distrato-historico/dentista-termo-distrato-historico.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CnGrupoCampoDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-grupo-campos-detalhe';
@@ -9,6 +8,7 @@ import { CnCrudModel } from 'src/app/shared/cn-components/model/cn-crud-model';
 import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-grupo-campos-formulario';
 import { CnStepperFormItemModel } from 'src/app/shared/cn-components/model/cn-stepper-form-item.model';
 import { CnFormHelper } from 'src/app/shared/cn-helpers/cn-form-helper';
+import { LINK_ROUTES } from 'src/app/shared/constants/link-routes-constant';
 import { DisplayNameService } from 'src/app/shared/services/display-name.service';
 
 import { CnBaseDetalheModel } from './../../shared/cn-components/cn-detalhes/models/cn-detalhe-model';
@@ -23,7 +23,6 @@ import {
 } from './../../shared/cn-components/control-value-accessor/models/i-cn-input-cva-valor-obtido';
 import { CnItemListagemExibicao } from './../../shared/cn-components/model/cn-item-listagem-exibicao';
 import { CnStepperFormModel } from './../../shared/cn-components/model/cn-stepper-form.model';
-import { RouterHelper } from './../../shared/cn-helpers/cn-router-helper';
 import { StringHelper } from './../../shared/cn-helpers/cn-string-helper';
 import { TAMANHO_RESPONSIVO_3 } from './../../shared/constants/css-class-tamanhos';
 import {
@@ -33,7 +32,6 @@ import {
   FORM_TITULO_GENERICO,
   TELEFONE_CELULAR_MASK,
 } from './../../shared/constants/forms-contante';
-import { ROTA_COMPLEMENTO, ROTA_MODULO } from './../../shared/constants/routes-constant';
 import { GUID_VAZIO } from './../../shared/constants/valores-padroes';
 import { IDisplayNameItem } from './../../shared/models/display-name-item';
 import { BancoService } from './../../shared/services/banco.service';
@@ -41,6 +39,9 @@ import { DentistaAlterarStatusComponent } from './dentista-alterar-status/dentis
 import {
   DentistaContratoHistoricoComponent,
 } from './dentista-contrato/dentista-contrato-historico/dentista-contrato-historico.component';
+import {
+  DentistaTermoDistratoHistoricoComponent,
+} from './dentista-termo-distrato/dentista-termo-distrato-historico/dentista-termo-distrato-historico.component';
 import { IDENTIFICADOR_DE_PESQUISA_DENTISTA, ITENS_DENTISTA_SUBMENU } from './dentista.constant';
 import {
   DentistaEspecialidade,
@@ -50,7 +51,6 @@ import {
   ETipoStatusDentistaFerias,
 } from './dentista.model';
 import { DentistaService } from './dentista.service';
-import { LINK_ROUTES } from 'src/app/shared/constants/link-routes-constant';
 
 export class DentistaBuilder {
 

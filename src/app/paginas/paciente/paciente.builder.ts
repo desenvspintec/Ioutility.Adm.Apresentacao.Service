@@ -1,3 +1,4 @@
+import { LINK_ROUTES } from './../../shared/constants/link-routes-constant';
 import { MatDialog } from '@angular/material/dialog';
 import { CnSessaoGrupoCamposDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-sessao-grupo-campos-detalhe';
 import { CnCampoDetalhe } from 'src/app/shared/cn-components/model/cn-campo-detalhe';
@@ -68,16 +69,13 @@ export class PacienteBuilder {
   }
 
   private _definirModelCadastroCompleto(): CnCrudModel {
-    const rota = RouterHelper.formarRota([
-      ROTA_MODULO.paciente,
-      ROTA_COMPLEMENTO.cadastroCompleto,
-    ]);
+
     const modelListagemExibicao = this._obterListagemExibicao();
     const stepperForm = this._gerarCampoFormularioCadastroCompleto();
     const camposDetalhes = this._obterCamposDetalhesCadastroCompleto();
 
     const model = new CnCrudModel(
-      rota,
+      LINK_ROUTES.paciente.cadastroCompleto,
       'paciente (Completo)',
       this._gerarPesquisa(),
       this._service,
