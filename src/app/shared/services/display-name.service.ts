@@ -92,6 +92,7 @@ export class DisplayNameService {
       salarioBrutoMensal: this.obterDisplayName('salarioBrutoMensal'),
       diasQueAtende: this.obterDisplayName('diasQueAtende'),
       especialidades: this.obterDisplayName('especialidades'),
+      especialidade: this.obterDisplayName('especialidade'),
       anexoCpf: this.obterDisplayName('anexoCpf'),
       anexoCRO: this.obterDisplayName('anexoCRO'),
       razaoSocial: this.obterDisplayName('razaoSocial'),

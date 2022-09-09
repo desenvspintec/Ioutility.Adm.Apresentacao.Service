@@ -27,8 +27,38 @@
           </p>
         </a>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/paciente']">
+          <a [routerLink]="[linkRotas.paciente.preCadastro]">
             Pacientes
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="[linkRotas.colaborador.inicio]">
+            Colaborador
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="[linkRotas.dentista.inicio]">
+            Dentistas
+          </a>
+        </div>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="[linkRotas.fornecedor.inicio]">
+            Fornecedores
+          </a>
+        </div>
+      </div>
+
+      <div class="item active" routerLinkActive="active">
+        <a [routerLink]="['#']" >
+          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
+          <p class="label-menu" >
+            <mat-icon class="icon">assignment</mat-icon>Franquias
+
+          </p>
+        </a>
+        <div class="submenu" [@componentesToggle]="estadoMenu">
+          <a [routerLink]="['/franquia']">
+            Franquias
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
@@ -51,15 +81,6 @@
             Fornecedores
           </a>
         </div>
-      </div>
-
-      <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']">
-          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu">
-            <mat-icon class="icon">home</mat-icon>Exemplo
-          </p>
-        </a>
       </div>
 
       <div class="item active" routerLinkActive="active">

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngIf="distratos && distratos.length === 0">
+      <div class="col-12 sessao-grupo-campo">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              Ainda não há distrato a ser exibido
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngFor="let distrato of distratos">
+      <div class="col-12 sessao-grupo-campo"  (click)="abrirDistrato(distrato)">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              {{distrato.nome}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -7,15 +7,15 @@ import { StringHelper } from './cn-string-helper';
 export class RouterHelper {
   private constructor() {}
 
-  static formarRota(caminhos: string[]): string {
+  static formarRota(caminhos: string[], rotaIniciaNaRaizApp = false): string {
     let caminhoFinal = '';
 
     caminhos.forEach((caminho) => {
-      if (caminho !== ROTA_COMPLEMENTO.indexModulo)
-        caminhoFinal += caminho + SEPARADOR_URL;
+      caminhoFinal += caminho + SEPARADOR_URL;
     });
 
     caminhoFinal = StringHelper.removerUltimosCaracter(caminhoFinal);
+    if (rotaIniciaNaRaizApp) caminhoFinal = '/' + caminhoFinal;
     return caminhoFinal;
   }
 

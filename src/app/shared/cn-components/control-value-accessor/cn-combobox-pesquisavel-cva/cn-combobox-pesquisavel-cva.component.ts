@@ -6,8 +6,9 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 import { CnControlValueAccessorBaseConponent } from '../../model/cn-control-value-acessor-base-component.model';
 import { CnComboboxPesquisavelCvaModel } from '../models/cn-combobox-pesquisavel-cva.model';
 import { CnHelper } from './../../../cn-helpers/cn-helper';
-import { EntityBasica } from './../../../models/entity-basica';
+import { EntityBasica, IEntityBasica } from './../../../models/entity-basica';
 
+const NENHUMA_OPCAO_ENCONTRADA: IEntityBasica = { id: '', nome: 'Nenhuma opção encontrada' }
 @Component({
   selector: 'app-cn-combobox-pesquisavel-cva',
   templateUrl: './cn-combobox-pesquisavel-cva.component.html',
@@ -24,10 +25,11 @@ export class CnComboboxPesquisavelCvaComponent extends CnControlValueAccessorBas
   @Input() override model?: CnComboboxPesquisavelCvaModel;
   readonly nomeControlPesquisa = 'pesquisa';
   pesquisaControl = new FormControl('');
-  opcoes: EntityBasica[] = [];
-  opcoesCache: EntityBasica[] = [];
+  opcoes: IEntityBasica[] = [];
+  opcoesCache: IEntityBasica[] = [];
   valorPaiDependenteControl: string = '';
   ultimoValorDigitado = '';
+  primeiraPesquisaRealizada = false;
   constructor(fb: FormBuilder) {
     super(fb);
   }
@@ -53,8 +55,12 @@ export class CnComboboxPesquisavelCvaComponent extends CnControlValueAccessorBas
     .pipe(
       debounceTime(500),
       switchMap(texto => {
+
         const ultimaPesquisaEstaEmCache = this.opcoesCache.filter(opc => opc.nome === texto).length === 1;
-        if (ultimaPesquisaEstaEmCache) return of(this.opcoesCache);
+        if (ultimaPesquisaEstaEmCache) {
+          this.aplicarPesquisaEmCach(texto);
+          return of(this.opcoesCache);
+        }
 
         let model = this.model as CnComboboxPesquisavelCvaModel;
         if (model?.pesquisaEhPorPaiDependente) {
@@ -69,15 +75,21 @@ export class CnComboboxPesquisavelCvaComponent extends CnControlValueAccessorBas
     .subscribe(valor => this._setarResultadoPesquisa(valor));
   }
 
+  private aplicarPesquisaEmCach(texto: any) {
+    this.opcoesCache = this.opcoesCache.filter(opc => opc.nome === texto);
+  }
+
   private _obterPaiDependente(): string {
     if (!CnHelper.estaNuloVazioOuUndefined(this.model?.paiDependenteId)) return this.model!.paiDependenteId;
     return this.valorPaiDependenteControl;
   }
-  private _setarResultadoPesquisa(opcoes: EntityBasica[]): void {
+  private _setarResultadoPesquisa(opcoes: IEntityBasica[]): void {
+    if (opcoes.length === 0)
+      opcoes.push(NENHUMA_OPCAO_ENCONTRADA);
     this._setarOpcoes(opcoes);
     this._setarValor();
   }
-  private _setarOpcoes(opcoes: EntityBasica[]) {
+  private _setarOpcoes(opcoes: IEntityBasica[]) {
     this.opcoes = opcoes;
     this.opcoesCache = opcoes;
   }
@@ -95,6 +107,7 @@ export class CnComboboxPesquisavelCvaComponent extends CnControlValueAccessorBas
       this.setarValor(null);
       return;
     }
+
     this.model?.pesquisarPorIdDelegate(entityId).subscribe(entity => {
       this._setarOpcoes([entity]);
       this.pesquisaControl.setValue(entity.nome);
@@ -104,7 +117,11 @@ export class CnComboboxPesquisavelCvaComponent extends CnControlValueAccessorBas
     this.addControlNoForm(this.nomeControlPesquisa, this.pesquisaControl);
   }
 
-  pesquisar(): void {
+  realizarPrimeiraPesquisa(): void {
+    if (this.primeiraPesquisaRealizada) return;
+
+    this.primeiraPesquisaRealizada = true;
+
     const valorAtual = this.pesquisaControl.value;
     this.pesquisaControl.setValue(valorAtual);
   }
