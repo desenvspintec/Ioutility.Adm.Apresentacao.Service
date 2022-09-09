@@ -1,4 +1,4 @@
-import { ApiServicesUrl } from './../../../../shared/constants/api-services';
+import { ApiServicesUrl } from './../../../../../shared/constants/api-services';
 import { Component } from '@angular/core';
 import { IEntityBasica } from 'src/app/shared/models/entity-basica';
 
