@@ -34,7 +34,6 @@ import { DentistaRegistroFaltaService } from './dentista-registro-falta.service'
 export class DentistaRegistroFaltasComponent implements OnInit {
   formModelPesquisa: CnPesquisaModel;
   listaDeAnosCadastrados?: DentistaIRegistroFaltasDataEmAnosDTO;
-  // comboboxAnos?: OpcaoCombobox[];
   anosCarregados = false;
   modalFechou = new EventEmitter();
   btnEnviar: CnBtnModel;
@@ -51,7 +50,6 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   ) {
     this.displayName = _displayNameService.itens!;
     this.btnEnviar = CnBtnModel.obterBtnRegistrarPorLink();
-    // this.obterOpcoesCampoAnoDoRegistroFalta();
     this.formModelPesquisa = this._camposDePesquisa();
     this.modelListagemExibicao = new CnListagemExibicaoModel(this._dentistaService, [], "", this._gerarItensListagem(), DentistaDetalhesFaltaComponent);
   }
