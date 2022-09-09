@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   CadastroCompletoFormComponent,
-} from './paginas/paciente/cadastro-completo/cadastro-completo-form/cadastro-completo-form.component';
-import { CadastroCompletoComponent } from './paginas/paciente/cadastro-completo/cadastro-completo.component';
+} from './paginas/cadastros-module/paciente/cadastro-completo/cadastro-completo-form/cadastro-completo-form.component';
+import { CadastroCompletoComponent } from './paginas/cadastros-module/paciente/cadastro-completo/cadastro-completo.component';
 import {
   PacientePreCadastroFormComponent,
-} from './paginas/paciente/pre-cadastro/paciente-pre-cadastro-form/paciente-pre-cadastro-form.component';
-import { PacientePreCadastroComponent } from './paginas/paciente/pre-cadastro/paciente-pre-cadastro.component';
+} from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro-form/paciente-pre-cadastro-form.component';
+import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
 import { RouterHelper } from './shared/cn-helpers/cn-router-helper';
 import { ROTA_COMPLEMENTO, ROTA_MODULO, ROTA_PARAMETRO } from './shared/constants/routes-constant';
 
@@ -34,15 +34,15 @@ export const ROTAS = {
   },
 
   fornecedor: {
-    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.fornecedor], () => import('./paginas/fornecedor/fornecedor.module').then(m => m.FornecedorModule)),
+    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.fornecedor], () => import('./paginas/cadastros-module/fornecedor/fornecedor.module').then(m => m.FornecedorModule)),
   },
 
   dentistas: {
-    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.dentista], () => import('./paginas/dentista/dentista.module').then(m => m.DentistaModule)),
+    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.dentista], () => import('./paginas/cadastros-module/dentista/dentista.module').then(m => m.DentistaModule)),
   },
 
   colaborador: {
-    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.colaborador], () => import('./paginas/colaborador/colaborador.module').then(m => m.ColaboradorModule))
+    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.colaborador], () => import('./paginas/cadastros-module/colaborador/colaborador.module').then(m => m.ColaboradorModule))
   },
 
 }
