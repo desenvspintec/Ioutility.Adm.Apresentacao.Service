@@ -1,4 +1,4 @@
-import { LINK_ROUTES } from './../../shared/constants/link-routes-constant';
+import { LINK_ROUTES } from './../../../shared/constants/link-routes-constant';
 import { MatDialog } from '@angular/material/dialog';
 import { CnSessaoGrupoCamposDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-sessao-grupo-campos-detalhe';
 import { CnCampoDetalhe } from 'src/app/shared/cn-components/model/cn-campo-detalhe';

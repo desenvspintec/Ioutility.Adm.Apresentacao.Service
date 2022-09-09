@@ -1,4 +1,4 @@
-import { LINK_ROUTES } from './../../shared/constants/link-routes-constant';
+import { LINK_ROUTES } from './../../../shared/constants/link-routes-constant';
 import { CnSubmenu } from 'src/app/shared/cn-components/model/cn-submenu';
 
 export const IDENTIFICADOR_DE_PESQUISA_DENTISTA = 'dentista';

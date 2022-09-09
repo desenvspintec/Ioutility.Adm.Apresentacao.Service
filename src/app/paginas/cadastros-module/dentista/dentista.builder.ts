@@ -20,38 +20,21 @@ import {
 } from './../../../shared/cn-components/control-value-accessor/models/i-cn-input-cva-valor-imbutir';
 import {
   ICnInputCvaValorObtido,
-<<<<<<< HEAD:src/app/paginas/dentista/dentista.builder.ts
-} from './../../shared/cn-components/control-value-accessor/models/i-cn-input-cva-valor-obtido';
-import { CnItemListagemExibicao } from './../../shared/cn-components/model/cn-item-listagem-exibicao';
-import { CnStepperFormModel } from './../../shared/cn-components/model/cn-stepper-form.model';
-import { StringHelper } from './../../shared/cn-helpers/cn-string-helper';
-import { TAMANHO_RESPONSIVO_3 } from './../../shared/constants/css-class-tamanhos';
-=======
 } from './../../../shared/cn-components/control-value-accessor/models/i-cn-input-cva-valor-obtido';
 import { CnItemListagemExibicao } from './../../../shared/cn-components/model/cn-item-listagem-exibicao';
 import { CnStepperFormModel } from './../../../shared/cn-components/model/cn-stepper-form.model';
-import { RouterHelper } from './../../../shared/cn-helpers/cn-router-helper';
 import { StringHelper } from './../../../shared/cn-helpers/cn-string-helper';
 import { TAMANHO_RESPONSIVO_3 } from './../../../shared/constants/css-class-tamanhos';
->>>>>>> aa5ad58c6d282683cb364e75879678f2298e036d:src/app/paginas/cadastros-module/dentista/dentista.builder.ts
 import {
   CNPJ_MASK,
   CONTROL_NAME_ID,
   CPF_MASK,
   FORM_TITULO_GENERICO,
   TELEFONE_CELULAR_MASK,
-<<<<<<< HEAD:src/app/paginas/dentista/dentista.builder.ts
-} from './../../shared/constants/forms-contante';
-import { GUID_VAZIO } from './../../shared/constants/valores-padroes';
-import { IDisplayNameItem } from './../../shared/models/display-name-item';
-import { BancoService } from './../../shared/services/banco.service';
-=======
 } from './../../../shared/constants/forms-contante';
-import { ROTA_COMPLEMENTO, ROTA_MODULO } from './../../../shared/constants/routes-constant';
 import { GUID_VAZIO } from './../../../shared/constants/valores-padroes';
 import { IDisplayNameItem } from './../../../shared/models/display-name-item';
 import { BancoService } from './../../../shared/services/banco.service';
->>>>>>> aa5ad58c6d282683cb364e75879678f2298e036d:src/app/paginas/cadastros-module/dentista/dentista.builder.ts
 import { DentistaAlterarStatusComponent } from './dentista-alterar-status/dentista-alterar-status.component';
 import {
   DentistaContratoHistoricoComponent,
