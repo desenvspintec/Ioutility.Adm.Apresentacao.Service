@@ -130,8 +130,8 @@ export class DentistaFeriasBuilder {
     private _gerarPesquisaFerias(): CnPesquisaModel {
         return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
             CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-            CnInputCvaModel.obterCombobox('feriasStatus', 'Status', false, [{ id: '', nome: 'Todos' }, ...DentistaFeriasBuilder.obterOpcoesCampoStatusDentistaFerias()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
-        ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
+            CnInputCvaModel.obterCombobox('statusFiltro', 'Status', false, [{ id: '', nome: 'Todos' }, ...DentistaFeriasBuilder.obterOpcoesCampoStatusDentistaFerias()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
+        ]);
     }
 
     private _gerarRotaFerias(): string {

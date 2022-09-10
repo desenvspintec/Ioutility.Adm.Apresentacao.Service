@@ -1,11 +1,12 @@
-import { FornecedorBuilder } from './../../fornecedor.builder';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { CnFormBaseModel } from 'src/app/shared/cn-components/model/cn-form-base-model';
-import { FornecedorService } from '../../fornecedor.service';
-import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-grupo-campos-formulario';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CnInputCvaModel } from 'src/app/shared/cn-components/control-value-accessor/models/cn-input-cva.model';
+import { CnFormBaseModel } from 'src/app/shared/cn-components/model/cn-form-base-model';
+import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-grupo-campos-formulario';
 import { TAMANHO_UNICO_12 } from 'src/app/shared/constants/css-class-tamanhos';
+
+import { FornecedorService } from '../../fornecedor.service';
+import { FornecedorBuilder } from './../../fornecedor.builder';
 
 @Component({
   selector: 'app-fornecedor-alterar-status',

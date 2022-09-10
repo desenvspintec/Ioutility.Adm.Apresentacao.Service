@@ -23,7 +23,6 @@ import {
     CONTROL_NAME_NOME,
     CPF_MASK,
     TELEFONE_CELULAR_MASK,
-    TELEFONE_RESIDENCIAL_MASK,
 } from 'src/app/shared/constants/forms-contante';
 import { ROTA_MODULO } from 'src/app/shared/constants/routes-constant';
 
@@ -75,7 +74,7 @@ export class FornecedorBuilder {
     private _gerarPesquisa(): CnPesquisaModel {
         return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
             CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 3).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-            CnInputCvaModel.obterCombobox('status', 'Status', false, [{ id: '', nome: 'Todos' }, ...FornecedorBuilder.obterOpcoesCampoStatusFornecedor()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
+            CnInputCvaModel.obterCombobox('statusFiltro', 'Status', false, [{ id: '', nome: 'Todos' }, ...FornecedorBuilder.obterOpcoesCampoStatusFornecedor()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
             CnInputCvaModel.obterCombobox(this._displayName.centroDeCusto.nomePropriedade, 'Centro de custo', false, [{ id: '', nome: 'Todos' }, ...this.obterOpcoesCentroDeCusto()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
         ]);
     }
