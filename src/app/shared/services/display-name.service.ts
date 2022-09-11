@@ -11,7 +11,7 @@ import { IDisplayNameItem } from '../models/display-name-item';
 })
 export class DisplayNameService {
 
-  private readonly baseUrl = EnderecoApi.obterApp() + 'displayname';
+  private readonly baseUrl = EnderecoApi.obterCadastroApp() + 'displayname';
   carregado = false;
   private displayNamesOriginal: DisplayName[] = [];
   public displayNames: DisplayName[] = [];

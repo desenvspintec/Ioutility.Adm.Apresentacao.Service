@@ -9,7 +9,7 @@ import { Entity } from '../models/entity';
 export  class EntityService implements ICrudService {
 protected readonly url: string;
   constructor(public httpClient: HttpClient, controllerUrl: string) {
-    this.url = EnderecoApi.obterApp() + controllerUrl + '/';
+    this.url = EnderecoApi.obterCadastroApp() + controllerUrl + '/';
   }
   buscarPorNome = (params: any): Observable<EntityBasica[]> => {
     return this.httpClient.get<EntityBasica[]>(this.url, {params: {nome: params}});

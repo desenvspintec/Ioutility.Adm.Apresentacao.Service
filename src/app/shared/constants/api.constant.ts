@@ -9,8 +9,12 @@ export class EnderecoApi {
     }
     return apiGeteway;
   }
-  static obterApp(): string {
+  static obterCadastroApp(): string {
     const app = 'cadastro/api/';
+    return this.obterApiGeteway() + app;
+  }
+  static obterFranquiaApp(): string {
+    const app = 'franquia/api/';
     return this.obterApiGeteway() + app;
   }
 }
