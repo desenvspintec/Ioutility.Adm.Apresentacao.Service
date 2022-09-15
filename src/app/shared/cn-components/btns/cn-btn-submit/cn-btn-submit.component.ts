@@ -26,7 +26,6 @@ export class CnBtnSubmitComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('aaa');
     this.aoClicar.emit();
   }
 

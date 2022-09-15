@@ -90,7 +90,7 @@ export class PacienteBuilder {
   private _gerarPesquisa(): CnPesquisaModel {
     return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
       CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-      CnInputCvaModel.obterCombobox(this._displayName.pacienteStatus.nomePropriedade, this._displayName.pacienteStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...PacienteBuilder.obterOpcoesCampoStatusPaciente()]).setarClassTamanho(TAMANHO_RESPONSIVO_1)
+      CnInputCvaModel.obterCombobox('statusFiltro', this._displayName.pacienteStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...PacienteBuilder.obterOpcoesCampoStatusPaciente()]).setarClassTamanho(TAMANHO_RESPONSIVO_1)
     ]);
   }
 
@@ -326,7 +326,7 @@ export class PacienteBuilder {
       ROTA_COMPLEMENTO.preCadastro,
     ]);
     const model = new CnCrudModel(
-      rota,
+      LINK_ROUTES.paciente.preCadastro,
       'Paciente',
       this._gerarPesquisa(),
       this._service,
