@@ -1,3 +1,4 @@
+import { CnHelper } from './../../../cn-helpers/cn-helper';
 import { Component, forwardRef, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CnMensagemErroHelper } from 'src/app/shared/cn-helpers/cn-mensagem-erro-helper';
@@ -56,11 +57,25 @@ export class CnInputCvaComponent extends CnControlValueAccessorBaseConponent {
     return this.model!!.obterValidadoresDoControlPrincipal();
   }
   protected adequarValorImportado(valor?: any): void {
+    valor = this.adequarValorQuandoData(valor);
+    valor = this.adequarValorQuandoDecimal(valor);
+
+    this.formControl?.setValue(valor);
+  }
+  private adequarValorQuandoDecimal(valor: any) {
+    const necessidadeAdequarNumeroDecimal = this.model?.tipo === ETipoInput.apenasNumero && !CnHelper.estaNuloVazioOuUndefined(valor) && (valor.toString() as string).includes('.');
+    if (necessidadeAdequarNumeroDecimal)
+      valor = (valor.toString() as string).replace('.', ',');
+    return valor;
+  }
+
+  private adequarValorQuandoData(valor: any) {
     const nescessitaAdequarData = this.model?.tipo === ETipoInput.data && valor?.length > 0;
     if (nescessitaAdequarData)
       valor = valor.substring(0, 10);
-    this.formControl?.setValue(valor);
+    return valor;
   }
+
   definirComoExportarValor(): void {
     let control = this.form.get(this.controlTexto) as AbstractControl;
     control.valueChanges.subscribe((texto) => {
