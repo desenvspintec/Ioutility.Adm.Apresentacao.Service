@@ -20,9 +20,8 @@ export const LINK_ROUTES = {
     inicio: RouterHelper.formarRota([ROTA_MODULO.fornecedor, ROTA_COMPLEMENTO.indexModulo], true)
   },
   franquia: {
-    franquia: {
-      inicio: RouterHelper.formarRota([ROTA_MODULO.franquia, ROTA_MODULO.franquia, ROTA_COMPLEMENTO.indexModulo])
-    },
+    inicio: RouterHelper.formarRota([ROTA_MODULO.franquia, ROTA_COMPLEMENTO.indexModulo]),
+
     tipoProcedimento: {
       inicio: RouterHelper.formarRota([ROTA_MODULO.franquia, ROTA_MODULO.tipoProcedimento, ROTA_COMPLEMENTO.indexModulo])
     },

@@ -40,14 +40,12 @@ export class FranquiaBuilder {
 
   gerarModelComponent = (): CnCrudModel => {
     const model = new CnCrudModel(
-      LINK_ROUTES.franquia.franquia.inicio,
+      LINK_ROUTES.franquia.inicio,
       'Franquias',
       CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
         CnInputCvaModel.obterTextoSimples('chave', 'Pesquisar por codigo', false, undefined, 0)
           .setarClassTamanho(TAMANHO_RESPONSIVO_4),
         CnInputCvaModel.obterCombobox('status', this._displayName.franquiaStatus.valorDisplay, false, FranquiaBuilder.obterOpcoesStatus())
-          .setarClassTamanho(TAMANHO_RESPONSIVO_2),
-        CnInputCvaModel.obterCombobox('tipoComissao', this._displayName.comissaoTipo.valorDisplay, false, FranquiaBuilder.obterOpcoesTipoComissao())
           .setarClassTamanho(TAMANHO_RESPONSIVO_2)
       ]),
       this._service,
@@ -116,10 +114,6 @@ export class FranquiaBuilder {
             new CnCampoDetalhe(this._displayName.valorMinimo.nomePropriedade, this._displayName.valorMinimo.valorDisplay),
             new CnCampoDetalhe(this._displayName.valorMaximo.nomePropriedade, this._displayName.valorMaximo.valorDisplay),
             new CnCampoDetalhe(this._displayName.valorCustoAdicional.nomePropriedade, this._displayName.valorCustoAdicional.valorDisplay),
-          ]),
-          new CnGrupoCampoDetalhe('Comissão', false, [
-            new CnCampoDetalhe(this._displayName.comissaoTipo.nomePropriedade, this._displayName.comissaoTipo.valorDisplay),
-            new CnCampoDetalhe(this._displayName.comissaoValor.nomePropriedade, this._displayName.comissaoValor.valorDisplay),
           ])
         ])
       ]
