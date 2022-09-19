@@ -13,17 +13,14 @@ import {
 } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro-form/paciente-pre-cadastro-form.component';
 import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
 
-import {
-  FranquiaFormComponent,
-} from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
-
-import { FranquiaIndicadoresComponent } from './paginas/franquias-module/franquia/franquia-indicadores/franquia-indicadores.component';
-
-
 
 import { RouterHelper } from './shared/cn-helpers/cn-router-helper';
 import { ROTA_COMPLEMENTO, ROTA_MODULO, ROTA_PARAMETRO } from './shared/constants/routes-constant';
 import { TipoProcedimentoFormComponent } from './paginas/cadastros-module/tipo-procedimento/tipo-procedimento-form/tipo-procedimento-form.component';
+import { FranquiaComponent } from './paginas/franquias-module/franquia/franquia.component';
+import {
+  FranquiaFormComponent,
+} from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
 
 // para criar rotas SEGUIR ESTE PADRÃO
 
@@ -69,7 +66,9 @@ export const ROTAS = {
   },
 
   franquia: {
-    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.franquia], () => import('./paginas/franquias-module/franquia/franquia.module').then(m => m.FranquiaModule)),
+    index: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_COMPLEMENTO.indexModulo], component: FranquiaComponent }),
+    registrar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_COMPLEMENTO.registrar], component: FranquiaFormComponent }),
+    atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: FranquiaFormComponent })
   },
 
 }
@@ -99,7 +98,13 @@ const routes: Routes = [
 
   ROTAS.procedimentos.index,
   ROTAS.procedimentos.registrar,
-  ROTAS.procedimentos.atualizar
+  ROTAS.procedimentos.atualizar,
+
+  ROTAS.franquia.index,
+  ROTAS.franquia.registrar,
+  ROTAS.franquia.atualizar
+
+
 ];
 
 @NgModule({

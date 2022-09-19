@@ -14,7 +14,7 @@ export class EnderecoApi {
     return this.obterApiGeteway() + app;
   }
   static obterFranquiaApp(): string {
-    const app = 'api/franquia/';
+    const app = 'franquia/api/';
     return 'http://localhost:5251/' + app;
   }
 }

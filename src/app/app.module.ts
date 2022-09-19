@@ -25,6 +25,8 @@ import { TipoProcedimentoFormComponent } from './paginas/cadastros-module/tipo-p
 import { ProcedimentoComponent } from './paginas/cadastros-module/procedimento/procedimento.component';
 import { ProcedimentoFormComponent } from './paginas/cadastros-module/procedimento/procedimento-form/procedimento-form.component';
 
+import { FranquiaComponent } from './paginas/franquias-module/franquia/franquia.component';
+import { FranquiaFormComponent } from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { ProcedimentoFormComponent } from './paginas/cadastros-module/procedimen
     TipoProcedimentoFormComponent,
     ProcedimentoComponent,
     ProcedimentoFormComponent,
+    FranquiaComponent,
+    FranquiaFormComponent
 
   ],
   imports: [
