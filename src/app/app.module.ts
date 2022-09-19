@@ -17,6 +17,7 @@ import {
   PacientePreCadastroFormComponent,
 } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro-form/paciente-pre-cadastro-form.component';
 import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
+
 import { SharedModule } from './shared/shared.module';
 import { MenuLateralComponent } from './template/menu-lateral/menu-lateral.component';
 
@@ -29,8 +30,7 @@ import { MenuLateralComponent } from './template/menu-lateral/menu-lateral.compo
     CadastroCompletoFormComponent,
     MenuLateralComponent,
     PacienteIndicadoresComponent,
-    PacienteAlterarStatusComponent,
-    
+    PacienteAlterarStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -42,4 +42,4 @@ import { MenuLateralComponent } from './template/menu-lateral/menu-lateral.compo
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

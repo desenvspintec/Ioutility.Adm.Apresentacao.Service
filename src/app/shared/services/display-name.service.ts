@@ -21,7 +21,7 @@ export class DisplayNameService {
 
   constructor(httpClient: HttpClient) {
     this._aoCarregarDisplayNames = new Subject();
-    httpClient.get<DisplayName[]>(this.baseUrl).subscribe(result =>{
+    httpClient.get<DisplayName[]>(this.baseUrl).subscribe(result => {
       this.displayNamesOriginal = result;
       this._addDisplayComPrimeiraLetraMinuscula();
       this.setarItens();
@@ -42,7 +42,7 @@ export class DisplayNameService {
 
   obterDisplayName(propriedade: string): DisplayName {
     var displayname = this.displayNames.find(dn => dn.nomePropriedade.toLowerCase() === propriedade.toLowerCase());
-    if (displayname === undefined) return  new DisplayName('', '');
+    if (displayname === undefined) return new DisplayName('', '');
 
     return displayname;
   }
@@ -51,12 +51,12 @@ export class DisplayNameService {
     this.displayNamesOriginal.forEach(displayName => {
       try {
         const primeiroCaracter = displayName.nomePropriedade.substring(0, 1).toLowerCase();
-        const restanteString =  displayName.nomePropriedade.length > 1 ? displayName.nomePropriedade.substring(1, displayName.nomePropriedade.length) : '';
+        const restanteString = displayName.nomePropriedade.length > 1 ? displayName.nomePropriedade.substring(1, displayName.nomePropriedade.length) : '';
         const nomePropriedadeNomeMinusculo = primeiroCaracter + restanteString;
 
         let displayNameCorreto = new DisplayName(nomePropriedadeNomeMinusculo, displayName.valorDisplay);
         this.displayNames.push(displayNameCorreto);
-      }catch (erro) {
+      } catch (erro) {
         console.log('Não foi possivel criar display name com letra minuscula. Display name:');
         console.log(displayName);
         console.log('erro');
@@ -119,6 +119,7 @@ export class DisplayNameService {
       quantidadeFaltas: this.obterDisplayName('quantidadeFaltas'),
       unidadeQueAtende: this.obterDisplayName('unidadeQueAtende'),
       agenciaConta: this.obterDisplayName('agenciaConta'),
+      franquiaStatus: this.obterDisplayName('franquiaStatus'),
     };
   }
 }

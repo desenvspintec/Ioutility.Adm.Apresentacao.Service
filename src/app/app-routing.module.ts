@@ -9,6 +9,15 @@ import {
   PacientePreCadastroFormComponent,
 } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro-form/paciente-pre-cadastro-form.component';
 import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
+
+import {
+  FranquiaFormComponent,
+} from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
+
+import { FranquiaIndicadoresComponent } from './paginas/franquias-module/franquia/franquia-indicadores/franquia-indicadores.component';
+
+
+
 import { RouterHelper } from './shared/cn-helpers/cn-router-helper';
 import { ROTA_COMPLEMENTO, ROTA_MODULO, ROTA_PARAMETRO } from './shared/constants/routes-constant';
 
@@ -25,12 +34,11 @@ export const ROTAS = {
       , atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.preCadastro, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: PacientePreCadastroFormComponent })
     },
     cadastroCompleto: {
-       redirecionamentoIndex: RouterHelper.obterPathRedirecionado({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto], irPara: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_COMPLEMENTO.indexModulo] })
+      redirecionamentoIndex: RouterHelper.obterPathRedirecionado({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto], irPara: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_COMPLEMENTO.indexModulo] })
       , index: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_COMPLEMENTO.indexModulo], component: CadastroCompletoComponent })
       , registrar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_COMPLEMENTO.registrar], component: CadastroCompletoFormComponent })
       , atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: CadastroCompletoFormComponent })
     }
-
   },
 
   fornecedor: {
@@ -43,6 +51,10 @@ export const ROTAS = {
 
   colaborador: {
     index: RouterHelper.obterPathParaModulo([ROTA_MODULO.colaborador], () => import('./paginas/cadastros-module/colaborador/colaborador.module').then(m => m.ColaboradorModule))
+  },
+
+  franquia: {
+    index: RouterHelper.obterPathParaModulo([ROTA_MODULO.franquia], () => import('./paginas/franquias-module/franquia/franquia.module').then(m => m.FranquiaModule)),
   },
 
 }
@@ -65,6 +77,8 @@ const routes: Routes = [
   ROTAS.dentistas.index,
 
   ROTAS.colaborador.index,
+
+  ROTAS.franquia.index,
 ];
 
 @NgModule({

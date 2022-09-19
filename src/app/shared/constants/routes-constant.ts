@@ -8,6 +8,7 @@ export const ROTA_MODULO = {
   , dentistaFerias: 'dentistaFerias'
   , dentistaContrato: 'dentistaContrato'
   , produto: 'produto'
+  , franquia: 'franquia'
 }
 export const ROTA_COMPLEMENTO = {
   indexModulo: 'index',
@@ -22,8 +23,8 @@ export const ROTA_COMPLEMENTO = {
   registroFalta: 'registro-de-faltas',
 }
 class RotaParametro {
-  constructor(public nomeParametro: string) {}
-  get valorParaRota(): string { return ':' +this.nomeParametro;}
+  constructor(public nomeParametro: string) { }
+  get valorParaRota(): string { return ':' + this.nomeParametro; }
 }
 export const ROTA_PARAMETRO = {
   id: new RotaParametro('id'),

@@ -52,4 +52,5 @@ export interface IDisplayNameItem {
   quantidadeFaltas: DisplayName,
   unidadeQueAtende: DisplayName,
   agenciaConta: DisplayName,
+  franquiaStatus: DisplayName
 }
