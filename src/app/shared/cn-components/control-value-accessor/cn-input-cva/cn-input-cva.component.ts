@@ -58,7 +58,7 @@ export class CnInputCvaComponent extends CnControlValueAccessorBaseConponent {
   }
   protected adequarValorImportado(valor?: any): void {
     valor = this.adequarValorQuandoData(valor);
-    // valor = this.adequarValorQuandoDecimal(valor);
+    valor = this.adequarValorQuandoDecimal(valor);
 
     this.formControl?.setValue(valor);
   }
@@ -89,7 +89,7 @@ export class CnInputCvaComponent extends CnControlValueAccessorBaseConponent {
       case ETipoInput.textoSimples:
         return 'text';
       case ETipoInput.apenasNumero:
-        return 'number';
+        return 'text';
       case ETipoInput.data:
         return 'date';
       case ETipoInput.dataHora:
