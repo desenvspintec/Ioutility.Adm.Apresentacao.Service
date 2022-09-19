@@ -6,12 +6,22 @@ import { CnInputCvaModel } from '../control-value-accessor/models/cn-input-cva.m
 
 export const CONTROL_NAME_PESQUISA_RESET = 'pesquisaReset';
 
+export enum ECnPesquisaTipoParametro {
+  string,
+  objeto
+}
 export class CnPesquisaModel {
   pesquisarDelegate?: (dadosPesquisa: any) => Observable<EntityBasica[]>;
   private readonly _acionarPesquisaNotificador: Subject<IFormPesquisa | undefined> = new Subject();
   public readonly controlsPesquisaInputCva: CnInputCvaModel[] = [];
 
   identificadorDeTelaParaPesquisasEmCache?: string;
+  get tipoParametroDelegatePesquisa(): ECnPesquisaTipoParametro {
+    const pesquisaApenasPorNome = this.controlsPesquisaInputCva.length === 2 && this.controlsPesquisaInputCva.some(control => control.name === 'nome');
+    if (pesquisaApenasPorNome) return ECnPesquisaTipoParametro.string;
+
+    return ECnPesquisaTipoParametro.objeto;
+  }
 
   get aoSolicitarPesquisa(): Observable<IFormPesquisa | undefined> {
     return this._acionarPesquisaNotificador.asObservable();

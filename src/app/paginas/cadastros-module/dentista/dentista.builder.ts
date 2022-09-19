@@ -263,7 +263,7 @@ export class DentistaBuilder {
         campoChavePix,
       ]),
       new CnGrupoCamposFormulario('Remuneração', [
-        CnInputCvaModel.obterTextoSimplesComMask(this._displayName.salarioBrutoMensal.nomePropriedade, this._displayName.salarioBrutoMensal.valorDisplay, true, '0.000,00'),
+        CnInputCvaModel.obterTextoSimplesComMask(this._displayName.salarioBrutoMensal.nomePropriedade, this._displayName.salarioBrutoMensal.valorDisplay, true, '00.000,00'),
         CnInputCvaModel.obterComboboxMultiSelect(this._displayName.diasQueAtende.nomePropriedade, this._displayName.diasQueAtende.valorDisplay, true, this._opcoesDIasQueAtende())
           .setarMapeamentoDeValores(this._mapearEntradaStringParaLista(), this._mapearSaidaListaParaString())
 

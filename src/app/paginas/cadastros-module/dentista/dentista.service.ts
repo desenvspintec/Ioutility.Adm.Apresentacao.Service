@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -29,7 +30,7 @@ export class DentistaService
     private _matDialog: MatDialog,
     private _drawerService: CnDrawerService,
     ) {
-    super(httpClient, 'dentista');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'dentista');
   }
   telaDentista = ROTA_COMPLEMENTO.indexModulo;
   get cachePalavraChaveBusca(): string { return this._cachePalavraChaveBusca}

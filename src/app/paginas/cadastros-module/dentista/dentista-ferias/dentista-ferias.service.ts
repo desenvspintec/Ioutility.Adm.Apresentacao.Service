@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,10 +27,10 @@ export class DentistaFeriasService extends EntityService implements IComponentSe
     private _matDialog: MatDialog,
     private _dentistaService: DentistaService
   ) {
-    super(httpClient, 'dentistaFerias');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'dentistaFerias');
   }
   telaDentistaFerias = ROTA_COMPLEMENTO.indexModulo;
-  
+
   gerarModelComponent(): CnCrudModel {
       return new DentistaFeriasBuilder(this, this._matDialog, this._displayNameService, this._dentistaService).gerarModelComponent();
 

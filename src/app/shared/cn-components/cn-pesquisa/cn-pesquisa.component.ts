@@ -8,7 +8,7 @@ import { CnFormBaseModel } from '../model/cn-form-base-model';
 import { CnGrupoCamposFormulario } from '../model/cn-grupo-campos-formulario';
 import { IHttpErrorResponse } from './../../interfaces/i-http-error-response';
 import { CnInputCvaModel } from './../control-value-accessor/models/cn-input-cva.model';
-import { CnPesquisaModel, CONTROL_NAME_PESQUISA_RESET } from './cn-pesquisa.model';
+import { CnPesquisaModel, CONTROL_NAME_PESQUISA_RESET, ECnPesquisaTipoParametro } from './cn-pesquisa.model';
 import { PesquisaCache } from './pesquisa-cache';
 
 @Component({
@@ -69,7 +69,25 @@ export class CnPesquisaComponent implements OnInit, AfterViewInit {
     let model = this.model as CnPesquisaModel;
     if (this.model?.identificadorDeTelaParaPesquisasEmCache)
       this._pesquisaService.setarCache(new PesquisaCache(model.identificadorDeTelaParaPesquisasEmCache!, formValue.nome));
-    return model.pesquisarDelegate!(formValue);
+
+    this._ajustarValoresNulos(formValue);
+    let parametro;
+    if (model.tipoParametroDelegatePesquisa === ECnPesquisaTipoParametro.string) {
+      parametro = formValue.nome;
+    } else {
+      parametro = formValue;
+    }
+
+    return model.pesquisarDelegate!(parametro);
+  }
+  private _ajustarValoresNulos(formValue: any) {
+    Object.keys(formValue).forEach(propriedade => {
+      const valorEhNuloOuIndefinido = formValue[propriedade] === undefined || formValue[propriedade] === null;
+      if (!valorEhNuloOuIndefinido) return;
+
+      formValue[propriedade]='';
+    });
+
   }
 
   private _emitirEventoCarregado() {

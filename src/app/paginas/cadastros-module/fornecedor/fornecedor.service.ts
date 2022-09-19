@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { EntityBasica } from 'src/app/shared/models/entity-basica';
 import { FornecedorStatus, IIndicadoresDTO, IIndicadoresCentroDeCustoDTO, FornecedorCentroDeCusto } from './fornecedor.models';
 import { DisplayNameService } from './../../../shared/services/display-name.service';
@@ -22,7 +23,7 @@ export class FornecedorService extends EntityService implements IComponentServic
     private _bancoService: BancoService,
     private _matDialog: MatDialog,
   ) {
-    super(httpClient, 'fornecedor');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'fornecedor');
   }
   gerarModelComponent(): CnCrudModel {
       return new FornecedorBuilder(this, this._bancoService, this._matDialog, this._displayNameService).gerarModelComponent();

@@ -1,95 +1,92 @@
-<div class="menu conteudo" *ngIf="exibeMenu()" [@menuToggle]="estadoMenu" >
-    <div>
-      <span id="logo">
-        <img width="45%" src="assets/JPLogo2.png" />
-        <button class="button button-superior" *ngIf="service.estaFechado"  (click)="menuToggle()">
-          <mat-icon class="icon">chevron_left_new</mat-icon>
-        </button>
-      </span>
-    </div>
-
-    <div class="itens-menu">
-      <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']">
-          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu">
-            <mat-icon class="icon">home
-            </mat-icon>Início
-          </p>
-        </a>
-      </div>
-      <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']" >
-          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu" >
-            <mat-icon class="icon">assignment</mat-icon>Cadastros
-
-          </p>
-        </a>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="[linkRotas.paciente.preCadastro]">
-            Pacientes
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="[linkRotas.colaborador.inicio]">
-            Colaborador
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="[linkRotas.dentista.inicio]">
-            Dentistas
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="[linkRotas.fornecedor.inicio]">
-            Fornecedores
-          </a>
-        </div>
-      </div>
-
-      <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']" >
-          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu" >
-            <mat-icon class="icon">assignment</mat-icon>Franquias
-
-          </p>
-        </a>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/franquia']">
-            Minhas Franquias
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/franquiaProcedimentos']">
-            Procedimentos
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/franquiaAuditoria']">
-            Auditoria
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/franquiaIndicadores']">
-            Visão Geral
-          </a>
-        </div>
-      </div>
-
-      <div class="item active" routerLinkActive="active">
-        <a [routerLink]="['#']">
-          <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
-          <p class="label-menu">
-            <mat-icon class="icon">home</mat-icon>Exemplo
-          </p>
-        </a>
-      </div>
-    </div>
-
-      <button class="button button-inferior" *ngIf="service.estaAberto" (click)="menuToggle()"  (click)="componentesToggle()">
-        <mat-icon class="icon">chevron_right_new</mat-icon>
+<div class="menu conteudo" *ngIf="exibeMenu()" [@menuToggle]="estadoMenu">
+  <div>
+    <span id="logo">
+      <img width="45%" src="assets/JPLogo2.png" />
+      <button class="button button-superior" *ngIf="service.estaFechado" (click)="menuToggle()">
+        <mat-icon class="icon">chevron_left_new</mat-icon>
       </button>
-
+    </span>
   </div>
+
+  <div class="itens-menu">
+    <div class="item active" routerLinkActive="active">
+      <a [routerLink]="['#']">
+        <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
+        <p class="label-menu">
+          <mat-icon class="icon">home
+          </mat-icon>Início
+        </p>
+      </a>
+    </div>
+    <div class="item active" routerLinkActive="active">
+      <a [routerLink]="['#']">
+        <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
+        <p class="label-menu">
+          <mat-icon class="icon">assignment</mat-icon>Cadastros
+
+        </p>
+      </a>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.paciente.preCadastro]">
+          Pacientes
+        </a>
+      </div>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.colaborador.inicio]">
+          Colaborador
+        </a>
+      </div>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.dentista.inicio]">
+          Dentistas
+        </a>
+      </div>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.fornecedor.inicio]">
+          Fornecedores
+        </a>
+      </div>
+    </div>
+
+    <div class="item active" routerLinkActive="active">
+      <a [routerLink]="['#']">
+        <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
+        <p class="label-menu">
+          <mat-icon class="icon">assignment</mat-icon>Franquias
+
+        </p>
+      </a>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="['/franquia']">
+          Minhas Franquias
+        </a>
+      </div>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.franquia.tipoProcedimento.inicio]">
+          Tipo de procedimentos
+        </a>
+      </div>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.franquia.procedimento.inicio]">
+          Procedimentos
+        </a>
+      </div>
+
+    </div>
+
+    <div class="item active" routerLinkActive="active">
+      <a [routerLink]="['#']">
+        <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
+        <p class="label-menu">
+          <mat-icon class="icon">home</mat-icon>Exemplo
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <button class="button button-inferior" *ngIf="service.estaAberto" (click)="menuToggle()"
+    (click)="componentesToggle()">
+    <mat-icon class="icon">chevron_right_new</mat-icon>
+  </button>
+
+</div>

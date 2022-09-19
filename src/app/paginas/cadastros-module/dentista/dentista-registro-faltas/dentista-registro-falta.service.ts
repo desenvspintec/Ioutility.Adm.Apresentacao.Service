@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ import { EntityService } from 'src/app/shared/services/entity.service';
 export class DentistaRegistroFaltaService extends EntityService {
 
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'registroFalta');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'registroFalta');
   }
   telaDentistaRegistroFalta = ROTA_COMPLEMENTO.indexModulo;
 

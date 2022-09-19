@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { concat, Observable, Subject } from 'rxjs';
 
 import { EnderecoApi } from '../constants/api.constant';
 import { DisplayName } from '../models/display-name';
@@ -11,26 +11,59 @@ import { IDisplayNameItem } from '../models/display-name-item';
 })
 export class DisplayNameService {
 
-  private readonly baseUrl = EnderecoApi.obterCadastroApp() + 'displayname';
-  carregado = false;
-  private displayNamesOriginal: DisplayName[] = [];
-  public displayNames: DisplayName[] = [];
-  itens?: IDisplayNameItem;
+  private readonly _baseUrlFranquiaApp = EnderecoApi.obterFranquiaApp() + 'displayname';
+  private readonly _baseUrlCadastroApp = EnderecoApi.obterCadastroApp() + 'displayname';
+
+  private readonly _requisicoes: Observable<DisplayName[]>[] = [
+    this._httpClient.get<DisplayName[]>(this._baseUrlCadastroApp),
+    this._httpClient.get<DisplayName[]>(this._baseUrlFranquiaApp)
+  ]
+
+  private carregamentosExecutados = 0;
+
+  private _displayNamesOriginal: DisplayName[] = [];
   private _aoCarregarDisplayNames: Subject<IDisplayNameItem>;
+  public displayNames: DisplayName[] = [];
+
+  carregado = false;
+  itens?: IDisplayNameItem;
   get aoCarregarDisplayNames(): Observable<IDisplayNameItem> { return this._aoCarregarDisplayNames.asObservable(); }
 
-  constructor(httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient) {
     this._aoCarregarDisplayNames = new Subject();
-    httpClient.get<DisplayName[]>(this.baseUrl).subscribe(result => {
-      this.displayNamesOriginal = result;
-      this._addDisplayComPrimeiraLetraMinuscula();
-      this.setarItens();
-      this.carregado = true;
-      setTimeout(() => {
-        this._aoCarregarDisplayNames.next(this.itens!);
+    concat(
+      ...this._requisicoes
+    ).subscribe({
+      next: result => {
+        this._displayNamesOriginal.push(...result);
 
-      }, 100);
+        this.addDisplayComPrimeiraLetraMinuscula();
+        this.setarItens();
+        this.informarCarregamentoConcluido();
+
+      }, error: (erro) => {
+        console.log('não foi possivel carregar um dos displays names');
+        console.log(erro);
+        this.informarCarregamentoConcluido();
+      }
     });
+  }
+
+  private informarCarregamentoConcluido(): void {
+    this.carregamentosExecutados += 1;
+
+    const todosCarregamentosExecutados = this.carregamentosExecutados === this._requisicoes.length;
+    if (!todosCarregamentosExecutados) return;
+
+    this.liberarUsoDaApp();
+  }
+
+  private liberarUsoDaApp() {
+    this.carregado = true;
+    setTimeout(() => {
+      this._aoCarregarDisplayNames.next(this.itens!);
+
+    }, 100);
   }
 
   obterValorDisplayName(propriedade: string): string {
@@ -47,8 +80,8 @@ export class DisplayNameService {
     return displayname;
   }
 
-  private _addDisplayComPrimeiraLetraMinuscula(): void {
-    this.displayNamesOriginal.forEach(displayName => {
+  private addDisplayComPrimeiraLetraMinuscula(): void {
+    this._displayNamesOriginal.forEach(displayName => {
       try {
         const primeiroCaracter = displayName.nomePropriedade.substring(0, 1).toLowerCase();
         const restanteString = displayName.nomePropriedade.length > 1 ? displayName.nomePropriedade.substring(1, displayName.nomePropriedade.length) : '';
@@ -119,6 +152,18 @@ export class DisplayNameService {
       quantidadeFaltas: this.obterDisplayName('quantidadeFaltas'),
       unidadeQueAtende: this.obterDisplayName('unidadeQueAtende'),
       agenciaConta: this.obterDisplayName('agenciaConta'),
+
+      tipoProcedimento: this.obterDisplayName('tipoProcedimento'),
+      codProcedimento: this.obterDisplayName('codProcedimento'),
+      procedimentoStatus: this.obterDisplayName('procedimentoStatus'),
+
+      tipoProcedimentoId: this.obterDisplayName('tipoProcedimentoId'),
+      valorSugerido: this.obterDisplayName('valorSugerido'),
+      valorMinimo: this.obterDisplayName('valorMinimo'),
+      valorMaximo: this.obterDisplayName('valorMaximo'),
+      valorCustoAdicional: this.obterDisplayName('valorCustoAdicional'),
+      comissaoValor: this.obterDisplayName('comissaoValor'),
+      comissaoTipo: this.obterDisplayName('comissaoTipo'),
       franquiaStatus: this.obterDisplayName('franquiaStatus'),
     };
   }
