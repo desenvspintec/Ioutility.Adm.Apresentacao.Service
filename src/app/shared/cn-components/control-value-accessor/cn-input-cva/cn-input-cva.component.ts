@@ -58,7 +58,7 @@ export class CnInputCvaComponent extends CnControlValueAccessorBaseConponent {
   }
   protected adequarValorImportado(valor?: any): void {
     valor = this.adequarValorQuandoData(valor);
-    valor = this.adequarValorQuandoDecimal(valor);
+    // valor = this.adequarValorQuandoDecimal(valor);
 
     this.formControl?.setValue(valor);
   }
