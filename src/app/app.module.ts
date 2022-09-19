@@ -19,6 +19,10 @@ import {
 import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
 import { SharedModule } from './shared/shared.module';
 import { MenuLateralComponent } from './template/menu-lateral/menu-lateral.component';
+import { TipoProcedimentoComponent } from './paginas/cadastros-module/tipo-procedimento/tipo-procedimento.component';
+import { TipoProcedimentoFormComponent } from './paginas/cadastros-module/tipo-procedimento/tipo-procedimento-form/tipo-procedimento-form.component';
+import { ProcedimentoComponent } from './paginas/cadastros-module/procedimento/procedimento.component';
+import { ProcedimentoFormComponent } from './paginas/cadastros-module/procedimento/procedimento-form/procedimento-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { MenuLateralComponent } from './template/menu-lateral/menu-lateral.compo
     MenuLateralComponent,
     PacienteIndicadoresComponent,
     PacienteAlterarStatusComponent,
+    TipoProcedimentoComponent,
+    TipoProcedimentoFormComponent,
+    ProcedimentoComponent,
+    ProcedimentoFormComponent,
     
   ],
   imports: [

@@ -321,10 +321,7 @@ export class PacienteBuilder {
     const gruposCamposFormulario: CnGrupoCamposFormulario[] = this._gerarFormularioPreCadastro();
     const modelListagemExibicao = this._obterListagemExibicao();
     const camposDetalhes = this._obterCamposDetalhesPreCadastro()
-    const rota = RouterHelper.formarRota([
-      ROTA_MODULO.paciente,
-      ROTA_COMPLEMENTO.preCadastro,
-    ]);
+    const rota = LINK_ROUTES.paciente.preCadastro;
     const model = new CnCrudModel(
       rota,
       'Paciente',

@@ -62,25 +62,16 @@
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/produto']">
-            Produtos
+          <a [routerLink]="[linkRotas.franquia.tipoProcedimento.inicio]">
+            Tipo de procedimentos
           </a>
         </div>
         <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/colaborador']">
-            Colaborador
+          <a [routerLink]="[linkRotas.franquia.procedimento.inicio]">
+            Procedimentos
           </a>
         </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/dentista']">
-            Dentistas
-          </a>
-        </div>
-        <div class="submenu" [@componentesToggle]="estadoMenu">
-          <a [routerLink]="['/fornecedor']">
-            Fornecedores
-          </a>
-        </div>
+
       </div>
 
       <div class="item active" routerLinkActive="active">

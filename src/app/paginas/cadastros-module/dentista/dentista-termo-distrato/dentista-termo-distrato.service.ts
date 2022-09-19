@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { Observable } from 'rxjs';
 import { IEntityBasica } from 'src/app/shared/models/entity-basica';
 import { ROTA_COMPLEMENTO } from 'src/app/shared/constants/routes-constant';
@@ -13,7 +14,7 @@ export class DentistaTermoDistratoService extends EntityService{
   constructor(
     httpClient: HttpClient
   ) {
-    super(httpClient, 'dentistaTermoDistrato');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'dentistaTermoDistrato');
   }
   telaDentistaTermoDistrato = ROTA_COMPLEMENTO.indexModulo;
 

@@ -1,19 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { EntityBasica } from './../models/entity-basica';
-import { ICrudService } from './../interfaces/i-crud-service';
-import { EnderecoApi } from '../constants/api.constant';
 import { Entity } from '../models/entity';
+import { ICrudService } from './../interfaces/i-crud-service';
+import { EntityBasica } from './../models/entity-basica';
 
 export  class EntityService implements ICrudService {
 protected readonly url: string;
-  constructor(public httpClient: HttpClient, controllerUrl: string) {
-    this.url = EnderecoApi.obterCadastroApp() + controllerUrl + '/';
+  constructor(public httpClient: HttpClient, appGateway: string, controllerUrl: string) {
+    this.url = appGateway + controllerUrl + '/';
   }
-  buscarPorNome = (params: any): Observable<EntityBasica[]> => {
-    return this.httpClient.get<EntityBasica[]>(this.url, {params: {nome: params}});
+  buscarPorNome = (nome: string): Observable<EntityBasica[]> => {
+    return this.httpClient.get<EntityBasica[]>(this.url, {params: {nome}});
   }
+
   buscarPorId = (entityId: string): Observable<Entity> => {
     return this.httpClient.get<EntityBasica>(this.url + entityId);
   }

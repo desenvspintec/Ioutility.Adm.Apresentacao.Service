@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { MatDialog } from '@angular/material/dialog';
 import { BancoService } from './../../../shared/services/banco.service';
 import { DisplayNameService } from './../../../shared/services/display-name.service';
@@ -20,7 +21,7 @@ export class ColaboradorService extends EntityService implements IComponentServi
     private _displayNameService: DisplayNameService,
     private _bancoService: BancoService,
     private _matDialog: MatDialog) {
-      super(httpClient, 'colaborador');
+      super(httpClient, EnderecoApi.obterCadastroApp(), 'colaborador');
      }
   gerarModelComponent(): CnCrudModel {
     return new ColaboradorBuilder(this, this._bancoService, this._matDialog, this._displayNameService).gerarModelComponent();

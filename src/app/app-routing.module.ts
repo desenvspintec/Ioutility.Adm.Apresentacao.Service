@@ -1,3 +1,6 @@
+import { ProcedimentoFormComponent } from './paginas/cadastros-module/procedimento/procedimento-form/procedimento-form.component';
+import { ProcedimentoComponent } from './paginas/cadastros-module/procedimento/procedimento.component';
+import { TipoProcedimentoComponent } from './paginas/cadastros-module/tipo-procedimento/tipo-procedimento.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -11,6 +14,7 @@ import {
 import { PacientePreCadastroComponent } from './paginas/cadastros-module/paciente/pre-cadastro/paciente-pre-cadastro.component';
 import { RouterHelper } from './shared/cn-helpers/cn-router-helper';
 import { ROTA_COMPLEMENTO, ROTA_MODULO, ROTA_PARAMETRO } from './shared/constants/routes-constant';
+import { TipoProcedimentoFormComponent } from './paginas/cadastros-module/tipo-procedimento/tipo-procedimento-form/tipo-procedimento-form.component';
 
 // para criar rotas SEGUIR ESTE PADRÃO
 
@@ -31,6 +35,17 @@ export const ROTAS = {
       , atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.paciente, ROTA_COMPLEMENTO.cadastroCompleto, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: CadastroCompletoFormComponent })
     }
 
+  },
+
+  tipoProcedimentos: {
+    index: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.tipoProcedimento, ROTA_COMPLEMENTO.indexModulo], component: TipoProcedimentoComponent}),
+    registrar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.tipoProcedimento, ROTA_COMPLEMENTO.registrar], component: TipoProcedimentoFormComponent}),
+    atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.tipoProcedimento, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: TipoProcedimentoFormComponent})
+  },
+  procedimentos: {
+    index: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.procedimento, ROTA_COMPLEMENTO.indexModulo], component: ProcedimentoComponent}),
+    registrar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.procedimento, ROTA_COMPLEMENTO.registrar], component: ProcedimentoFormComponent}),
+    atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_MODULO.procedimento, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: ProcedimentoFormComponent})
   },
 
   fornecedor: {
@@ -65,6 +80,14 @@ const routes: Routes = [
   ROTAS.dentistas.index,
 
   ROTAS.colaborador.index,
+
+  ROTAS.tipoProcedimentos.index,
+  ROTAS.tipoProcedimentos.registrar,
+  ROTAS.tipoProcedimentos.atualizar,
+
+  ROTAS.procedimentos.index,
+  ROTAS.procedimentos.registrar,
+  ROTAS.procedimentos.atualizar
 ];
 
 @NgModule({

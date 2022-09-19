@@ -8,6 +8,9 @@ export const ROTA_MODULO = {
   , dentistaFerias: 'dentistaFerias'
   , dentistaContrato: 'dentistaContrato'
   , produto: 'produto'
+  , franquia: 'franquia'
+  , procedimento: 'procedimento'
+  , tipoProcedimento: 'tipo-procedimento'
 }
 export const ROTA_COMPLEMENTO = {
   indexModulo: 'index',

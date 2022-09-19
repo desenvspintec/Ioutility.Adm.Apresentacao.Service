@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,10 +25,9 @@ export class PacienteService
   constructor(
     httpClient: HttpClient,
     private _displayNameService: DisplayNameService,
-    private _bancoService: BancoService,
     private _matDialog: MatDialog
   ) {
-    super(httpClient, 'Paciente');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'Paciente');
     this.definirModoPreCadastro();
   }
   gerarModelComponent(): CnCrudModel {
@@ -60,7 +60,7 @@ export class PacienteService
   buscarAvancado = (params: any): Observable<EntityBasica[]> => {
     return this.httpClient.get<EntityBasica[]>(this.url + 'avancado', { params });
   }
-  
+
   registrarPreCadastro = (entity: IEntity): Observable<any> => {
     return this.httpClient.post(this.url + 'preCadastro', entity);
   }

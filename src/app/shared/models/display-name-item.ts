@@ -52,4 +52,18 @@ export interface IDisplayNameItem {
   quantidadeFaltas: DisplayName,
   unidadeQueAtende: DisplayName,
   agenciaConta: DisplayName,
+
+  procedimentoStatus: DisplayName,
+  tipoProcedimento: DisplayName,
+  codProcedimento: DisplayName,
+
+  tipoProcedimentoId: DisplayName,
+  valorSugerido: DisplayName,
+  valorMinimo: DisplayName,
+  valorMaximo: DisplayName,
+  valorCustoAdicional: DisplayName,
+  comissaoValor: DisplayName,
+  comissaoTipo: DisplayName,
+
+
 }

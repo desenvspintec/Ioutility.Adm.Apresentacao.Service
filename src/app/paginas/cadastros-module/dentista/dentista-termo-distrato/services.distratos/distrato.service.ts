@@ -1,3 +1,4 @@
+import { EnderecoApi } from 'src/app/shared/constants/api.constant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,7 +14,7 @@ export class DistratoService extends EntityService {
   constructor(
     httpClient: HttpClient,
     ) {
-    super(httpClient, 'distrato');
+    super(httpClient, EnderecoApi.obterCadastroApp(), 'distrato');
   }
 
   buscarDistrato = (): Observable<DentistaIDistratoDTO> => {
