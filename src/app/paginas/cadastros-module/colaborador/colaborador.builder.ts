@@ -33,7 +33,6 @@ import {
     CPF_MASK,
     FORM_TITULO_GENERICO,
     TELEFONE_CELULAR_MASK,
-    TELEFONE_RESIDENCIAL_MASK,
 } from './../../../shared/constants/forms-contante';
 import { ROTA_COMPLEMENTO, ROTA_MODULO } from './../../../shared/constants/routes-constant';
 import { ColaboradorAlterarStatusComponent } from './colaborador-alterar-status/colaborador-alterar-status.component';
@@ -231,7 +230,7 @@ export class ColaboradorBuilder {
     private _gerarPesquisa(): CnPesquisaModel {
         return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
             CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-            CnInputCvaModel.obterCombobox(this._displayName.colaboradorStatus.nomePropriedade, this._displayName.colaboradorStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...ColaboradorBuilder.obterOpcoesCampoStatusColaborador()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
+            CnInputCvaModel.obterCombobox('statusFiltro', this._displayName.colaboradorStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...ColaboradorBuilder.obterOpcoesCampoStatusColaborador()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
         ]);
     }
 

@@ -323,7 +323,7 @@ export class PacienteBuilder {
     const camposDetalhes = this._obterCamposDetalhesPreCadastro()
     const rota = LINK_ROUTES.paciente.preCadastro;
     const model = new CnCrudModel(
-      rota,
+      LINK_ROUTES.paciente.preCadastro,
       'Paciente',
       this._gerarPesquisa(),
       this._service,

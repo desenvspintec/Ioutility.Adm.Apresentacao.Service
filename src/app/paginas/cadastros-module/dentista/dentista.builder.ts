@@ -345,7 +345,7 @@ export class DentistaBuilder {
   private _gerarPesquisa(): CnPesquisaModel {
     return CnPesquisaModel.ObterPesquisaModel(this._service.buscarAvancado, [
       CnInputCvaModel.obterTextoSimples('nome', 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-      CnInputCvaModel.obterCombobox(this._displayName.dentistaStatus.nomePropriedade, this._displayName.dentistaStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesCampoStatusDentista()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
+      CnInputCvaModel.obterCombobox('statusFiltro', this._displayName.dentistaStatus.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesCampoStatusDentista()]).setarClassTamanho(TAMANHO_RESPONSIVO_3),
       CnInputCvaModel.obterCombobox(this._displayName.especialidade.nomePropriedade, this._displayName.especialidade.valorDisplay, false, [{ id: '', nome: 'Todos' }, ...DentistaBuilder.obterOpcoesEspecialidades()]).setarClassTamanho(TAMANHO_RESPONSIVO_3)
     ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
   }
