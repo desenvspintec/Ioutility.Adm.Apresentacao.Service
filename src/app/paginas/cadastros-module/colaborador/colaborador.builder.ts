@@ -169,7 +169,7 @@ export class ColaboradorBuilder {
                 campoChavePix,
             ]),
             new CnGrupoCamposFormulario('Remuneração', [
-                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.salarioBrutoMensal.nomePropriedade, this._displayName.salarioBrutoMensal.valorDisplay, true, '0.000'),
+                CnInputCvaModel.obterTextoSimplesComMask(this._displayName.salarioBrutoMensal.nomePropriedade, this._displayName.salarioBrutoMensal.valorDisplay, true, '0.000,00'),
             ])
         ]);
     }
