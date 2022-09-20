@@ -1,4 +1,3 @@
-import { LINK_ROUTES } from './../../../shared/constants/link-routes-constant';
 import { MatDialog } from '@angular/material/dialog';
 import { CnSessaoGrupoCamposDetalhe } from 'src/app/shared/cn-components/cn-detalhes/models/cn-sessao-grupo-campos-detalhe';
 import { CnCampoDetalhe } from 'src/app/shared/cn-components/model/cn-campo-detalhe';
@@ -19,12 +18,8 @@ import { CnSubmenu } from './../../../shared/cn-components/model/cn-submenu';
 import { CnFormHelper, NOME_SESSAO_DETALHES_UNICA } from './../../../shared/cn-helpers/cn-form-helper';
 import { RouterHelper } from './../../../shared/cn-helpers/cn-router-helper';
 import { TAMANHO_RESPONSIVO_1, TAMANHO_RESPONSIVO_3 } from './../../../shared/constants/css-class-tamanhos';
-import {
-  CONTROL_NAME_ID,
-  CONTROL_NAME_NOME,
-  CPF_MASK,
-  TELEFONE_CELULAR_MASK,
-} from './../../../shared/constants/forms-contante';
+import { CONTROL_NAME_ID, CONTROL_NAME_NOME, CPF_MASK } from './../../../shared/constants/forms-contante';
+import { LINK_ROUTES } from './../../../shared/constants/link-routes-constant';
 import { ROTA_COMPLEMENTO, ROTA_MODULO } from './../../../shared/constants/routes-constant';
 import { IDisplayNameItem } from './../../../shared/models/display-name-item';
 import { DisplayNameService } from './../../../shared/services/display-name.service';
