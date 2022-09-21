@@ -1,3 +1,5 @@
+import { CnListagemCrudItemPeronsalizadoComponent } from './cn-listagem-crud/cn-listagem-crud-item-peronsalizado/cn-listagem-crud-item-peronsalizado.component';
+import { CnListagemPersonalizadaDirective } from './cn-listagem-crud/cn-listagem-personalizada.directive';
 import { CnSublistagemCrudComponent } from './cn-sublistagem-crud/cn-sublistagem-crud.component';
 import { CnSublistagemCrudDirective } from './cn-sublistagem-crud/cn-sublistagem-crud.directive';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -78,6 +80,8 @@ const declarations = [
   CnModalHeaderComponent,
   CnSublistagemCrudComponent,
   CnSublistagemCrudDirective,
+  CnListagemPersonalizadaDirective,
+  CnListagemCrudItemPeronsalizadoComponent,
 ]
 @NgModule({
   declarations: declarations,

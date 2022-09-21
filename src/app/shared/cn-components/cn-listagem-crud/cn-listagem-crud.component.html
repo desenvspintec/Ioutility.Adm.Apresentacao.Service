@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="barra-rolagem">
-    <app-cn-tabela class="td-tabela-principal">
+    <app-cn-tabela class="td-tabela-principal" *ngIf="utilizaListagemPadrao()">
       <tr>
         <th class="td-btn-esquerdo" *ngIf="model.componenteSubListagemCrud" >
           <mat-icon class="icon">add_circle_outline</mat-icon>
@@ -80,6 +80,11 @@
         </tr>
       </ng-container>
     </app-cn-tabela>
+    <ng-container *ngIf="utilizaListagemPersonalizada()">
+      <ng-container *ngFor="let item of itens;">
+        <cn-listagem-crud-item-peronsalizado [model]="model" [item]="item" ></cn-listagem-crud-item-peronsalizado>
+      </ng-container>
+    </ng-container>
     <br />
     <br />
     <br />

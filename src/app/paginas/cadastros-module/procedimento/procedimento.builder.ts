@@ -1,3 +1,4 @@
+import { TesteproComponent } from './testepro/testepro.component';
 import { TAMANHO_RESPONSIVO_4 } from './../../../shared/constants/css-class-tamanhos';
 import { TAMANHO_RESPONSIVO_2 } from 'src/app/shared/constants/css-class-tamanhos';
 import { MatDialog } from '@angular/material/dialog';
@@ -62,6 +63,7 @@ export class ProcedimentoBuilder {
       this.gerarFormulario(),
       this.gerarDetalhes()
     )
+    model.modelListagemExibicao.componenteExibicaoPersonalizado = TesteproComponent;
     model.addBtnAtualizar();
     model.addBtnVerDetalhes();
     model.addBtnInativar(this._matDialog);

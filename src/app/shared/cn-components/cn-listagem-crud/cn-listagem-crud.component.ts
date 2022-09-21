@@ -1,9 +1,10 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { CnListagemPersonalizadaDirective } from './cn-listagem-personalizada.directive';
+import { Component, HostListener, Input, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
 import { CnItemListagemExibicao } from '../model/cn-item-listagem-exibicao';
 import { CnListagemExibicaoBtnOpcao } from '../model/cn-listagem-exibicao-btn-opcao';
 import { ANIMAR_ENTRADA } from './../../constants/animacoes.constant';
-import { CnListagemExibicaoModel } from './../model/cn-listagem-exibicao-model';
+import { CnListagemExibicaoModel, ETipoExibicaoListagem } from './../model/cn-listagem-exibicao-model';
 
 @Component({
   selector: 'app-cn-listagem-crud',
@@ -11,7 +12,7 @@ import { CnListagemExibicaoModel } from './../model/cn-listagem-exibicao-model';
   styleUrls: ['./cn-listagem-crud.component.scss'],
   animations: ANIMAR_ENTRADA
 })
-export class CnListagemCrudComponent implements OnInit {
+export class CnListagemCrudComponent implements OnInit{
 
   @Input() model!: CnListagemExibicaoModel;
   @Input() itens: any[] = [];
@@ -28,7 +29,18 @@ export class CnListagemCrudComponent implements OnInit {
   tabelaAberta = this.IdTabelaFechada;
   arrayEsp: any[] = [];
 
+
   ngOnInit(): void {
+  }
+
+
+
+  utilizaListagemPersonalizada(): boolean {
+    return this.model.tipoExibicao === ETipoExibicaoListagem.ComponentePersonalizado;
+  }
+
+  utilizaListagemPadrao(): boolean {
+    return this.model.tipoExibicao === ETipoExibicaoListagem.TabelaPadrao;
   }
 
   exibirIconeBotaoTabela(numeroTabela: number): boolean {
@@ -46,14 +58,14 @@ export class CnListagemCrudComponent implements OnInit {
   private _fecharTabela(): void{
     return this.abrirTabela(this.IdTabelaFechada);
   }
-  
+
   podeExibirTabela(numeroTabela: number): boolean {
     return numeroTabela === this.tabelaAberta;
   }
 
   abrirMenu(chave: number): void {
     this.menuAberto = chave;
-  } 
+  }
 
   podeExibirMenu(chave: number): boolean {
     return this.menuAberto == chave;
@@ -75,7 +87,7 @@ export class CnListagemCrudComponent implements OnInit {
 
     this._fecharMenu();
   }
-  
+
   private _fecharMenu(): void {
     this.abrirMenu(this.IdMenuFechado);
   }
