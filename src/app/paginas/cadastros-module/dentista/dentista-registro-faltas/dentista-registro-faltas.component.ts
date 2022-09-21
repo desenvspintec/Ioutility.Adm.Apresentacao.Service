@@ -20,7 +20,10 @@ import { DisplayNameService } from 'src/app/shared/services/display-name.service
 import { ITENS_DENTISTA_SUBMENU } from '../dentista.constant';
 import { TAMANHO_RESPONSIVO_2 } from './../../../../shared/constants/css-class-tamanhos';
 import { CONTROL_NAME_ID } from './../../../../shared/constants/forms-contante';
-import { DentistaIRegistroFaltasDataEmAnosDTO, EMesesDoAno } from './../dentista.model';
+import {
+  DentistaIRegistroFaltasDataEmAnosDTO,
+  EMesesDoAno,
+} from './../dentista.model';
 import { DentistaService } from './../dentista.service';
 import { AdicionarFaltaFormComponent } from './adicionar-falta-form/adicionar-falta-form.component';
 import { DentistaDetalhesFaltaComponent } from './dentista-detalhes-falta/dentista-detalhes-falta.component';
@@ -30,7 +33,7 @@ import { DentistaRegistroFaltaService } from './dentista-registro-falta.service'
   selector: 'app-dentista-registro-faltas',
   templateUrl: './dentista-registro-faltas.component.html',
   styleUrls: ['./dentista-registro-faltas.component.scss'],
-  animations: ANIMAR_ENTRADA
+  animations: ANIMAR_ENTRADA,
 })
 export class DentistaRegistroFaltasComponent implements OnInit {
   formModelPesquisa: CnPesquisaModel;
@@ -44,18 +47,24 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   ocorreuErroAoPesquisar = false;
   private _tabelaAberta: boolean = true;
 
-  constructor(private _matDialog: MatDialog
-    , private _registroFaltaService: DentistaRegistroFaltaService
-    , private _displayNameService: DisplayNameService
-    , private _dentistaService: DentistaService
+  constructor(
+    private _matDialog: MatDialog,
+    private _registroFaltaService: DentistaRegistroFaltaService,
+    private _displayNameService: DisplayNameService,
+    private _dentistaService: DentistaService
   ) {
     this.displayName = _displayNameService.itens!;
     this.btnEnviar = CnBtnModel.obterBtnRegistrarPorLink();
     this.formModelPesquisa = this._camposDePesquisa();
-    this.modelListagemExibicao = new CnListagemExibicaoModel(this._dentistaService, [], "", this._gerarItensListagem(), DentistaDetalhesFaltaComponent);
+    this.modelListagemExibicao = new CnListagemExibicaoModel(
+      this._dentistaService,
+      [],
+      '',
+      this._gerarItensListagem(),
+      DentistaDetalhesFaltaComponent
+    );
   }
   ngOnInit(): void {
-    console.log(this.obterOpcoesCampoMesesDoAnoRegistroFalta())
   }
 
   exibirTabela(): void {
@@ -84,7 +93,9 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   }
 
   haEntitys(): boolean {
-    const possuiEntitys = !CnHelper.estaNuloVazioOuUndefined(this.entitysPesquisadas);
+    const possuiEntitys = !CnHelper.estaNuloVazioOuUndefined(
+      this.entitysPesquisadas
+    );
     return possuiEntitys;
   }
 
@@ -96,19 +107,36 @@ export class DentistaRegistroFaltasComponent implements OnInit {
     return [
       new CnItemListagemExibicao(this.displayName.nome.nomePropriedade, this.displayName.nome.valorDisplay),
       new CnItemListagemExibicao(this.displayName.unidadeQueAtende.nomePropriedade, this.displayName.unidadeQueAtende.valorDisplay),
-      new CnItemListagemExibicao(this.displayName.quantidadeFaltas.nomePropriedade, this.displayName.quantidadeFaltas.
-        valorDisplay),
-    ]
-  }
+      new CnItemListagemExibicao(this.displayName.quantidadeFaltas.nomePropriedade, this.displayName.quantidadeFaltas.valorDisplay),
+    ];
+  };
 
   private _camposDePesquisa(): CnPesquisaModel {
-    console.log([...this.obterOpcoesCampoAnoDoRegistroFalta()])
-    return CnPesquisaModel.ObterPesquisaModel(this._dentistaService.buscarFalta, [
-      CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID),
-      CnInputCvaModel.obterTextoSimples(this.displayName.nome.nomePropriedade, 'Pesquisar', false, 200, 0).setarClassTamanho(TAMANHO_RESPONSIVO_3),
-      CnInputCvaModel.obterCombobox('dataEmMeses', 'Mês', false, [{ id: '', nome: 'Todos' }, ...this.obterOpcoesCampoMesesDoAnoRegistroFalta()]).setarClassTamanho(TAMANHO_RESPONSIVO_2),
-      CnInputCvaModel.obterCombobox('dataEmAnos', 'Ano', false, this.obterOpcoesCampoAnoDoRegistroFalta()).setarClassTamanho(TAMANHO_RESPONSIVO_2),
-    ], IDENTIFICADOR_DE_PESQUISA_DENTISTA);
+    console.log([...this.obterOpcoesCampoAnoDoRegistroFalta()]);
+    return CnPesquisaModel.ObterPesquisaModel(
+      this._dentistaService.buscarFalta,
+      [
+        CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID),
+        CnInputCvaModel.obterTextoSimples(
+          this.displayName.nome.nomePropriedade,
+          'Pesquisar',
+          false,
+          200,
+          0
+        ).setarClassTamanho(TAMANHO_RESPONSIVO_3),
+        CnInputCvaModel.obterCombobox('dataEmMeses', 'Mês', false, [
+          { id: '', nome: 'Todos' },
+          ...this.obterOpcoesCampoMesesDoAnoRegistroFalta(),
+        ]).setarClassTamanho(TAMANHO_RESPONSIVO_2),
+        CnInputCvaModel.obterCombobox(
+          'dataEmAnos',
+          'Ano',
+          false,
+          this.obterOpcoesCampoAnoDoRegistroFalta()
+        ).setarClassTamanho(TAMANHO_RESPONSIVO_2),
+      ],
+      IDENTIFICADOR_DE_PESQUISA_DENTISTA
+    );
   }
 
   obterOpcoesCampoAnoDoRegistroFalta(): OpcaoCombobox[] {
@@ -123,8 +151,8 @@ export class DentistaRegistroFaltasComponent implements OnInit {
         setTimeout(() => {
           this.anosCarregados = true;
         }, 100);
-      }
-    })
+      },
+    });
     return comboboxAnos;
   }
 
@@ -152,11 +180,13 @@ export class DentistaRegistroFaltasComponent implements OnInit {
       maxWidth: '1024px',
       data: {
         formModel: this.btnEnviar?.formModel,
-      }
+      },
     });
-    modalAberto.afterClosed().subscribe(finalizou => {
-      if (finalizou)
+    modalAberto.afterClosed().subscribe((finalizou) => {
+      if (finalizou) {
         this.modalFechou.emit();
+        location.reload();
+      }
     });
   }
 }
