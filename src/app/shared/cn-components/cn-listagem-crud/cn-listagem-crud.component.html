@@ -81,8 +81,8 @@
       </ng-container>
     </app-cn-tabela>
     <ng-container *ngIf="utilizaListagemPersonalizada()">
-      <ng-container *ngFor="let item of itens;">
-        <cn-listagem-crud-item-peronsalizado [model]="model" [item]="item" ></cn-listagem-crud-item-peronsalizado>
+      <ng-container *ngFor="let item of itens; let posicao = index">
+        <cn-listagem-crud-item-peronsalizado [model]="model" [item]="item" [posicao]="posicao" ></cn-listagem-crud-item-peronsalizado>
       </ng-container>
     </ng-container>
     <br />

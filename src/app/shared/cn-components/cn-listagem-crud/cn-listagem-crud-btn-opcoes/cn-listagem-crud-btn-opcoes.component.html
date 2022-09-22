@@ -1,0 +1,11 @@
+<button id="{{obterId()}}" mat-icon-button [matMenuTriggerFor]="menu" >
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let opcao of model.btnsOpcao">
+    <button (click)="executarAcaoBtnOpcao(entity.id, opcao)" mat-menu-item>
+      <mat-icon>{{ opcao.icone }} </mat-icon>
+      <span>{{ opcao.label }}</span>
+    </button>
+  </ng-container>
+</mat-menu>

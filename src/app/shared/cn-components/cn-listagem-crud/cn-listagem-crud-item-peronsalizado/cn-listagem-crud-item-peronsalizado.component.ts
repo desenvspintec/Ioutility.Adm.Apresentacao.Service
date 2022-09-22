@@ -10,14 +10,14 @@ import {
 
 @Component({
   selector: 'cn-listagem-crud-item-peronsalizado',
-  templateUrl: './cn-listagem-crud-item-peronsalizado.component.html',
-  styleUrls: ['./cn-listagem-crud-item-peronsalizado.component.scss'],
+  template: '<ng-template appCnListagemPersonalizada ></ng-template>',
 })
 export class CnListagemCrudItemPeronsalizadoComponent
   implements OnInit, AfterViewInit
 {
   @Input() model!: CnListagemExibicaoModel;
   @Input() item!: any;
+  @Input() posicao!: number;
 
   constructor() {}
 
@@ -35,7 +35,7 @@ export class CnListagemCrudItemPeronsalizadoComponent
       const viewContainerRef = this.componenteListagemPersonalizada.viewContainerRef;
       viewContainerRef.clear();
       const instancia = viewContainerRef.createComponent(this.model.componenteExibicaoPersonalizado!).instance;
-      instancia.aoIniciar(this.model, this.item);
+      instancia.aoIniciar(this.model, this.item, this.posicao);
     }, 100);
   }
 }

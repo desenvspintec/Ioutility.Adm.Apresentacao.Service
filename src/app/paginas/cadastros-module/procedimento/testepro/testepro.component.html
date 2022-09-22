@@ -1,2 +1,11 @@
-<p>testepro works!</p>
-{{procedimento.codProcedimento}}
+<div class="container-fluid">
+  <div class="row" style="background-color: #fff; margin-bottom: 10px">
+    <div class="col-11" >
+      meu componente personalizado. Codigo: <b>{{procedimento.codProcedimento}}</b>
+    </div>
+    <div class="col-1">
+      <cn-listagem-crud-btn-opcoes *ngIf="listagemModel" [model]="listagemModel" [entity]="procedimento" [posicao]="posicaoItemNaLista" ></cn-listagem-crud-btn-opcoes>
+    </div>
+  </div>
+</div>
+

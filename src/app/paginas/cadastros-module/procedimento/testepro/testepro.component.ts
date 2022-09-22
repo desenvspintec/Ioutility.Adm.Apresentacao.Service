@@ -16,10 +16,12 @@ interface TesteComponenteEntity extends IEntity {
 export class TesteproComponent implements IListagemCrudItemPeronsalizadoComponent {
 
   procedimento!: TesteComponenteEntity;
+  listagemModel!: CnListagemExibicaoModel;
+  posicaoItemNaLista!: number;
   constructor() { }
-  aoIniciar(listagemModel: CnListagemExibicaoModel, entity: IEntity): void {
+  aoIniciar(listagemModel: CnListagemExibicaoModel, entity: IEntity, posicaoItemNaLista: number): void {
     this.procedimento = entity as TesteComponenteEntity;
+    this.listagemModel = listagemModel;
+    this.posicaoItemNaLista = posicaoItemNaLista
   }
-
-
 }

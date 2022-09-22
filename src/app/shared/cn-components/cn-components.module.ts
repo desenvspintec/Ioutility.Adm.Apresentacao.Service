@@ -1,3 +1,4 @@
+import { CnListagemCrudBtnOpcoesComponent } from './cn-listagem-crud/cn-listagem-crud-btn-opcoes/cn-listagem-crud-btn-opcoes.component';
 import { CnListagemCrudItemPeronsalizadoComponent } from './cn-listagem-crud/cn-listagem-crud-item-peronsalizado/cn-listagem-crud-item-peronsalizado.component';
 import { CnListagemPersonalizadaDirective } from './cn-listagem-crud/cn-listagem-personalizada.directive';
 import { CnSublistagemCrudComponent } from './cn-sublistagem-crud/cn-sublistagem-crud.component';
@@ -82,6 +83,7 @@ const declarations = [
   CnSublistagemCrudDirective,
   CnListagemPersonalizadaDirective,
   CnListagemCrudItemPeronsalizadoComponent,
+  CnListagemCrudBtnOpcoesComponent,
 ]
 @NgModule({
   declarations: declarations,

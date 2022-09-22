@@ -1,0 +1,45 @@
+
+@import "/src/shared-styles/variaveis";
+
+.opcao-listagem {
+  position: absolute;
+  background-color: $cor-tabela;
+  min-width: 177px;
+  right: 65px;
+  transition: 0.3s;
+  box-shadow: #888 0px 0px 7px 4px;
+  border-radius: 10px;
+  z-index: 999;
+  & ul {
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    & li {
+      list-style: none;
+      display: block;
+      float: left;
+      width: 100%;
+      padding: 10px 10px 0px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: $transition-padrao;
+      &:hover {
+        background-color: $cor-principal-claro;
+      }
+    }
+  }
+}
+.opcao-listagem-item {
+  display: block;
+  float: left;
+}
+.opcao-listagem-icon {
+  width: 25%;
+  text-align: center;
+}
+.opcao-listagem-texto {
+  width: 65%;
+  text-align: left;
+  margin: 0 auto;
+}
