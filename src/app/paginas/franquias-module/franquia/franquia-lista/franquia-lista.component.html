@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-horizontal">
+      <div class="img-square-wrapper">
+        <img class="" [src]="obterEnderecoImagem(franquia)" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col col-lg-10">
+            <p class="card-title">Matrícula: {{ franquia.codFranquia }}</p>
+          </div>
+          <div class="col col-lg-2 ngd-flex justify-content-end">
+            <cn-listagem-crud-btn-opcoes *ngIf="listagemModel" [model]="listagemModel" [entity]="franquia"
+              [posicao]="posicaoItemNaLista"></cn-listagem-crud-btn-opcoes>
+          </div>
+        </div>
+        <p class="card-text">Nome da franquia: {{ franquia.nome }}</p>
+        <p class="card-text">Email: {{ franquia.email }}</p>
+        <p class="card-text">Telefone: {{ franquia.telefone }}</p>
+      </div>
+    </div>
+  </div>
+</div>
