@@ -222,30 +222,52 @@ export class FranquiaBuilder {
   private gerarDetalhes(): CnBaseDetalheModel {
     return new CnBaseDetalheModel(
       this._service.buscarPorId,
+      [new CnCampoDetalhe(CONTROL_NAME_ID, 'ID')],
       [
-        new CnCampoDetalhe(this._displayName.status.nomePropriedade, this._displayName.status.valorDisplay)
-      ],
-      [
-        new CnSessaoGrupoCamposDetalhe('', [
-          new CnGrupoCampoDetalhe('', false, [
-            new CnCampoDetalhe(this._displayName.especialidade.nomePropriedade, this._displayName.especialidade.valorDisplay),
+        new CnSessaoGrupoCamposDetalhe(FORM_TITULO_GENERICO, [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Informações da Franquia', [
+            new CnCampoDetalhe(this._displayName.nome.nomePropriedade, this._displayName.nome.valorDisplay),
+            new CnCampoDetalhe(this._displayName.cnpj.nomePropriedade, this._displayName.cnpj.valorDisplay),
           ]),
-          new CnGrupoCampoDetalhe('Valores', false, [
-            new CnCampoDetalhe(this._displayName.valorSugerido.nomePropriedade, this._displayName.valorSugerido.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorMinimo.nomePropriedade, this._displayName.valorMinimo.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorMaximo.nomePropriedade, this._displayName.valorMaximo.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorCustoAdicional.nomePropriedade, this._displayName.valorCustoAdicional.valorDisplay),
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Informações de Responsável', [
+            new CnCampoDetalhe(this._displayName.responsavelLegal.nomePropriedade, this._displayName.responsavelLegal.valorDisplay),
+            new CnCampoDetalhe(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay),
+            new CnCampoDetalhe(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay),
+            new CnCampoDetalhe(this._displayName.celularWhatsApp.nomePropriedade, this._displayName.celularWhatsApp.valorDisplay),
           ])
-        ])
-      ]
-    )
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Endereço', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Endereço', [
+            new CnCampoDetalhe('endereco.logradouro', 'Rua'),
+            new CnCampoDetalhe('endereco.numero', 'Número'),
+            new CnCampoDetalhe('endereco.bairro', 'Bairro'),
+            new CnCampoDetalhe('endereco.cidade', 'Cidade'),
+            new CnCampoDetalhe('endereco.estado', 'Estado'),
+          ]),
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Dados Bancários', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Dados Bancários', [
+            new CnCampoDetalhe('dadosBancarios.bancoNome', 'Banco').setarClass('col-md-12'),
+            new CnCampoDetalhe('dadosBancarios.agencia', 'Agência'),
+            new CnCampoDetalhe('dadosBancarios.conta', 'Conta'),
+            new CnCampoDetalhe('dadosBancarios.tipoChavePixTxt', 'Tipo de chave Pix'),
+            new CnCampoDetalhe('dadosBancarios.chavePix', 'Chave Pix')
+          ]),
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Informação de acesso', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Acesso', [
+            new CnCampoDetalhe('acesso.dentistaStatusTxt', 'Status'),
+          ]),
+        ]),
+
+      ]);
   }
 
 
   static obterOpcoesCampoTipoChavePix(): OpcaoCombobox[] {
     return [
-      new OpcaoCombobox(EChavePix.Cpf, 'CPF'),
-      new OpcaoCombobox(EChavePix.Cnpj, 'CNPJ'),
+      new OpcaoCombobox(EChavePix.Cpf, 'Cpf'),
+      new OpcaoCombobox(EChavePix.Cnpj, 'Cnpj'),
       new OpcaoCombobox(EChavePix.Telefone, 'Telefone'),
     ]
   }
