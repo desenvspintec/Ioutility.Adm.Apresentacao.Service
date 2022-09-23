@@ -65,6 +65,12 @@ export interface IDisplayNameItem {
   comissaoValor: DisplayName,
   comissaoTipo: DisplayName,
 
+  codFranquia: DisplayName,
+  imagemFranquia: DisplayName,
+  responsavelLegal: DisplayName,
+  franquiaStatus: DisplayName,
+  businessPay: DisplayName,
 
-  franquiaStatus: DisplayName
+  nrVendasMes: DisplayName,
+  configuracaoCartao: DisplayName
 }

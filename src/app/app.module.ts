@@ -27,6 +27,8 @@ import { ProcedimentoFormComponent } from './paginas/cadastros-module/procedimen
 
 import { FranquiaComponent } from './paginas/franquias-module/franquia/franquia.component';
 import { FranquiaFormComponent } from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
+
+import { FranquiaListaComponent } from './paginas/franquias-module/franquia/franquia-lista/franquia-lista.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,7 @@ import { FranquiaFormComponent } from './paginas/franquias-module/franquia/franq
     ProcedimentoFormComponent,
     FranquiaComponent,
     FranquiaFormComponent,
+    FranquiaListaComponent
 
   ],
   imports: [

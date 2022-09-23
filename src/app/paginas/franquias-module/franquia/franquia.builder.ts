@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { TAMANHO_RESPONSIVO_4 } from './../../../shared/constants/css-class-tamanhos';
 import { TAMANHO_RESPONSIVO_2 } from 'src/app/shared/constants/css-class-tamanhos';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,26 +17,36 @@ import { CnGrupoCamposFormulario } from 'src/app/shared/cn-components/model/cn-g
 import { CnStepperFormItemModel } from 'src/app/shared/cn-components/model/cn-stepper-form-item.model';
 import { LINK_ROUTES } from 'src/app/shared/constants/link-routes-constant';
 import { IDisplayNameItem } from 'src/app/shared/models/display-name-item';
+import { FORM_TITULO_GENERICO } from './../../../shared/constants/forms-contante';
+import {
+  CNPJ_MASK,
+  CONTROL_NAME_ID,
+  CONTROL_NAME_NOME,
+  CPF_MASK,
+  TELEFONE_CELULAR_MASK,
+} from 'src/app/shared/constants/forms-contante';
+import { CnFormHelper } from 'src/app/shared/cn-helpers/cn-form-helper';
 
 import { CnItemListagemExibicao } from './../../../shared/cn-components/model/cn-item-listagem-exibicao';
 import { CnStepperFormModel } from './../../../shared/cn-components/model/cn-stepper-form.model';
 import { IEntityBasica } from './../../../shared/models/entity-basica';
 import { DisplayNameService } from './../../../shared/services/display-name.service';
 
-import { ETipoComissao, ETipoStatusFranquia } from './franquia.models';
+import { ETipoComissao, ETipoStatusFranquia, EChavePix, EConfiguracaoCartao } from './franquia.models';
 import { FranquiaService } from './franquia.service';
+import { BancoService } from './../../../shared/services/banco.service';
+import { FranquiaListaComponent } from './franquia-lista/franquia-lista.component';
 
 export class FranquiaBuilder {
-
 
   _displayName!: IDisplayNameItem;
   constructor(
     private _service: FranquiaService,
+    private _bancoService: BancoService,
     private _matDialog: MatDialog,
     displayNameService: DisplayNameService
   ) {
     this._displayName = displayNameService.itens!;
-
   }
 
   gerarModelComponent = (): CnCrudModel => {
@@ -53,6 +64,7 @@ export class FranquiaBuilder {
       this.gerarFormulario(),
       this.gerarDetalhes()
     )
+    model.modelListagemExibicao.componenteExibicaoPersonalizado = FranquiaListaComponent;
     model.addBtnAtualizar();
     model.addBtnVerDetalhes();
     model.addBtnInativar(this._matDialog);
@@ -60,30 +72,139 @@ export class FranquiaBuilder {
   }
   private itensListagem(): CnItemListagemExibicao[] {
     return [
-      new CnItemListagemExibicao(this._displayName.status.nomePropriedade, this._displayName.status.valorDisplay),
-      new CnItemListagemExibicao(this._displayName.especialidade.nomePropriedade, this._displayName.especialidade.valorDisplay),
-      new CnItemListagemExibicao(this._displayName.valorSugerido.nomePropriedade, this._displayName.valorSugerido.valorDisplay),
-      new CnItemListagemExibicao(this._displayName.valorMinimo.nomePropriedade, this._displayName.valorMinimo.valorDisplay),
+
+      new CnItemListagemExibicao(this._displayName.codFranquia.nomePropriedade, this._displayName.codFranquia.valorDisplay),
+      new CnItemListagemExibicao(this._displayName.franquiaStatus.nomePropriedadeTxt(), this._displayName.status.valorDisplay),
+      new CnItemListagemExibicao(this._displayName.nome.nomePropriedade, this._displayName.nome.valorDisplay),
+      new CnItemListagemExibicao(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay),
+      new CnItemListagemExibicao(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay),
     ]
   }
   private gerarFormulario(): CnStepperFormModel {
-    return new CnStepperFormModel([
-      new CnStepperFormItemModel('', '', [
-        new CnGrupoCamposFormulario('', [
-        ]),
-        new CnGrupoCamposFormulario('Valores', [
-          CnInputCvaModel.obterApenasNumero(this._displayName.valorSugerido.nomePropriedade, this._displayName.valorSugerido.valorDisplay, true),
-          CnInputCvaModel.obterApenasNumero(this._displayName.valorMinimo.nomePropriedade, this._displayName.valorMinimo.valorDisplay, true),
-          CnInputCvaModel.obterApenasNumero(this._displayName.valorMaximo.nomePropriedade, this._displayName.valorMaximo.valorDisplay, true),
-          CnInputCvaModel.obterApenasNumero(this._displayName.valorCustoAdicional.nomePropriedade, this._displayName.valorCustoAdicional.valorDisplay, true),
-        ]),
-        new CnGrupoCamposFormulario('Comissão', [
-          CnInputCvaModel.obterCombobox(this._displayName.comissaoTipo.nomePropriedade, this._displayName.comissaoTipo.valorDisplay, true, FranquiaBuilder.obterOpcoesTipoComissao()),
-          CnInputCvaModel.obterApenasNumero(this._displayName.comissaoValor.nomePropriedade, this._displayName.comissaoValor.valorDisplay, true),
-        ])
+    const stepperForm = new CnStepperFormModel([
+      this._gerarDadosInformacoesGeraisEtapa1(),
+      this._gerarEnderecoEtapa2(),
+      this._gerarDadosBancariosEtapa3(),
+      this._gerarBusinessPayEtapa4()
+    ]);
+    return stepperForm;
+  }
+
+  private _gerarDadosInformacoesGeraisEtapa1(): CnStepperFormItemModel {
+    return new CnStepperFormItemModel('franquia', FORM_TITULO_GENERICO, [
+
+
+      new CnGrupoCamposFormulario('Foto da Franquia', [
+        CnInputCvaModel.obterHiddenGuid('id'),
+        CnInputCvaModel.obterUploadArquivoPorBotao(this._displayName.imagemFranquia.nomePropriedade, this._displayName.imagemFranquia.valorDisplay, false),
+        /*
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.codFranquia.nomePropriedade,
+          this._displayName.codFranquia.valorDisplay, true)
+          */
+      ]),
+
+
+      new CnGrupoCamposFormulario('Informações da Franquia', [
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.nome.nomePropriedade,
+          this._displayName.nome.valorDisplay, true),
+
+        CnInputCvaModel.obterTextoSimplesComMask(
+          this._displayName.cnpj.nomePropriedade,
+          this._displayName.cnpj.valorDisplay,
+          true,
+          CNPJ_MASK
+        )
+      ]),
+
+      new CnGrupoCamposFormulario('Responsável Legal', [
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.responsavelLegal.nomePropriedade,
+          this._displayName.responsavelLegal.valorDisplay, true),
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.email.nomePropriedade,
+          this._displayName.email.valorDisplay, true),
+        CnFormHelper.gerarCampoTelefone(),
+        CnInputCvaModel.obterTextoSimplesComMask(
+          this._displayName.celularWhatsApp.nomePropriedade,
+          this._displayName.celularWhatsApp.valorDisplay,
+          true,
+          TELEFONE_CELULAR_MASK),
+
+      ]),
+    ]);
+  }
+
+  private _gerarEnderecoEtapa2(): CnStepperFormItemModel {
+    return new CnStepperFormItemModel(this._displayName.endereco.nomePropriedade, this._displayName.endereco.valorDisplay, [
+      new CnGrupoCamposFormulario(this._displayName.endereco.valorDisplay, [
+        CnInputCvaModel.obterEndereco(this._displayName.endereco.nomePropriedade, this._displayName.endereco.valorDisplay, true, false)
       ])
     ])
   }
+
+  private _gerarDadosBancariosEtapa3(): CnStepperFormItemModel {
+    const campoChavePix = CnInputCvaModel.obterTextoSimples(this._displayName.chavePix.nomePropriedade, this._displayName.chavePix.valorDisplay, true);
+
+    return new CnStepperFormItemModel('dadosBancarios', 'Dados bancários', [
+      new CnGrupoCamposFormulario('Informações da conta bancária', [
+        CnInputCvaModel.obterComboBoxPesquisavel(
+          this._displayName.bancoId.nomePropriedade, this._displayName.bancoId.valorDisplay, true, this._bancoService.buscarPorNome, this._bancoService.buscarPorId),
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.agencia.nomePropriedade, this._displayName.agencia.valorDisplay, true
+        ),
+        CnInputCvaModel.obterTextoSimples(
+          this._displayName.conta.nomePropriedade, this._displayName.conta.valorDisplay, true
+        ),
+      ]),
+      new CnGrupoCamposFormulario('Pix', [
+        CnInputCvaModel.obterCombobox(
+          this._displayName.tipoChavePix.nomePropriedade, this._displayName.tipoChavePix.valorDisplay, true, FranquiaBuilder.obterOpcoesCampoTipoChavePix())
+          .addEventoAoCarregarFormulario(this._definirMascaraChavePixPorTipoChave(campoChavePix)),
+        campoChavePix,
+      ]),
+    ]);
+  }
+
+  private _gerarBusinessPayEtapa4(): CnStepperFormItemModel {
+    return new CnStepperFormItemModel(this._displayName.businessPay.nomePropriedade, this._displayName.businessPay.valorDisplay, [
+      new CnGrupoCamposFormulario(this._displayName.businessPay.valorDisplay, [
+        CnInputCvaModel.obterApenasNumero(
+          this._displayName.nrVendasMes.nomePropriedade, this._displayName.nrVendasMes.valorDisplay, true
+        ),
+
+        CnInputCvaModel.obterCombobox(this._displayName.configuracaoCartao.nomePropriedade, this._displayName.configuracaoCartao.valorDisplay, false, FranquiaBuilder.obterConfiguracoesCartao())
+          .setarClassTamanho(TAMANHO_RESPONSIVO_4)
+      ])
+    ])
+  }
+
+
+  private _definirMascaraChavePixPorTipoChave(campoChavePix: CnInputCvaModel): (form: FormGroup) => void {
+    return (form) => {
+      const control = form.get(this._displayName.tipoChavePix.nomePropriedade);
+      control!.valueChanges.subscribe({
+        next: (valor: EChavePix) => {
+          switch (valor) {
+            case EChavePix.Cnpj:
+              campoChavePix.setarMask(CNPJ_MASK)
+              break;
+            case EChavePix.Cpf:
+              campoChavePix.setarMask(CPF_MASK)
+              break;
+            case EChavePix.Telefone:
+              campoChavePix.setarMask(TELEFONE_CELULAR_MASK)
+              break;
+            default:
+              campoChavePix.setarMask('')
+              break;
+          }
+        }
+      })
+    }
+  }
+
   static obterOpcoesTipoComissao(): OpcaoCombobox[] {
     return [
       new OpcaoCombobox(ETipoComissao.Fixo, "Fixo"),
@@ -101,22 +222,61 @@ export class FranquiaBuilder {
   private gerarDetalhes(): CnBaseDetalheModel {
     return new CnBaseDetalheModel(
       this._service.buscarPorId,
+      [new CnCampoDetalhe(CONTROL_NAME_ID, 'ID')],
       [
-        new CnCampoDetalhe(this._displayName.status.nomePropriedade, this._displayName.status.valorDisplay)
-      ],
-      [
-        new CnSessaoGrupoCamposDetalhe('', [
-          new CnGrupoCampoDetalhe('', false, [
-            new CnCampoDetalhe(this._displayName.especialidade.nomePropriedade, this._displayName.especialidade.valorDisplay),
+        new CnSessaoGrupoCamposDetalhe(FORM_TITULO_GENERICO, [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Informações da Franquia', [
+            new CnCampoDetalhe(this._displayName.nome.nomePropriedade, this._displayName.nome.valorDisplay),
+            new CnCampoDetalhe(this._displayName.cnpj.nomePropriedade, this._displayName.cnpj.valorDisplay),
           ]),
-          new CnGrupoCampoDetalhe('Valores', false, [
-            new CnCampoDetalhe(this._displayName.valorSugerido.nomePropriedade, this._displayName.valorSugerido.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorMinimo.nomePropriedade, this._displayName.valorMinimo.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorMaximo.nomePropriedade, this._displayName.valorMaximo.valorDisplay),
-            new CnCampoDetalhe(this._displayName.valorCustoAdicional.nomePropriedade, this._displayName.valorCustoAdicional.valorDisplay),
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Informações de Responsável', [
+            new CnCampoDetalhe(this._displayName.responsavelLegal.nomePropriedade, this._displayName.responsavelLegal.valorDisplay),
+            new CnCampoDetalhe(this._displayName.email.nomePropriedade, this._displayName.email.valorDisplay),
+            new CnCampoDetalhe(this._displayName.telefone.nomePropriedade, this._displayName.telefone.valorDisplay),
+            new CnCampoDetalhe(this._displayName.celularWhatsApp.nomePropriedade, this._displayName.celularWhatsApp.valorDisplay),
           ])
-        ])
-      ]
-    )
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Endereço', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Endereço', [
+            new CnCampoDetalhe('endereco.logradouro', 'Rua'),
+            new CnCampoDetalhe('endereco.numero', 'Número'),
+            new CnCampoDetalhe('endereco.bairro', 'Bairro'),
+            new CnCampoDetalhe('endereco.cidade', 'Cidade'),
+            new CnCampoDetalhe('endereco.estado', 'Estado'),
+          ]),
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Dados Bancários', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Dados Bancários', [
+            new CnCampoDetalhe('dadosBancarios.bancoNome', 'Banco').setarClass('col-md-12'),
+            new CnCampoDetalhe('dadosBancarios.agencia', 'Agência'),
+            new CnCampoDetalhe('dadosBancarios.conta', 'Conta'),
+            new CnCampoDetalhe('dadosBancarios.tipoChavePixTxt', 'Tipo de chave Pix'),
+            new CnCampoDetalhe('dadosBancarios.chavePix', 'Chave Pix')
+          ]),
+        ]),
+        new CnSessaoGrupoCamposDetalhe('Informação de acesso', [
+          CnGrupoCampoDetalhe.obterComoEntityUnica('Acesso', [
+            new CnCampoDetalhe('acesso.dentistaStatusTxt', 'Status'),
+          ]),
+        ]),
+
+      ]);
   }
+
+
+  static obterOpcoesCampoTipoChavePix(): OpcaoCombobox[] {
+    return [
+      new OpcaoCombobox(EChavePix.Cpf, 'Cpf'),
+      new OpcaoCombobox(EChavePix.Cnpj, 'Cnpj'),
+      new OpcaoCombobox(EChavePix.Telefone, 'Telefone'),
+    ]
+  }
+
+  static obterConfiguracoesCartao(): OpcaoCombobox[] {
+    return [
+      new OpcaoCombobox('D+1', 'D+1'),
+      new OpcaoCombobox('D+30', 'D+30')
+    ]
+  }
+
 }

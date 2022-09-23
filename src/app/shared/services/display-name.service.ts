@@ -164,7 +164,15 @@ export class DisplayNameService {
       valorCustoAdicional: this.obterDisplayName('valorCustoAdicional'),
       comissaoValor: this.obterDisplayName('comissaoValor'),
       comissaoTipo: this.obterDisplayName('comissaoTipo'),
+
+
+      codFranquia: this.obterDisplayName('codFranquia'),
+      businessPay: this.obterDisplayName('businessPay'),
+      imagemFranquia: this.obterDisplayName('imagemFranquia'),
+      responsavelLegal: this.obterDisplayName('responsavelLegal'),
       franquiaStatus: this.obterDisplayName('franquiaStatus'),
+      nrVendasMes: this.obterDisplayName('nrVendasMes'),
+      configuracaoCartao: this.obterDisplayName('configuracaoCartao'),
     };
   }
 }
