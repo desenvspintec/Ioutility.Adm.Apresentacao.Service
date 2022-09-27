@@ -28,6 +28,9 @@ export const LINK_ROUTES = {
     procedimento: {
       inicio: RouterHelper.formarRota([ROTA_MODULO.franquia, ROTA_MODULO.procedimento, ROTA_COMPLEMENTO.indexModulo])
     }
-  }
+  },
+  agenda: {
+    inicio: RouterHelper.formarRota([ROTA_MODULO.agenda, ROTA_COMPLEMENTO.indexModulo]),
+  },
 
 }

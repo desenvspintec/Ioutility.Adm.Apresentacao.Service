@@ -29,6 +29,8 @@ import { FranquiaComponent } from './paginas/franquias-module/franquia/franquia.
 import { FranquiaFormComponent } from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
 
 import { FranquiaListaComponent } from './paginas/franquias-module/franquia/franquia-lista/franquia-lista.component';
+import { AgendamentoComponent } from './paginas/agenda-module/agendamento/agendamento.component';
+import { CalendarioLegendaComponent } from './paginas/agenda-module/agendamento/calendario-legenda/calendario-legenda.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { FranquiaListaComponent } from './paginas/franquias-module/franquia/fran
     ProcedimentoFormComponent,
     FranquiaComponent,
     FranquiaFormComponent,
-    FranquiaListaComponent
+    FranquiaListaComponent,
+    AgendamentoComponent,
+    CalendarioLegendaComponent
 
   ],
   imports: [

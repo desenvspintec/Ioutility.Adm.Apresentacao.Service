@@ -21,6 +21,7 @@ import { FranquiaComponent } from './paginas/franquias-module/franquia/franquia.
 import {
   FranquiaFormComponent,
 } from './paginas/franquias-module/franquia/franquia-form/franquia-form.component';
+import { AgendamentoComponent } from './paginas/agenda-module/agendamento/agendamento.component';
 
 // para criar rotas SEGUIR ESTE PADRÃO
 
@@ -71,6 +72,10 @@ export const ROTAS = {
     atualizar: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.franquia, ROTA_PARAMETRO.id.valorParaRota, ROTA_COMPLEMENTO.atualizar], component: FranquiaFormComponent })
   },
 
+  agenda: {
+    index: RouterHelper.obterPathSimples({ em: [ROTA_MODULO.agenda, ROTA_COMPLEMENTO.indexModulo], component: AgendamentoComponent }),
+  }
+
 }
 
 const routes: Routes = [
@@ -102,8 +107,9 @@ const routes: Routes = [
 
   ROTAS.franquia.index,
   ROTAS.franquia.registrar,
-  ROTAS.franquia.atualizar
+  ROTAS.franquia.atualizar,
 
+  ROTAS.agenda.index
 
 ];
 
@@ -114,6 +120,6 @@ const routes: Routes = [
 export class AppRoutingModule {
   constructor() {
     //PARA EXIBIR OS CAMINHOS FORMADOS, BASTA DESCOMENTAR ESTA LINHA
-    // console.log(ROTAS);
+    console.log(ROTAS);
   }
 }

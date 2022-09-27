@@ -71,16 +71,20 @@
           Procedimentos
         </a>
       </div>
-
     </div>
 
     <div class="item active" routerLinkActive="active">
       <a [routerLink]="['#']">
         <span class="icon"> <i class="fas fa-chart-bar fa-2x"></i> </span>
         <p class="label-menu">
-          <mat-icon class="icon">home</mat-icon>Exemplo
+          <mat-icon class="icon">today</mat-icon>Agenda
         </p>
       </a>
+      <div class="submenu" [@componentesToggle]="estadoMenu">
+        <a [routerLink]="[linkRotas.agenda.inicio]">
+          Agendamento
+        </a>
+      </div>
     </div>
   </div>
 

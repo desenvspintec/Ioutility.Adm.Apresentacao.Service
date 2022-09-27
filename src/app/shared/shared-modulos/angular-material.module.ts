@@ -12,6 +12,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [],
   imports: [
@@ -35,6 +38,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatDialogModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatNativeDateModule
   ],
 })
 export class AngularMaterialModule { }

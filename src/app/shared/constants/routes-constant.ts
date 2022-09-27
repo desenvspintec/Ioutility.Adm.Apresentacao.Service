@@ -11,6 +11,7 @@ export const ROTA_MODULO = {
   , franquia: 'franquia'
   , procedimento: 'procedimento'
   , tipoProcedimento: 'tipo-procedimento'
+  , agenda: 'agenda'
 }
 export const ROTA_COMPLEMENTO = {
   indexModulo: 'index',
