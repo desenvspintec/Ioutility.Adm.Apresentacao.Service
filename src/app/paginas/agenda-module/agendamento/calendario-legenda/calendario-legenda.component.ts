@@ -9,9 +9,14 @@ export class CalendarioLegendaComponent implements OnInit {
 
   selected?: Date;
   selected2?: Date;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+  }
+
+  logMonth(event: any){
+    let dataSelecionada = event;
+    console.log(dataSelecionada)
   }
 
 }

@@ -1,0 +1,20 @@
+<div class="col-12 container-fluid">
+  <div class="row">
+    <div id="id-id" class="col-sm offset-md-1" *ngFor="let dentista of dentistas">{{dentista.nome}}</div>
+  </div>
+  <div *ngFor="let horario of horariosAtendimento">
+    <div class="row">
+      <div class="col-sm-1">
+        {{ horario }}
+      </div>
+      <div class="col-sm" *ngFor="let dentista of dentistas">
+        <div *ngIf="exibirApenasHorarioDoDentistaEspecifico(dentista, verificarHoraDoAtendimento(horario))">
+            {{dentista.paciente}} | {{verificarHoraDoAtendimento(horario)}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm"> - </div>
+    </div>
+  </div>
+</div>

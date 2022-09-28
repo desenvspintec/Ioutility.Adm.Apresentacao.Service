@@ -1,4 +1,4 @@
-<div class="row" [@animarSubindo] class="position-relative">
+<div class="container" [@animarSubindo] class="position-relative">
   <div class="col-12">
     <app-cn-painel-titulo [titulo]="'Agenda triagem'">
       <ng-container opcoes>
@@ -14,26 +14,8 @@
     <div class="col-3">
       <app-calendario-legenda></app-calendario-legenda>
     </div>
-    <!-- <div class="col-9 tabela">
-      <div class="col-12 container-fluid">
-        <table class="cn-tabela col-12 table .table-sm table-bordered" [@animarSubindo]>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col" *ngFor="let dentista of dentistas">{{dentista.nome}}</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let horario of horariosAtendimento">
-            <tr>
-              <td class="celula-hora">{{horario}}</td>
-              <td *ngFor="let item of dentistas">{{item.paciente}} - {{item.horarioAtendimento}}</td>
-            </tr>
-            <tr>
-              <td class="celula-hora"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
+    <div class="col-9">
+      <app-listagem-horarios></app-listagem-horarios>
+    </div>
   </div>
 </div>
