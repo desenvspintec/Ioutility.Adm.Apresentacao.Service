@@ -1,0 +1,21 @@
+<div class="container" [@animarSubindo] class="position-relative">
+  <div class="col-12">
+    <app-cn-painel-titulo [titulo]="'Agenda triagem'">
+      <ng-container opcoes>
+        <app-configuracoes></app-configuracoes>
+        <div class="sessao-btn-registrar">
+          <app-cn-btn-registrar [model]="btnRegistrar"></app-cn-btn-registrar>
+        </div>
+      </ng-container>
+    </app-cn-painel-titulo>
+  </div>
+
+  <div class="listagem container-fluid pt-3" style="height: 100vh;">
+    <div class="col-3">
+      <app-calendario-legenda></app-calendario-legenda>
+    </div>
+    <div class="col-9">
+      <app-listagem-horarios></app-listagem-horarios>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid ms-3">
+  <div class="row">
+    <div class="col-sm offset-md-1" *ngFor="let dentista of dentistas">{{dentista.nome}}</div>
+  </div>
+  <div *ngFor="let horario of horariosAtendimento">
+    <div class="row">
+      <div class="col-sm-1 border-style">
+        {{ horario }}
+      </div>
+      <div class="col-sm border-style" *ngFor="let dentista of dentistas">
+        <div *ngIf="mostraHorarioDoDentistaApenasSeMarcadoNaListagem(dentista, verificaHoraDeInicioDoAtendimento(horario))">
+          <div *ngIf="retornaSeHoraComZeroMinutosEstaValido">{{getInicioAtendimentoHoraComZeroMinutos}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style=" min-height: 22px;">
+      <div class="col-sm-1 border-style"></div>
+      <div class="col-sm border-style" *ngFor="let dentista of dentistas">
+        <div *ngIf="mostraHorarioDoDentistaApenasSeMarcadoNaListagem(dentista, verificaHoraDeInicioDoAtendimento(trocaZeroMinutosPorTrintaMinutos(horario)))">
+          <div *ngIf="retornaSeHoraComTrintaMinutosEstaValido">{{getInicioAtendimentoHoraComTrintaMinutos}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

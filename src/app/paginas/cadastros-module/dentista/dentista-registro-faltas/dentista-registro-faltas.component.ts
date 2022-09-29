@@ -112,8 +112,7 @@ export class DentistaRegistroFaltasComponent implements OnInit {
   };
 
   private _camposDePesquisa(): CnPesquisaModel {
-    console.log([...this.obterOpcoesCampoAnoDoRegistroFalta()]);
-    return CnPesquisaModel.ObterPesquisaModel(
+   return CnPesquisaModel.ObterPesquisaModel(
       this._dentistaService.buscarFalta,
       [
         CnInputCvaModel.obterHiddenGuid(CONTROL_NAME_ID),
